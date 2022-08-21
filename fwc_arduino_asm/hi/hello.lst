@@ -1,0 +1,29 @@
+
+AVRA   Ver. 1.3.0 hello.asm Sun Aug 14 08:03:24 2022
+
+
+         ;hello
+         ;using assembly language for turning LED on
+         
+          .list   ;Turn on listing
+         
+C:000000 e200        ldi r16,0b00100000
+C:000001 b904        out DDRB,r16
+C:000002 e210        ldi r17,0b00100000 ;For LED-off use 0b00000000
+C:000003 b915        out PortB,r17
+          Start:
+C:000004 cfff        rjmp Start
+          Hello:
+            .db "Hello world!",0x00
+C:000005 48656C6C6F20776F726C64210000 ; zero byte added
+          Goodbye:
+            .db "Goodbye!",0x00
+C:00000C 476F6F64627965210000 ; zero byte added
+
+
+Segment usage:
+   Code      :        17 words (34 bytes)
+   Data      :         0 bytes
+   EEPROM    :         0 bytes
+
+Assembly completed with no errors.
