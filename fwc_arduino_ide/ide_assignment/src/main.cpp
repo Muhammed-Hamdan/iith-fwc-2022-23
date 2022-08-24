@@ -12,7 +12,7 @@
 #define Z_PIN  12 // OUT-bitstream
 
 #define CLK_PIN 13 
-#define CLK_TP  250
+#define CLK_TP  4000
 
 int A, B, C, D, X, P, Q, R, S, Z;
 
@@ -60,6 +60,8 @@ void setup() {
     pinMode(C_PIN, INPUT);
     pinMode(D_PIN, INPUT);
     pinMode(X_PIN, INPUT);
+
+    digitalWrite(Z_PIN, 0);
 }
 
 
