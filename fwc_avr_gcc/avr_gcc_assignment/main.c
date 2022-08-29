@@ -14,7 +14,7 @@ void gpio_init(void){
 }
 
 void fsm_read(void){
-  uint8_t input = PORTB;
+  uint8_t input = PINB;
   E = input&0x01;
   input>>=1;
   D = input&0x01;

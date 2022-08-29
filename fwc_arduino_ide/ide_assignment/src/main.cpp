@@ -1,15 +1,15 @@
 #include<Arduino.h>
-#define A_PIN  2
-#define B_PIN  3     
-#define C_PIN  4    
-#define D_PIN  5  
-#define X_PIN  6  // IN-bitstream
+#define A_PIN  12
+#define B_PIN  11     
+#define C_PIN  10    
+#define D_PIN  9 
+#define X_PIN  8  // IN-bitstream
 
-#define P_PIN  8 
-#define Q_PIN  9 
-#define R_PIN  10 
-#define S_PIN  11 
-#define Z_PIN  12 // OUT-bitstream
+#define P_PIN  6 
+#define Q_PIN  5 
+#define R_PIN  4 
+#define S_PIN  3
+#define Z_PIN  2 // OUT-bitstream
 
 #define CLK_PIN 13 
 #define CLK_TP  4000
