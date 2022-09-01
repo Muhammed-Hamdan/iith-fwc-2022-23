@@ -2,7 +2,8 @@
 \usepackage{graphicx}
 \usepackage[margin=0.5in]{geometry}
 \usepackage{amsmath}
-\title{\textbf{IDE Assignment}}
+\usepackage{kvmap}
+\title{\textbf{AVR-GCC Assignment}}
 \author{Mohamed Hamdan}
 \date{August 2022}
 
@@ -130,6 +131,61 @@ $\boldsymbol{P_3}$&$\boldsymbol{P_2}$&$\boldsymbol{P_1}$&$\boldsymbol{P_0}$&$\bo
 \hline
 \end{tabular}\par
 }
+
+\section*{\large Minimization using Kmap} 
+\begin{kvmap}
+\kvlist{4}{8}{0,0,0,0,0,0,0,1,1,1,0,0,1,1,0,1,x,x,x,x,x,x,x,x,x,x,x,x,0,0,0,0}{P_0,X,P_3,P_2,P_1}
+\bundle[color=red]{0}{2}{1}{6}
+\bundle[invert=true,color=blue]{0}{3}{3}{4}
+\bundle[color=green]{3}{1}{3}{1}
+\bundle[color=green]{3}{6}{3}{6}
+\end{kvmap}
+
+\begin{kvmap}
+\kvlist{4}{8}{1,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,x,x,x,x,x,x,x,x,x,x,x,x,0,0,0,0}{P_0,X,P_3,P_2,P_1}
+\bundle[color=red]{0}{1}{1}{1}
+\bundle[color=red]{0}{6}{1}{6}
+\bundle[color=blue, reducespace=2pt]{1}{1}{2}{1}
+\bundle[color=blue, reducespace=2pt]{1}{6}{2}{6}
+\bundle[invert=true,color=green]{0}{0}{3}{0}
+\bundle[color=black]{2}{3}{2}{4}
+\end{kvmap}
+
+\begin{kvmap}
+\kvlist{4}{8}{0,1,1,0,1,0,1,0,0,0,0,0,0,0,1,0,x,x,x,x,x,x,x,x,x,x,x,x,1,0,1,0}{P_0,X,P_3,P_2,P_1}
+\bundle[color=red]{2}{0}{2}{1}
+\bundle[color=red]{2}{7}{2}{6}
+\bundle[invert=true,color=blue,reducespace=2pt]{2}{0}{2}{7}
+\bundle[color=blue,reducespace=2pt]{2}{3}{2}{4}
+\bundle[color=green]{0}{4}{0}{7}
+\bundle[color=black,reducespace=2pt]{0}{1}{0}{1}
+\bundle[color=black,reducespace=2pt]{0}{6}{0}{6}
+\end{kvmap}
+\begin{kvmap}
+\kvlist{4}{8}{0,1,1,0,0,1,1,0,1,0,0,1,1,0,1,0,x,x,x,x,x,x,x,x,x,x,x,x,0,1,0,0}{P_0,X,P_3,P_2,P_1}
+\bundle[color=red,reducespace=2pt]{1}{0}{2}{1}
+\bundle[color=blue]{1}{0}{1}{1}
+\bundle[color=blue]{1}{6}{1}{7}
+\bundle[color=green,reducespace=2pt]{0}{2}{0}{5}
+\bundle[invert=true,color=yellow]{0}{2}{3}{2}
+\bundle[invert=true,color=yellow]{0}{5}{3}{5}
+\bundle[color=black]{2}{0}{2}{0}
+\bundle[color=black]{2}{3}{2}{3}
+\end{kvmap}
+
+\begin{kvmap}
+\kvlist{4}{8}{0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,x,x,x,x,x,x,x,x,x,x,x,x,1,1,1,0}{P_0,X,P_3,P_2,P_1}
+\bundle[color=red]{0}{1}{1}{2}
+\bundle[color=red]{0}{5}{1}{6}
+\bundle[color=blue]{2}{2}{3}{5}
+\bundle[color=green,reducespace=2pt]{0}{4}{1}{7}
+\bundle[color=yellow]{1}{4}{2}{7}
+\bundle[color=black,reducespace=2pt]{2}{0}{3}{0}
+\bundle[color=black,reducespace=2pt]{2}{3}{3}{3}
+\end{kvmap}
+
+
+
 \section*{\large Boolean expressions}
 The boolean expressions for \textbf{S} and $Z$ are:
 \begin{align*} %Left aligned equations 
