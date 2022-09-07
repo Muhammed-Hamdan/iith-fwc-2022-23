@@ -1,0 +1,88 @@
+\documentclass[journal,10pt,twocolumn]{article}
+\usepackage{graphicx}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath}
+\title{\textbf{Matrix Assignment}}
+\author{Mohamed Hamdan}
+\date{September 2022}
+
+\begin{document}
+\maketitle
+\paragraph{\textit{Problem Statement} - ABC is a triangle right angled at C. A line through the mid-point M of hypotenuse AB and parallel to BC intersects AC at D. Show that}
+\begin{enumerate}
+	\item \textbf{D is the mid-point of AC}
+	\item \textbf{MD $\perp$ AC}
+	\item \textbf{CM = MA = $\frac{1}{2}$AB}
+\end{enumerate}
+
+\section*{Solution}
+\subsection*{Part 1}
+Given MN is $\parallel$ to BC, hence\\
+\begin{equation}
+\frac{AD}{DC} = \frac{AM}{MB}
+\label{eq-1}
+\end{equation}
+Since M is the mid-point of AB, $\frac{AM}{MB} = 1$. Substituting in (\ref{eq-1}), we get\\
+\begin{equation}
+AD = DC
+\label{eq-2}
+\end{equation}
+Therefore, D is the midpoint of AC.
+\subsection*{Part 2}
+Since ABC is right angled at C,
+\begin{equation}
+(\boldsymbol{C-A})^T(\boldsymbol{C-B}) = 0	
+\label{eq-3}
+\end{equation}
+Given that MD is parallel to BC, so
+\begin{equation}
+(\boldsymbol{C-B}) = \lambda(\boldsymbol{M-D})
+\label{eq-4}
+\end{equation}
+Substituting (\ref{eq-4}) in (\ref{eq-3}) and dividing by $\lambda$, we get
+\begin{equation}
+(\boldsymbol{C-A})^T(\boldsymbol{M-B}) = 0	
+\label{eq-5}
+\end{equation}
+From (\ref{eq-5}) it can be concluded that MD $\perp$ AC.
+\subsection*{Part 3}
+Let
+\begin{eqnarray}
+	\boldsymbol{M-D} = \boldsymbol{p}\\
+	\boldsymbol{C-D} = \boldsymbol{q}\\
+	\boldsymbol{A-D} = \boldsymbol{r}
+\end{eqnarray}
+Then vectors along CM and AM can be written as
+\begin{eqnarray}
+	\boldsymbol{C-M} = \boldsymbol{q-p}\\
+	\boldsymbol{A-M} = \boldsymbol{r-p}
+\end{eqnarray}
+The magnitudes of CM and AM are therefore
+\begin{eqnarray}
+	||\boldsymbol{C-M}|| = ||\boldsymbol{q-p}|| = (\boldsymbol{q-p})^T(\boldsymbol{q-p})\\
+	||\boldsymbol{A-M}|| = ||\boldsymbol{r-p}|| = (\boldsymbol{r-p})^T(\boldsymbol{r-p})\\
+\end{eqnarray}
+Upon expanding the vector products, the terms $\boldsymbol{q}^T\boldsymbol{p}$ and $\boldsymbol{r}^T\boldsymbol{p}$ evaluate to 0 (from eq.\ref{eq-5}). From eq.\ref{eq-2}, $$||\boldsymbol{q}|| = ||\boldsymbol{r}||$$. Therefore,
+\begin{eqnarray}
+||\boldsymbol{C-M}|| = ||\boldsymbol{q}|| + ||\boldsymbol{p}||\\
+	||\boldsymbol{A-M}|| = ||\boldsymbol{r}|| + ||\boldsymbol{p}|| = ||\boldsymbol{q}|| + ||\boldsymbol{p}||
+\end{eqnarray}
+Equating () and (), we get $$AM = CM$$
+Since given that M is midpoint of AB, $$AM = \frac{1}{2}AB$$
+Equating () and (), the result is proved.
+\section*{Construction}
+The input parameters are the lengths a and c.
+\begin{tabular}{|c|c|c|}
+	\textbf{Symbol}&\textbf{Value}&\textbf{Description}\\
+	a&4&BC\\
+	c&5&AC\\
+	k&1&$\frac{AM}{MB} = \frac{AD}{DC}$\\
+	$\theta$&arctan($\frac{c}{a}$)&$\angle$B\\
+	A&$\sqrt{a^2+c^2}%
+	\begin{pmatrix}
+		cos\theta\\
+		sin\theta\\
+	\end{pmatrix}$%
+	&Point A
+\end{tabular}
+\end{document}
