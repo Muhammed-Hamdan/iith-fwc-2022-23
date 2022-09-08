@@ -3,8 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy import linalg as LA
 
-import sys                                          #for path to external scripts
-sys.path.insert(0,'/sdcard/fwc_termux/iith-fwc-2022-23/CoordGeo')
+import sys, os                                          #for path to external scripts
+script_dir = os.path.dirname(__file__)
+lib_relative = '../../../CoordGeo'
+fig_relative = '../figs/fig1.pdf'
+sys.path.insert(0,os.path.join(script_dir, lib_relative))
 
 #local imports
 from line.funcs import *
@@ -59,11 +62,10 @@ plt.grid() # minor
 plt.axis('equal')
 
 #if using termux
-plt.savefig("/sdcard/fwc_termux/iith-fwc-2022-23/fwc_matrices/matrices_assignment/figs/fig1.pdf")
-subprocess.run(shlex.split("termux-open /sdcard/fwc_termux/iith-fwc-2022-23/fwc_matrices/matrices_assignment/figs/fig1.pdf"))
+plt.savefig(os.path.join(script_dir, fig_relative))
+subprocess.run(shlex.split("termux-open "+os.path.join(script_dir, fig_relative)))
 #else
 #plt.show()
-
 
 
 
