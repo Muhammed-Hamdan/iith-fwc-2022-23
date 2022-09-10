@@ -1,0 +1,219 @@
+\documentclass[journal,10pt,twocolumn]{article}
+\usepackage{graphicx, float}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, bm}
+\usepackage{array}
+\usepackage{booktabs}
+
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+
+\title{\textbf{Circle Assignment}}
+\author{Mohamed Hamdan}
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+\paragraph{\textit{Problem Statement} - Let ABC be a right triangle in which AB = 6 cm, BC = 8 cm and $\angle$B = 90°. BD is the perpendicular from B on AC. The circle through B, C, D is drawn. Construct the tangents from A to this circle.}
+
+\section*{\large Solution}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/fig1.pdf}
+\caption{Tangents from A to circle through B, C and D}
+\label{fig:triangle}
+\end{figure}
+
+Given that BD $\perp$ AC, which implies
+\begin{equation}
+\angle D = 90^\circ. 
+\label{eq1}
+\end{equation}
+
+So, D can be found as the foot of the perpendicular from B on line AC. This is given by
+\begin{equation}
+\vec{D} = \vec{A} + \frac{\vec{m}^T(\vec{B-A})}{\norm{\vec{m}}^2}\vec{m} 
+\label{eq2}
+\end{equation}
+where $\vec{m}$ is the direction vector for line AC.
+
+The chord BC of the circle subtends $90^\circ$ at D. By the inclusive angle theorem, BC is the diameter of the circle with center O given by
+\begin{equation}
+\vec{O} = \frac{\vec{B}+\vec{C}}{2}
+\label{eq3}
+\end{equation}
+
+In order to find the intersection points E and B of tangents from A, the origin is shifted from B to O. The equation of the circle in the new frame is
+\begin{equation}
+	\vec{x}^T\vec{x} = r^2
+	\label{eq4}
+\end{equation}
+
+Let the the point of intersection between the tangent from A and the circle be P. Since P lies on the circle given by (\ref{eq4}) it is of the form    
+\begin{equation}
+	\vec{P} = r\myvec{cos\theta\\sin\theta}
+	\label{eq5}
+\end{equation}
+
+Since AP is a tangent to the circle, OP $\perp$ AP. This implies that
+\begin{equation}
+	(\vec{A}-\vec{P})^T(\vec{P}-\vec{O}) = 0
+	\label{eq6}
+\end{equation}
+
+Since O is the origin in the new frame, $\vec{O} = \vec{0}$. Expanding (\ref{eq6}), we get 
+\begin{equation}
+	\vec{A}^T\vec{P} = \vec{P}^T\vec{P}
+	\label{eq7}
+\end{equation}
+
+Substituting value of $\vec{P}$ from (\ref{eq5}) in (\ref{eq7}), we get
+\begin{equation}
+	\vec{A}^T\myvec{cos\theta\\sin\theta} = r	
+	\label{eq8}
+\end{equation}
+
+Which is a standard trigonometric equation with the solution given by
+\begin{equation}
+\theta = n\pi + (-1)^n\alpha - \phi\\
+\label{eq9}
+\end{equation}
+where
+\begin{align*}
+	&\alpha = arcsin(\frac{r}{\norm{\vec{A}}})\\
+	&\phi = arctan(\frac{\vec{e_1}^T\vec{A}}{\vec{e_2}^T\vec{A}})\\
+	&n \in \mathbf{Z}
+\end{align*}
+
+Since two tangents are possible from any point outside a circle, let the two solutions be $\theta_1$ and $\theta_2$. The value of n for both the solutions is chosen such that
+\begin{eqnarray}
+	0 \le \theta_1,\theta_2 < 2\pi\\
+	|\theta_1-\theta_2| < \pi
+\end{eqnarray}
+
+Using $\theta_1$ and $\theta_2$, the intersection points are
+\begin{eqnarray}
+	\vec{E_O} = r\myvec{cos\theta_1\\sin\theta_1}\\
+	\vec{B_O} = r\myvec{cos\theta_2\\sin\theta_2}
+\end{eqnarray}
+The coordinates for position vectors $\vec{E_O}$ and $\vec{B_O}$ are with respect to origin O. The actual coordinates with respect to origin B is given by 
+\begin{eqnarray}
+	\vec{E} = \vec{E_O} + \vec{O}\\
+	\vec{B} = \vec{B_O} + \vec{O}
+\end{eqnarray}
+
+\section*{\large Construction}
+The input parameters are the lengths
+\begin{eqnarray*}
+	AB = a = 6\\
+	BC = b = 8
+\end{eqnarray*}
+{
+\setlength\extrarowheight{5pt}
+\begin{tabular}{|c|c|c|}
+	\hline
+	\textbf{Symbol}&\textbf{Value}&\textbf{Description}\\
+	\hline
+	a&6&AB\\
+	\hline
+	b&8&BC\\
+	\hline
+	r&$\frac{b}{2}$&Radius\\
+	\hline
+	$\vec{m}$&$\vec{A-C}$&Direction vector of line AC\\
+	\hline
+	$\vec{D}$&$\vec{A} + \frac{\vec{m}^T(\vec{B-A})}{\norm{\vec{m}}^2}\vec{m}$&Point D\\[5pt]
+	\hline
+	$\vec{A_O}$&$\vec{A-O}$&$\vec{A}$ when origin shifted to $\vec{O}$\\
+	\hline
+	$\alpha$&$arcsin(\frac{r}{\norm{\vec{A_O}}})$&from (\ref{eq9})\\[10pt]
+	\hline
+	$\phi$&$arctan(\frac{\vec{e_1}^T\vec{A_O}}{\vec{e_2}^T\vec{A_O}})$&from (\ref{eq9})\\[10pt]
+	\hline
+	$\theta_1$&$\alpha-\phi$&$n = 0$ in (\ref{eq9})\\ 
+	\hline
+	$\theta_2$&$\pi-\alpha-\phi$&$n = 1$ in (\ref{eq9})\\
+	\hline
+	$\vec{E}$&$r\myvec{cos\theta_1\\sin\theta_1}+\vec{O}$&Point E\\[5pt]
+	\hline
+	$\vec{B}$&$r\myvec{cos\theta_2\\sin\theta_2}+\vec{O}$&Point B\\[5pt]
+	\hline
+\end{tabular}
+}
+
+\section*{\large Proofs}
+\subsection*{\normalsize Foot of perpendicular from point $\vec{P}$ on line $\vec{A}+\lambda\vec{m}$}
+Let the intersection point be $\vec{X}$. Since X is foot of perpendicular from point P to line with direction vector $\vec{m}$,
+\begin{equation}
+	\vec{m}^T(\vec{X-P}) = 0
+	\label{pf1-eq-1}
+\end{equation}
+Since X lies on the line with direction vector $\vec{m}$,
+\begin{equation}
+	\vec{X} = \vec{A}+\lambda\vec{m}
+	\label{pf1-eq-2}
+\end{equation}
+Substituting (\ref{pf1-eq-2}) in (\ref{pf1-eq-1}) and solving for $\lambda$,
+\begin{equation}
+	\lambda = \frac{\vec{m}^T(\vec{P-A})}{\norm{\vec{m}}^2}
+	\label{pf1-eq-3}
+\end{equation}
+Substituting (\ref{pf1-eq-3}) in (\ref{pf1-eq-2}),
+\begin{equation}
+\vec{X} = \vec{A} + \frac{\vec{m}^T(\vec{P-A})}{\norm{\vec{m}}^2}\vec{m} 
+\end{equation}
+
+\subsection*{\normalsize Inclusive angle theorem}
+The inclusive angle theorem states that the angle subtended by any chord at the center of a circle is twice the angle angle subtended by the same chord at any other point on the major segment. Take three points A, B, and C on a unit circle at angles $\theta$, $\phi$ and $\psi$. Then,
+\begin{eqnarray}
+	\vec{A} = \myvec{cos\theta\\sin\theta},
+	\vec{B} = \myvec{cos\phi\\sin\phi},
+	\vec{C} = \myvec{cos\psi\\sin\psi}
+\end{eqnarray}
+
+Let AB be the chord that subtends angles at the center O and at point C. The cosine of the angle subtended at point C is given by
+\begin{align}
+	cos(\angle ACB) = \frac{\langle A-C, B-C\rangle}{|A-C||B-C|}
+	\label{pf2-eq-1}
+\end{align}
+
+Where
+\begin{equation}
+		\begin{aligned}
+	\langle A-C, B-C\rangle &= \langle (\cos\theta-\cos\psi,\sin\theta-\sin\psi),\\
+	&(\cos\phi-\cos\psi,\sin\phi-\sin\psi)\rangle\\
+	&= (\cos\theta-\cos\psi)(\cos\phi-\cos\psi)+(\sin\theta-\sin\psi)\\
+	&(\sin\phi-\sin\psi)\\
+	&= -2\sin\frac{\theta-\psi}2\sin\frac{\theta+\psi}2 \cdot(-2)\sin\frac{\phi-\psi}2\sin\frac{\phi+\psi}2 \\&\quad+ 2\cos\frac{\theta+\psi}2\sin\frac{\theta-\psi}2 \cdot 2\cos\frac{\phi+\psi}2\sin\frac{\phi-\psi}2\\
+	&= 4\sin\frac{\theta-\psi}2\sin\frac{\phi-\psi}2(\sin\frac{\theta+\psi}2\sin\frac{\phi+\psi}2+\\
+	&\cos\frac{\theta+\psi}2\cos\frac{\phi+\psi}2)\\
+	&= 4\sin\frac{\theta-\psi}2\sin\frac{\phi-\psi}2\cos\left(\frac{\theta+\psi}2-\frac{\phi+\psi}2\right)\\
+	&= 4\sin\frac{\theta-\psi}2\sin\frac{\phi-\psi}2\cos\frac{\theta-\phi}2
+	\end{aligned}
+	\label{pf2-eq-2}
+\end{equation}
+
+\begin{equation}
+	\begin{aligned}
+	|A-C|^2|B-C|^2 &= ((\cos\theta-\cos\psi)^2+(\sin\theta-\sin\psi)^2)((\cos\phi-\\ 
+	&\cos\psi)^2+(\sin\phi-\sin\psi)^2)\\
+	&= (2-2\cos\theta\cos\psi - 2\sin\theta\sin\psi)(2-\\
+	&2\cos\phi\cos\psi - 2\sin\phi\sin\psi)\\
+	&= 4(1-\cos(\theta-\psi))(1-\cos(\phi-\psi))\\
+	&= 4\cdot 2\sin^2\frac{\theta-\psi}2\cdot 2\sin^2\frac{\phi-\psi}2\\
+	&= 16 \sin^2\frac{\theta-\psi}2\sin^2\frac{\phi-\psi}2
+	\end{aligned}
+	\label{pf2-eq-3}
+\end{equation}
+
+Substituting (\ref{pf2-eq-2}) and (\ref{pf2-eq-3}) in (\ref{pf2-eq-1}),
+\begin{equation}
+	cos(\angle ACB) = cos(\frac{\theta-\phi}{2})	
+\end{equation}
+Hence $\angle ACB = \frac{\theta-\phi}{2} = \frac{\angle AOB}{2}$
+
+\end{document}
