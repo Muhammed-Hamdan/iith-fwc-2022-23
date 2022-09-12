@@ -45,15 +45,15 @@ a = np.vstack((u.T + eta*P[:,0].T, V))
 b = np.hstack((-f, eta*P[:,0]-u)) 
 a,b = delete_zero_rows(a,b)
 c = LA.solve(a,b)
-fl = np.abs(2*eta/lamda[1]) # Focal length
+fl = np.abs(0.5*eta/lamda[1]) # Focal length
 O_std = np.array(([0,0]))
 F_std = np.array(([fl,0]))
-A_std = np.array(([fl,fl]))
-B_std = np.array(([fl,-fl]))
+A_std = np.array(([fl,2*fl]))
+B_std = np.array(([fl,-2*fl]))
 
 num_points = 50
 delta = 2*fl/10
-p_y = np.linspace(-fl-delta,fl+delta,num_points)
+p_y = np.linspace(-2*fl-delta,2*fl+delta,num_points)
 a = -2*eta   # y^2 = ax => y'Dy = (-2eta)e1'y
 
 ##Generating all shapes
