@@ -22,20 +22,13 @@ import shlex
 def affine_transform(P,c,x):
     return P@x + c
 
-def delete_zero_rows(a,b):
-    zero_row = np.zeros((a.shape[1],))
-    num_deleted = 0
-    for i in range(0,a.shape[0]):
-        if(np.array_equal(a[i,:],zero_row) and b[i]==0):
-            a = np.delete(a, i-num_deleted, axis=0)
-            b = np.delete(b, i-num_deleted, axis=0)
-            num_deleted+=1
-    return a,b
-
 #Input parameters
 V = np.array([[1,0],[0,0]])
 u = np.array(([0,-6]))
 f = 0
+#V = np.array([[0.5,-0.5],[-0.5,0.5]])
+#u = np.array(([-7/np.sqrt(2),-5/np.sqrt(2)]))
+#f = 13
 lamda,P = LA.eigh(V)
 if(lamda[1] == 0):      # If eigen value negative, present at start of lamda 
     lamda = np.flip(lamda)
@@ -43,18 +36,18 @@ if(lamda[1] == 0):      # If eigen value negative, present at start of lamda
 eta = u@P[:,0]
 a = np.vstack((u.T + eta*P[:,0].T, V))
 b = np.hstack((-f, eta*P[:,0]-u)) 
-a,b = delete_zero_rows(a,b)
-c = LA.solve(a,b)
-fl = np.abs(0.5*eta/lamda[1]) # Focal length
+c = LA.lstsq(a,b,rcond=None)[0]
+fl = -0.5*eta/lamda[1] # Focal length
 O_std = np.array(([0,0]))
-F_std = np.array(([fl,0]))
+F_std= np.array(([fl,0]))
 A_std = np.array(([fl,2*fl]))
 B_std = np.array(([fl,-2*fl]))
 
 num_points = 50
-delta = 2*fl/10
-p_y = np.linspace(-2*fl-delta,2*fl+delta,num_points)
-a = -2*eta   # y^2 = ax => y'Dy = (-2eta)e1'y
+delta = 2*np.abs(fl)/10
+p_y = np.linspace(-2*np.abs(fl)-delta,2*np.abs(fl)+delta,num_points)
+a = -2*eta/lamda[1]   # y^2 = ax => y'Dy = (-2eta)e1'y
+
 
 ##Generating all shapes
 p_x = parab_gen(p_y,a)
