@@ -182,33 +182,45 @@ Let AB be the chord that subtends angles at the center O and at point C. The cos
 \end{align}
 
 Where
-\begin{equation}
-		\begin{aligned}
-	\langle A-C, B-C\rangle &= \langle (\cos\theta-\cos\psi,\sin\theta-\sin\psi),\\
-	&(\cos\phi-\cos\psi,\sin\phi-\sin\psi)\rangle\\
-	&= (\cos\theta-\cos\psi)(\cos\phi-\cos\psi)+(\sin\theta-\sin\psi)\\
-	&(\sin\phi-\sin\psi)\\
-	&= -2\sin\frac{\theta-\psi}2\sin\frac{\theta+\psi}2 \cdot(-2)\sin\frac{\phi-\psi}2\sin\frac{\phi+\psi}2 \\&\quad+ 2\cos\frac{\theta+\psi}2\sin\frac{\theta-\psi}2 \cdot 2\cos\frac{\phi+\psi}2\sin\frac{\phi-\psi}2\\
-	&= 4\sin\frac{\theta-\psi}2\sin\frac{\phi-\psi}2(\sin\frac{\theta+\psi}2\sin\frac{\phi+\psi}2+\\
-	&\cos\frac{\theta+\psi}2\cos\frac{\phi+\psi}2)\\
-	&= 4\sin\frac{\theta-\psi}2\sin\frac{\phi-\psi}2\cos\left(\frac{\theta+\psi}2-\frac{\phi+\psi}2\right)\\
-	&= 4\sin\frac{\theta-\psi}2\sin\frac{\phi-\psi}2\cos\frac{\theta-\phi}2
-	\end{aligned}
+\begin{multline*}
+	\langle A-C, B-C\rangle = \langle (\cos\theta-\cos\psi,\sin\theta-\sin\psi),(\cos\phi-\cos\psi,\\
+	\sin\phi-\sin\psi)\rangle
+	\end{multline*}
+\begin{multline*}
+	= (\cos\theta-\cos\psi)(\cos\phi-\cos\psi)+(\sin\theta-\sin\psi)\\
+	(\sin\phi-\sin\psi)
+\end{multline*}
+\begin{multline*}
+	= -2\sin\frac{\theta-\psi}2\sin\frac{\theta+\psi}2 \cdot(-2)\sin\frac{\phi-\psi}2\sin\frac{\phi+\psi}2 \\\quad+ 2\cos\frac{\theta+\psi}2\sin\frac{\theta-\psi}2 \cdot 2\cos\frac{\phi+\psi}2\sin\frac{\phi-\psi}2
+\end{multline*}
+\begin{multline*}
+	= 4\sin\frac{\theta-\psi}2\sin\frac{\phi-\psi}2(\sin\frac{\theta+\psi}2\sin\frac{\phi+\psi}2+\\
+	\cos\frac{\theta+\psi}2\cos\frac{\phi+\psi}2)
+\end{multline*}
+\begin{align*}
+	= 4\sin\frac{\theta-\psi}2\sin\frac{\phi-\psi}2\cos\left(\frac{\theta+\psi}2-\frac{\phi+\psi}2\right)
+\end{align*}
+\begin{align}
+	= 4\sin\frac{\theta-\psi}2\sin\frac{\phi-\psi}2\cos\frac{\theta-\phi}2
 	\label{pf2-eq-2}
-\end{equation}
+\end{align}
 
-\begin{equation}
-	\begin{aligned}
-	|A-C|^2|B-C|^2 &= ((\cos\theta-\cos\psi)^2+(\sin\theta-\sin\psi)^2)((\cos\phi-\\ 
-	&\cos\psi)^2+(\sin\phi-\sin\psi)^2)\\
-	&= (2-2\cos\theta\cos\psi - 2\sin\theta\sin\psi)(2-\\
-	&2\cos\phi\cos\psi - 2\sin\phi\sin\psi)\\
+\begin{multline*}
+	|A-C|^2|B-C|^2 = ((\cos\theta-\cos\psi)^2+(\sin\theta-\sin\psi)^2)\\
+	((\cos\phi-\cos\psi)^2+(\sin\phi-\sin\psi)^2)
+\end{multline*}
+\begin{multline*}
+	= (2-2\cos\theta\cos\psi - 2\sin\theta\sin\psi)(2-\\
+	2\cos\phi\cos\psi - 2\sin\phi\sin\psi)
+\end{multline*}
+\begin{align*}
 	&= 4(1-\cos(\theta-\psi))(1-\cos(\phi-\psi))\\
-	&= 4\cdot 2\sin^2\frac{\theta-\psi}2\cdot 2\sin^2\frac{\phi-\psi}2\\
+	&= 4\cdot 2\sin^2\frac{\theta-\psi}2\cdot 2\sin^2\frac{\phi-\psi}2
+\end{align*}
+\begin{align}
 	&= 16 \sin^2\frac{\theta-\psi}2\sin^2\frac{\phi-\psi}2
-	\end{aligned}
 	\label{pf2-eq-3}
-\end{equation}
+\end{align}
 
 Substituting (\ref{pf2-eq-2}) and (\ref{pf2-eq-3}) in (\ref{pf2-eq-1}),
 \begin{equation}

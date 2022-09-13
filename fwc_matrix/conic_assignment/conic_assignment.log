@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.9.7)  12 SEP 2022 23:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.9.7)  13 SEP 2022 02:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -279,13 +279,18 @@ Underfull \hbox (badness 1062) in paragraph at lines 163--166
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--218
+Underfull \hbox (badness 10000) in paragraph at lines 198--221
 
  []
 
 
-Overfull \hbox (0.73872pt too wide) in paragraph at lines 198--218
-[] 
+Overfull \hbox (3.51646pt too wide) in paragraph at lines 198--221
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--221
+
  []
 
 [2] (./conic_assignment.aux) ) 
@@ -309,7 +314,7 @@ texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive
 ist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmsy7.pfb>
-Output written on conic_assignment.pdf (2 pages, 132401 bytes).
+Output written on conic_assignment.pdf (2 pages, 133052 bytes).
 PDF statistics:
  82 PDF objects out of 1000 (max. 8388607)
  52 compressed objects within 1 object stream

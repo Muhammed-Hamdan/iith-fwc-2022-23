@@ -196,25 +196,27 @@ First substitute \eqref{eq:latus_endpoint} in \eqref{eq:base}. Then substitute \
 
 \section*{\large Construction}
 The input parameters are $\vec{V}$ from \eqref{eq:V_matrix}, $\vec{u}$ from \eqref{eq:u_vector} and $f$ from \eqref{eq:f_value}\\\\
+{
+\setlength\extrarowheight{5pt}
 \begin{tabular}{|c|c|c|}
 	\hline
 	\textbf{Symbol}&\textbf{Value}&\textbf{Description}\\
 	\hline
-	$\vec{P}$&\myvec{0&1\\1&0}&eigenvectors of $\vec{V}$\\
+	$\vec{P}$&\myvec{0&1\\1&0}&eigenvectors of $\vec{V}$\\[5pt]
 	\hline
-	$\vec{c}$&Solution to \eqref{eq:conic_parab_c}&center of parabola\\
+	$\vec{c}$&$\myvec{0\\0}$&center of parabola\\
 	\hline
-	$\eta$&$\vec{u}^{\top}\vec{p}_1$&from \eqref{eq:eta}\\
+	$\eta$&$\vec{u}^{\top}\vec{p}_1$&from \eqref{eq:eta}\\[5pt]
 	\hline
-	$\lambda_2$&$\vec{e}_2^{\top}D\vec{e}_2$&from \eqref{eq:eigevalV}\\
+	$\lambda_2$&$\vec{e}_2^{\top}D\vec{e}_2$&from \eqref{eq:eigevalV}\\[5pt]
 	\hline
-	$l$&$-\frac{\eta}{2\lambda_2}$&x coordinate of focus\\
+	$l$&$-\frac{\eta}{2\lambda_2}$&x coordinate of focus\\[5pt]
 	\hline
-	$(\vec{A},\vec{B})$&$\vec{P}\myvec{l&l\\2l&-2l} + \vec{c}$&endpoints of latus rectum\\
+	$(\vec{A},\vec{B})$&$\vec{P}\myvec{l&l\\2l&-2l} + \vec{c}$&endpoints of latus rectum\\[5pt]
 	\hline
-	$ar(AOB)$&$\frac{\eta^2}{2\lambda_2^2} = $18&ar(AOB) = 18 sq units\\
+	$ar(AOB)$&$\frac{\eta^2}{2\lambda_2^2} = $18&ar(AOB) = 18 sq units\\[5pt]
 	\hline
 \end{tabular}
-
+}
 
 \end{document}
