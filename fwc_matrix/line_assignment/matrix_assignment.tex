@@ -1,12 +1,19 @@
 \documentclass[journal,10pt,twocolumn]{article}
 \usepackage{graphicx}
 \usepackage[margin=0.5in]{geometry}
-\usepackage{amsmath}
+\usepackage[cmex10]{amsmath}
 \usepackage{array}
 \usepackage{booktabs}
-\title{\textbf{Matrix Assignment}}
+\title{\textbf{Line Assignment}}
 \author{Mohamed Hamdan}
 \date{September 2022}
+
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
 
 \begin{document}
 
@@ -121,4 +128,65 @@ The input parameters are the lengths a and c.\\
 	\hline
 \end{tabular}
 }
+
+\section*{Proofs}
+Let the vertices of the triangle be $\vec{A}, \vec{B}, \vec{C}$ such that  
+		\begin{align}
+			\vec{B} =\vec{0} 
+		\end{align}
+		and $\vec{A}, \vec{C}$ are known. Let $\vec{P}$ be a known point on $AB$ such that $PQ$ is parallel to $BC$.  Let 
+		\begin{align}
+			\vec{P} &= \lambda \brak{\vec{A} -\vec{B} }
+			\label{eq:cbse-2020-10-bpty}
+			\\
+			&=\lambda 
+			 \vec{A} 
+			\label{eq:cbse-2020-10-bpt}
+			\\
+			\text{and , } \frac{\norm{\vec{P} 
+			}}{\norm{\vec{A}} } &= \frac{BP}{AB}= \abs{\lambda}
+			\label{eq:cbse-2020-10-bpt-pa}
+		\end{align}
+		Since 
+		\begin{align}
+			PQ &\parallel BC,
+			\\
+			\vec{Q} &= P + \mu \vec{B-C}
+			\\
+			&= \lambda \vec{A} - \mu \vec{C}
+			\label{eq:cbse-2020-10-bpt-q1}
+		\end{align}
+		using the equation of the line $PQ$  and substituting from 
+			\eqref{eq:cbse-2020-10-bpt}
+			Also, since $\vec{Q}$  lies on the line $AC$, 
+		\begin{align}
+			\vec{Q} &= \vec{A} + k \brak{\vec{A}-\vec{C}}
+			\\
+			&= \brak{1 + k}\vec{A} - k \vec{C}
+			\label{eq:cbse-2020-10-bpt-q2}
+			\\
+			\text{and }\frac{\norm{{\vec{A}-\vec{Q}}}}{\norm{{\vec{A}-\vec{C}}}} &= \frac{AQ}{AC}= \abs{k}
+			\label{eq:cbse-2020-10-bpt-q2k}
+		\end{align}
+			From \eqref{eq:cbse-2020-10-bpt-q1} and 
+			\eqref{eq:cbse-2020-10-bpt-q2}
+		\begin{align}
+			\lambda \vec{A} - \mu \vec{C}	= 
+			 \brak{1 + k}\vec{A} - k \vec{C}&
+			\\
+			\implies 
+			\brak{1 + k+\lambda }\vec{A} \brak{k - \mu}  \vec{C}	&=  0
+			\\
+			\implies k = \mu, \lambda = -1 - \mu 
+			\\
+			\text{or, } \abs{\lambda } = 1 + k
+			\label{eq:cbse-2020-10-bpt-q2-lk}
+		\end{align}
+		From 
+			\eqref{eq:cbse-2020-10-bpt-pa},  
+			\eqref{eq:cbse-2020-10-bpt-q2k} and
+			\eqref{eq:cbse-2020-10-bpt-q2-lk},
+			\begin{align}
+				\frac{AQ}{AC} = \frac{AP}{AB}
+			\end{align}
 \end{document}
