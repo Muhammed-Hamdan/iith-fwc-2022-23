@@ -30,12 +30,20 @@ m = A - C
 D = A + (((m.T)@(B-A))/LA.norm(m)**2)*m
 At = A - O  #Point A when origin shifted to O
 r = b/2
-#omega = np.arcsin(r/np.sqrt(At[0]**2+At[1]**2))
-omega = np.arctan(At[0]/At[1])
-phi = np.arcsin(r/LA.norm(At))
-theta = phi - omega
-Et = np.array(([r*np.cos(theta), r*np.sin(theta)]))
-E = Et + O  #Shift back origin to (0,0)
+#omega = np.arctan(At[0]/At[1])
+#phi = np.arcsin(r/LA.norm(At))
+#theta = phi - omega
+#Et = np.array(([r*np.cos(theta), r*np.sin(theta)]))
+#E = Et + O  #Shift back origin to (0,0)
+e1 = np.array([1,0])
+e2 = np.array([0,1])
+a = (e1.T@At)**2 + (e2.T@At)**2
+b = -2*(r**2)*(e1.T@At)
+c = (r**2)*(r**2 - (e2.T@At)**2)
+t1 = (-b + np.sqrt(b**2 - 4*a*c))/(2*a)
+t2 = (-b - np.sqrt(b**2 - 4*a*c))/(2*a)
+E = np.array([t1, np.sqrt(r**2 - t1**2)]) + O
+B = np.array([t2, np.sqrt(r**2 - t2**2)]) + O
 
 ##Generating all shapes
 x_AB = line_gen(A,B)

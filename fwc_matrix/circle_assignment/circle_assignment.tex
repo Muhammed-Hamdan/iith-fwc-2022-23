@@ -55,7 +55,7 @@ In order to find the intersection points E and B of tangents from A, the origin 
 
 Let the the point of intersection between the tangent from A and the circle be P. Since P lies on the circle given by (\ref{eq4}) it is of the form    
 \begin{equation}
-	\vec{P} = r\myvec{cos\theta\\sin\theta}
+	\vec{P} = \myvec{t \\ \sqrt{r^2-t^2}}
 	\label{eq5}
 \end{equation}
 
@@ -73,33 +73,21 @@ Since O is the origin in the new frame, $\vec{O} = \vec{0}$. Expanding (\ref{eq6
 
 Substituting value of $\vec{P}$ from (\ref{eq5}) in (\ref{eq7}), we get
 \begin{equation}
-	\vec{A}^T\myvec{cos\theta\\sin\theta} = r	
+	\vec{A}^T\myvec{t \\ \sqrt{r^2-t^2}} = r^2	
 	\label{eq8}
 \end{equation}
+Expanding and rearranging terms in \eqref{eq8}
+\begin{multline}
+	\norm{\vec{A}}^2t^2-2r^2\vec{e}_1^\top\vec{A}t+r^2(r^2-(\vec{e}_2^\top\vec{A})^2) = 0
+	\label{eq:quad_t}
+\end{multline}
+Which is a quadratic equation in $t$ with roots given by
+\begin{align}
+	t = \frac{r^2\vec{e}_1^\top\vec{A}\pm\sqrt{r^4\vec{e}_1^\top\vec{A}^2-r^2\norm{\vec{A}}^2(r^2-\vec{e}_2^\top\vec{A}^2)}}{\norm{\vec{A}}^2}
+	\label{eq:quad_soln}
+\end{align}
+Substituting the values of t from \eqref{eq:quad_soln} in \eqref{eq5} the two points of contact are obtained say $\vec{E_O}$ and $\vec{B_O}$.\\
 
-Which is a standard trigonometric equation with the solution given by
-\begin{equation}
-\theta = n\pi + (-1)^n\alpha - \phi\\
-\label{eq9}
-\end{equation}
-where
-\begin{align*}
-	&\alpha = arcsin(\frac{r}{\norm{\vec{A}}})\\
-	&\phi = arctan(\frac{\vec{e_1}^T\vec{A}}{\vec{e_2}^T\vec{A}})\\
-	&n \in \mathbf{Z}
-\end{align*}
-
-Since two tangents are possible from any point outside a circle, let the two solutions be $\theta_1$ and $\theta_2$. The value of n for both the solutions is chosen such that
-\begin{eqnarray}
-	0 \le \theta_1,\theta_2 < 2\pi\\
-	|\theta_1-\theta_2| < \pi
-\end{eqnarray}
-
-Using $\theta_1$ and $\theta_2$, the intersection points are
-\begin{eqnarray}
-	\vec{E_O} = r\myvec{cos\theta_1\\sin\theta_1}\\
-	\vec{B_O} = r\myvec{cos\theta_2\\sin\theta_2}
-\end{eqnarray}
 The coordinates for position vectors $\vec{E_O}$ and $\vec{B_O}$ are with respect to origin O. The actual coordinates with respect to origin B is given by 
 \begin{eqnarray}
 	\vec{E} = \vec{E_O} + \vec{O}\\
@@ -130,17 +118,11 @@ The input parameters are the lengths
 	\hline
 	$\vec{A_O}$&$\vec{A-O}$&$\vec{A}$ when origin shifted to $\vec{O}$\\
 	\hline
-	$\alpha$&$arcsin(\frac{r}{\norm{\vec{A_O}}})$&from (\ref{eq9})\\[10pt]
+	$t_1,t_2$&evaluate \eqref{eq:quad_soln}&solution of \eqref{eq:quad_t}\\[5pt] 
 	\hline
-	$\phi$&$arctan(\frac{\vec{e_1}^T\vec{A_O}}{\vec{e_2}^T\vec{A_O}})$&from (\ref{eq9})\\[10pt]
+	$\vec{E}$&$\myvec{t_1 \\ \sqrt{r^2-t_1^2}}+\vec{O}$&Point E\\[5pt]
 	\hline
-	$\theta_1$&$\alpha-\phi$&$n = 0$ in (\ref{eq9})\\ 
-	\hline
-	$\theta_2$&$\pi-\alpha-\phi$&$n = 1$ in (\ref{eq9})\\
-	\hline
-	$\vec{E}$&$r\myvec{cos\theta_1\\sin\theta_1}+\vec{O}$&Point E\\[5pt]
-	\hline
-	$\vec{B}$&$r\myvec{cos\theta_2\\sin\theta_2}+\vec{O}$&Point B\\[5pt]
+	$\vec{B}$&$\myvec{t_2 \\ \sqrt{r^2-t_2^2}}+\vec{O}$&Point B\\[5pt]
 	\hline
 \end{tabular}
 }
