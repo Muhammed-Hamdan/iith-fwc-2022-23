@@ -30,7 +30,6 @@ f = 0
 #u = np.array(([-7/np.sqrt(2),-5/np.sqrt(2)]))
 #f = 13
 lamda,P = LA.eigh(V)
-print(P)
 if(lamda[1] == 0):      # If eigen value negative, present at start of lamda 
     lamda = np.flip(lamda)
     P = np.flip(P,axis=1)
