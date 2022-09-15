@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.9.7)  14 SEP 2022 16:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.9.7)  15 SEP 2022 05:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -204,20 +204,20 @@ LaTeX Warning: Unused global option(s):
 (./conic_assignment.aux)
 \openout1 = `conic_assignment.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -276,79 +276,74 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 22.
+(Font)              <12> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 22.
+(Font)              <8> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 22.
+(Font)              <6> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 25.
+(Font)              <7> on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 25.
+(Font)              <5> on input line 28.
 <figs/fig1.pdf, id=1, 462.52798pt x 346.89601pt>
 File: figs/fig1.pdf Graphic file (type pdf)
 <use figs/fig1.pdf>
-Package pdftex.def Info: figs/fig1.pdf  used on input line 29.
+Package pdftex.def Info: figs/fig1.pdf  used on input line 32.
 (pdftex.def)             Requested size: 266.0125pt x 199.51659pt.
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./figs/fig1.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 180--183
+Underfull \hbox (badness 2277) detected at line 216
+ []$[]   [][] \OMS/cmsy/m/n/10 ^^@ [] [] \OT1/cmr/m/n/10 + [] = 0$ []  
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 359--388
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--183
-
- []
-
-
-Underfull \hbox (badness 1062) in paragraph at lines 180--183
-\OT1/cmr/m/n/10 An end-point of the la-tus rec-tum is lo-cated at a dis-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 215--238
-
- []
-
-
-Overfull \hbox (3.51646pt too wide) in paragraph at lines 215--238
+Overfull \hbox (3.0767pt too wide) in paragraph at lines 359--388
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--238
+Underfull \hbox (badness 10000) in paragraph at lines 359--388
 
  []
 
-[2] (./conic_assignment.aux) ) 
+[3
+
+] (./conic_assignment.aux) ) 
 Here is how much of TeX's memory you used:
- 3103 strings out of 479304
- 45755 string characters out of 5869780
- 370606 words of memory out of 5000000
- 20283 multiletter control sequences out of 15000+600000
+ 3114 strings out of 479304
+ 45980 string characters out of 5869780
+ 380713 words of memory out of 5000000
+ 20294 multiletter control sequences out of 15000+600000
  408970 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,18n,74p,785b,224s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cme
-x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy7.pfb>
-Output written on conic_assignment.pdf (2 pages, 142365 bytes).
+ 68i,18n,74p,278b,224s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+>
+Output written on conic_assignment.pdf (3 pages, 175632 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 101 PDF objects out of 1000 (max. 8388607)
+ 66 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

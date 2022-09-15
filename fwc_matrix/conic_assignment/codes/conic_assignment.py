@@ -36,12 +36,18 @@ if(lamda[1] == 0):      # If eigen value negative, present at start of lamda
 eta = u@P[:,0]
 a = np.vstack((u.T + eta*P[:,0].T, V))
 b = np.hstack((-f, eta*P[:,0]-u)) 
-c = LA.lstsq(a,b,rcond=None)[0]
-fl = -0.5*eta/lamda[1] # Focal length
-O_std = np.array(([0,0]))
-F_std= np.array(([fl,0]))
-A_std = np.array(([fl,2*fl]))
-B_std = np.array(([fl,-2*fl]))
+center = LA.lstsq(a,b,rcond=None)[0]
+O = center 
+n = np.sqrt(lamda[1])*P[:,0]
+c = 0.5*(LA.norm(u)**2 - lamda[1]*f)/(u.T@n)
+F = (c*n - u)/lamda[1]
+fl = LA.norm(F)
+m = np.array([1, -n[0]/n[1]])
+d = np.sqrt((m.T@(V@F + u))**2 - (F.T@V@F + 2*u.T@F + f)*(m.T@V@m))
+k1 = (d - m.T@(V@F + u))/(m.T@V@m)
+k2 = (-d - m.T@(V@F + u))/(m.T@V@m)
+A = F + k1*m
+B = F + k2*m
 
 num_points = 50
 delta = 2*np.abs(fl)/10
@@ -54,11 +60,7 @@ p_x = parab_gen(p_y,a)
 p_std = np.vstack((p_x,p_y)).T
 
 ##Affine transformation
-p = np.array([affine_transform(P,c,p_std[i,:]) for i in range(0,num_points)]).T
-A = affine_transform(P,c,A_std)
-B = affine_transform(P,c,B_std)
-F = affine_transform(P,c,F_std)
-O = affine_transform(P,c,O_std)
+p = np.array([affine_transform(P,center,p_std[i,:]) for i in range(0,num_points)]).T
 
 # Generating lines after transforming points
 x_AB = line_gen(A,B)

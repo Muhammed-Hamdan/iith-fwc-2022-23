@@ -16,6 +16,9 @@
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
 \providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
 
 \begin{document}
 
@@ -178,37 +181,178 @@ The augmented matrix for \eqref{eq:vertex_system} can be expressed as
 	\label{eq:vertex_solv4}
 	\implies\vec{c} = \myvec{0\\0}
 \end{align}
-\eqref{eq:vertex_system}
-The latus rectum of a conic section is the chord that passes through the focus, is perpendicular to the major axis and has both endpoints on the curve.\\\\For the parabola given by \eqref{eq:conic_simp_parab}, the focus and the foot of the directrix lie on the x-axis at  $l\vec{e}_1$ and $-l\vec{e}_1$ respectively where $\abs{l}$ is the focal length of the parabola. This is due to the fact that the vertex $(0,0)$ must be equidistant from the focus and the directrix.\\\\An end-point of the latus rectum is located at a distance of $2\abs{l}$ from the directrix. Since a point on the parabola is equidistant from the directrix and the focus and the latus rectum passes through the focus, an endpoint of the latus rectum can be assumed as
-\begin{equation}
-\begin{aligned}
-	\vec{t}_1 &= l\myvec{1 \\ 2}\\
-	\vec{t}_2 &= l\myvec{1 \\ -2}
-\end{aligned}
-	\label{eq:latus_endpoint}
-\end{equation}
-Substituting any point of \eqref{eq:latus_endpoint} in \eqref{eq:conic_simp_parab} and solving for $l$,
-\begin{align}
-	l &= -\frac{\eta}{2\lambda_2}
-	\label{eq:focal_point}
-\end{align}
-Substituting \eqref{eq:focal_point} back in \eqref{eq:latus_endpoint}, the endpoints of the latus rectum is found.
 
-The area of the traingle AOB is given by
+From \eqref{eq:V_matrix}
+  \begin{multline}
+    \vec{V}^{\top} \vec{V}=\brak{\norm{\vec{n}}^2\vec{I}-e^2\vec{n}\vec{n}^{\top}}^{\top}
+	  \\
+	  \brak{\norm{\vec{n}}^2\vec{I}-e^2\vec{n}\vec{n}^{\top}}
+    \\
+    \implies \vec{V}^{2} = \norm{\vec{n}}^4\vec{I}+e^4\vec{n}\vec{n}^{\top}\vec{n}\vec{n}^{\top}
+	  \\
+	  -2e^2\norm{\vec{n}}^2\vec{n}\vec{n}^{\top}
+    \\
+    = \norm{\vec{n}}^4\vec{I} + e^4\norm{\vec{n}}^2\vec{n}\vec{n}^{\top}
+	%  \\
+	  - 2e^2\norm{\vec{n}}^2\vec{n}\vec{n}^{\top}
+    \\
+    = \norm{\vec{n}}^4\vec{I} + e^2\brak{e^2 - 2}\norm{\vec{n}}^2\vec{n}\vec{n}^{\top}
+    \\
+    = \norm{\vec{n}}^4\vec{I} + \brak{e^2 - 2}\norm{\vec{n}}^2\brak{\norm{\vec{n}}^2\vec{I}- \vec{V}}
+    \end{multline}
+%    
+which can be expressed as
 \begin{align}
-	ar(AOB) &= \frac{1}{2}AB.OF\\
-	\label{eq:triangle}
+  \vec{V}^{2} + \brak{e^2 - 2}\norm{\vec{n}}^2\vec{V} - \brak{e^2 - 1}\norm{\vec{n}}^4\vec{I}=0
+  \label{eq:conic_quad_form_e_cayley}
 \end{align}
+Using the Cayley-Hamilton theorem, \eqref{eq:conic_quad_form_e_cayley} results in the characteristic equation, 
+\begin{align}
+  \lambda^{2} - \brak{2-e^2}\norm{\vec{n}}^2\lambda + \brak{1-e^2 }\norm{\vec{n}}^4=0
+\end{align}
+which can be expressed as
+\begin{multline}
+\brak{\frac{\lambda}{\norm{\vec{n}}^2}}^2 - \brak{2-e^2 }\brak{\frac{\lambda}{\norm{\vec{n}}^2}} + \brak{1-e^2 } = 0
+\end{multline}
+\begin{align}
+  \implies \frac{\lambda}{\norm{\vec{n}}^2} = 1-e^2, 1
+  \\
+  \text{or, }\lambda_2 = \norm{\vec{n}}^2, \lambda_1 = \brak{1-e^2}\lambda_2 
+  \label{eq:conic_quad_form_lam_cayley}
+\end{align}
+From   \eqref{eq:conic_quad_form_lam_cayley}, the eccentricity of \eqref{eq:conic_quad_form} is given by 
+\begin{align}
+	e &= \sqrt{1-\frac{\lambda_1}{\lambda_2}} 
+	\label{eq:conic_quad_form_e}.   
+\end{align}
+%
+% By inspection, we find that 
+% \begin{align}
+%   \frac{\lambda}}{\norm{\vec{n}}^2} = 1
+%   \label{eq:conic_quad_form_lam2_cayley}
+% \end{align}
+%satisfies \eqref{eq:conic_quad_form_lam_cayley}.
+Multiplying both sides of    \eqref{eq:V_matrix} by $\vec{n}$,
+\begin{align}
+\vec{V} \vec{n}&=\norm{\vec{n}}^2\vec{n}-e^2\vec{n}\vec{n}^{\top}\vec{n} 
+\\
+&=\norm{\vec{n}}^2\brak{1-e^2}\vec{n} 
+ \\
+% &=\frac{\lambda_1}{\lambda_2}\norm{\vec{n}}^2\vec{n} 
+% \end{align}
+% upon substituting from \eqref{eq:conic_quad_form_e}  and simplifying.  From the above, it is obvious that $\vec{n}$ is an eigenvector
+% of $\vec{V}$.  Choosing 
+% \begin{align}
+%   \lambda_2 = \norm{\vec{n}}^2,
+%   \label{eq:eigevecn_lam2}
+% \end{align}  
+% we obtain 
+% \begin{align}
+  &=\lambda_1 \vec{n} 
+  \label{eq:eigevecn}
+\end{align}  
+from \eqref{eq:conic_quad_form_lam_cayley}
+Thus,  $\lambda_1$ is the corresponding eigenvalue for $\vec{n}$.  From       \eqref{eq:eigevecP},   \eqref{eq:conic_quad_form_lam_cayley} and \eqref{eq:eigevecn}, 
+\begin{align}
+   \vec{n}&= \norm{\vec{n}}\vec{p}_1  = \sqrt{\lambda_2}\vec{p}_1 
+\end{align}  
+From \eqref{eq:u_vector} and \eqref{eq:conic_quad_form_lam_cayley},
+\begin{align}
+%   \label{eq:conic_quad_form_v}
+% \vec{V} &=\norm{\vec{n}}^2\vec{I}-e^2\vec{n}\vec{n}^{\top}, 
+% \\
+%\label{eq:conic_quad_form_u}
+\label{eq:focus_coord}
+\vec{F}  &= \frac{ce^2\vec{n}-\vec{u}}{\lambda_2}
+ \\
+ \implies \norm{\vec{F}}^2  &= \frac{\brak{ce^2\vec{n}-\vec{u}}^{\top}\brak{ce^2\vec{n}-\vec{u}}}{\lambda_2^2}
+ \\
+ \implies \lambda_2^2\norm{\vec{F}}^2  &= c^2e^4\lambda_2-2ce^2\vec{u}^{\top}\vec{n}+\norm{\vec{u}}^2
+ \label{eq:conic_quad_form_u_temp}
+% f &= \norm{\vec{n}}^2\norm{\vec{F}}^2-c^2e^2
+% %\\
+    \end{align}
+    Also, \eqref{eq:f_value} can be expressed as
+    \begin{align}
+    \lambda_2\norm{\vec{F}}^2 &= f+c^2e^2
+    \label{eq:conic_quad_form_f_temp}
+\end{align}
+From  \eqref{eq:conic_quad_form_u_temp} and     \eqref{eq:conic_quad_form_f_temp},
+\begin{align}
+c^2e^4\lambda_2-2ce^2\vec{u}^{\top}\vec{n}+\norm{\vec{u}}^2 = \lambda_2\brak{f+c^2e^2}
+\end{align}
+\begin{multline}
+\implies \lambda_2e^2\brak{e^2-1}c^2-2ce^2\vec{u}^{\top}\vec{n}
+	\\
+	+\norm{\vec{u}}^2 - \lambda_2 f = 0
+\end{multline}
+yielding
+\begin{align}
+c &= 
+  \begin{cases}
+    \frac{e\vec{u}^{\top}\vec{n} \pm \sqrt{e^2\brak{\vec{u}^{\top}\vec{n}}^2-\lambda_2\brak{e^2-1}\brak{\norm{\vec{u}}^2 - \lambda_2 f}}}{\lambda_2e\brak{e^2-1}} & e \ne 1
+    \\
+    \frac{\norm{\vec{u}}^2 - \lambda_2 f   }{2e^2\vec{u}^{\top}\vec{n}} & e = 1
+  \end{cases}
+  \label{eq:conic_quad_form_F}.
+\end{align}
+
+The points of intersection of the line 
+\begin{align}
+	L: \quad \vec{x} = \vec{q} + \mu \vec{m} \quad \mu \in \mathbf{R}
+\label{eq:conic_tangent}
+\end{align}
+with the conic section in \eqref{eq:conic_quad_form} are given by
+\begin{align}
+\vec{x}_i = \vec{q} + \mu_i \vec{m}
+\label{eq:conic_tangent_pts}
+\end{align}
+%
 where
+{\tiny
+\begin{multline}
+\mu_i = \frac{1}
+{
+\vec{m}^T\vec{V}\vec{m}
+}
+\lbrak{-\vec{m}^T\brak{\vec{V}\vec{q}+\vec{u}}}
+\\
+\pm
+\rbrak{\sqrt{
+\sbrak{
+\vec{m}^T\brak{\vec{V}\vec{q}+\vec{u}}
+}^2
+-
+\brak
+{
+\vec{q}^T\vec{V}\vec{q} + 2\vec{u}^T\vec{q} +f
+}
+\brak{\vec{m}^T\vec{V}\vec{m}}
+}
+}
+\label{eq:tangent_roots}
+\end{multline}
+}
+\\
+Substituting \eqref{eq:conic_tangent}
+in \eqref{eq:conic_quad_form}, 
 \begin{align}
-	\label{eq:base}
-	AB &= \abs{\vec{e}_2^{\top}(\vec{t}_1-\vec{t}_2)}\\
-	\label{eq:height}
-	OF &= \abs{l}
+\brak{\vec{q} + \mu \vec{m}}^T\vec{V}\brak{\vec{q} + \mu \vec{m}}  
+\\
++ 2 \vec{u}^T\brak{\vec{q} + \mu \vec{m}}+f &= 0
+\\
+\implies \mu^2\vec{m}^T\vec{V}\vec{m} + 2 \mu\vec{m}^T\brak{\vec{V}\vec{q}+\vec{u}} 
+\\
++ \vec{q}^T\vec{V}\vec{q} + 2\vec{u}^T\vec{q} +f &= 0
+\label{eq:conic_intercept}
 \end{align}
-First substitute \eqref{eq:latus_endpoint} in \eqref{eq:base}. Then substitute \eqref{eq:focal_point} in \eqref{eq:base} and \eqref{eq:height}. Finally, substituting \eqref{eq:base} and \eqref{eq:height} in \eqref{eq:triangle}, we get
+Solving the above quadratic in \eqref{eq:conic_intercept}
+yields \eqref{eq:tangent_roots}.
+
+The area of a triangle whose vertices are $\vec{A}, \vec{B}$ and $\vec{O}$ is given by
 \begin{align}
-	ar(AOB) = \frac{\eta^2}{2\lambda_2^2}
+	ar(AOB) = \frac{1}{2}\abs{\mydet{\vec{A}^\top & 1\\ \vec{B}^\top & 1\\ \vec{C}^\top & 1}} 
+	\label{eq:tri_area}
 \end{align}
 
 \section*{\large Construction}
@@ -221,17 +365,23 @@ The input parameters are $\vec{V}$ from \eqref{eq:V_matrix}, $\vec{u}$ from \eqr
 	\hline
 	$\vec{P}$&\myvec{0&1\\1&0}&eigenvectors of $\vec{V}$\\[5pt]
 	\hline
-	$\vec{c}$&$\myvec{0\\0}$&center of parabola\\
+	$\vec{O}$&$\myvec{0\\0}$&center of parabola\\
 	\hline
-	$\eta$&$\vec{u}^{\top}\vec{p}_1$&from \eqref{eq:eta}\\[5pt]
+	$\eta$&$\vec{u}^{\top}\vec{p}_1 = -6$&from \eqref{eq:eta}\\[5pt]
 	\hline
-	$\lambda_2$&$\vec{e}_2^{\top}D\vec{e}_2$&from \eqref{eq:eigevalV}\\[5pt]
+	$\lambda_2$&$\vec{e}_2^{\top}D\vec{e}_2 = 1$&from \eqref{eq:eigevalV}\\[5pt]
 	\hline
-	$l$&$-\frac{\eta}{2\lambda_2}$&x coordinate of focus\\[5pt]
+	$\vec{n}$&$\sqrt{\lambda_2}\vec{p_1} = \myvec{0\\1}$&normal to directrix\\[5pt]
 	\hline
-	$(\vec{A},\vec{B})$&$\vec{P}\myvec{l&l\\2l&-2l} + \vec{c}$&endpoints of latus rectum\\[5pt]
+	$c$&from \eqref{eq:conic_quad_form_F}&$\vec{n}^\top\vec{x} = c$\\
 	\hline
-	$ar(AOB)$&$\frac{\eta^2}{2\lambda_2^2} = $18&ar(AOB) = 18 sq units\\[5pt]
+	$\vec{F}$&$\myvec{0\\3}$&focus from \eqref{eq:focus_coord}\\[5pt]
+	\hline
+	$\vec{m}$&$\myvec{1\\0}$&latus rectum direction vector\\[5pt]
+	\hline
+	$\myvec{\vec{A} \\ \vec{B}}$&$\myvec{\vec{F} + \mu_1\vec{m} \\ \vec{F} + \mu_2\vec{m}}$&$\mu_1, \mu_2$ from \eqref{eq:tangent_roots}\\[5pt]
+	\hline
+	ar(AOB)&18 sq units&from \eqref{eq:tri_area}\\
 	\hline
 \end{tabular}
 }
