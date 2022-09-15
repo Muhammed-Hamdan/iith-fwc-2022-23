@@ -42,12 +42,13 @@ n = np.sqrt(lamda[1])*P[:,0]
 c = 0.5*(LA.norm(u)**2 - lamda[1]*f)/(u.T@n)
 F = (c*n - u)/lamda[1]
 fl = LA.norm(F)
-m = np.array([1, -n[0]/n[1]])
+m = omat@n
 d = np.sqrt((m.T@(V@F + u))**2 - (F.T@V@F + 2*u.T@F + f)*(m.T@V@m))
 k1 = (d - m.T@(V@F + u))/(m.T@V@m)
 k2 = (-d - m.T@(V@F + u))/(m.T@V@m)
 A = F + k1*m
 B = F + k2*m
+print("area:"+str(0.5*LA.norm(np.cross(A-O, B-O))))
 
 num_points = 50
 delta = 2*np.abs(fl)/10
