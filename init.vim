@@ -139,7 +139,9 @@ nnoremap <C-t>     :tabnew<CR>
 inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
+"Bluetooth keyboard Esc mapped to `"
 inoremap ` <Esc>
+inoremap <C-`> `
 tnoremap ` <C-\><C-n>
 "tnoremap <Esc> <C-\><C-n>
 "
@@ -151,6 +153,7 @@ nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+" Remapping to minimize other windows except current (useful to minimize terminal)
 nmap <silent> <C-w>\ :vertical resize<CR>
 "
 "
