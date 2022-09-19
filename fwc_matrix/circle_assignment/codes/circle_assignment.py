@@ -29,7 +29,8 @@ C = np.array(([b,0]))
 m = A - C
 D = A + (((m.T)@(B-A))/LA.norm(m)**2)*m
 O = 0.5*LA.inv(np.vstack((B-C, C-D)))@np.array([LA.norm(B)**2-LA.norm(C)**2, LA.norm(C)**2-LA.norm(D)**2]) 
-At = A - O  #Point A when origin shifted to O
+#At = A - O  #Point A when origin shifted to O
+At = np.array(([8,0]))
 r = b/2
 e1 = np.array([1,0])
 e2 = np.array([0,1])
@@ -38,8 +39,23 @@ b = -2*(r**2)*(e1.T@At)
 c = (r**2)*(r**2 - (e2.T@At)**2)
 t1 = (-b + np.sqrt(b**2 - 4*a*c))/(2*a)
 t2 = (-b - np.sqrt(b**2 - 4*a*c))/(2*a)
-E = np.array([t1, np.sqrt(r**2 - t1**2)]) + O
-B = np.array([t2, np.sqrt(r**2 - t2**2)]) + O
+Ep = np.array([t1, np.sqrt(r**2 - t1**2)])
+En = np.array([t1, -np.sqrt(r**2 - t1**2)])
+if((At-Ep).T@Ep == 0):
+    E = Ep + O
+else:
+    E = En + O
+Bp = np.array([t2, np.sqrt(r**2 - t2**2)])
+Bn = np.array([t2, -np.sqrt(r**2 - t2**2)])
+if((At-Bn).T@Bn == 0):
+    B = Bn + O
+else:
+    B = Bp + O
+print(t1)
+print(t2)
+print(E)
+print(B)
+'''
 
 ##Generating all shapes
 x_AB = line_gen(A,B)
@@ -79,3 +95,4 @@ plt.savefig(os.path.join(script_dir, fig_relative))
 #subprocess.run(shlex.split("termux-open "+os.path.join(script_dir, fig_relative)))
 #else
 #plt.show()
+'''
