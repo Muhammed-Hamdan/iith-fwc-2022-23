@@ -6,7 +6,7 @@ omat = Matrix(([0, -1], [1, 0]))
 # n is the vector along the normal chord ie h + kn = x 
 n = omat*m
 # Conic parameters
-V = Matrix(([Rational(1,24).limit_denominator(10**8), 0],[0, Rational(-1,18).limit_denominator(10**8)]))
+V = Matrix(([Rational(1,24), 0],[0, Rational(-1,18)]))
 u = Matrix([0, 0])
 f = Matrix([-1])
 # Point from which normal drawn
