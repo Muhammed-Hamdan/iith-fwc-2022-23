@@ -1,0 +1,96 @@
+\documentclass[journal,10pt,twocolumn]{article}
+\usepackage{graphicx}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[cmex10]{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\title{\textbf{Normal(s) to a conic from a point}}
+
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+
+\begin{document}
+
+\maketitle
+\paragraph{\textit{Problem Statement} - To find the equation of all possible normals to a conic from a point}\
+
+Let the point from which normals are drawn be $\vec{h}$. Then, the equation of the normal can be written as
+\begin{align}
+	\vec{x} = \vec{h} + \lambda\vec{m}
+	\label{eq:normal_chord}
+\end{align}
+Say the point of intersection of \eqref{eq:normal_chord} with the conic is $\vec{q}$. A tangent drawn at $\vec{q}$ satisfies the equation
+\begin{align}
+	\label{eq:tangency_condition}
+	\vec{n}^\top(\vec{Vq}+\vec{u}) = 0
+\end{align}
+Where $\vec{n}$ is the direction vector of the tangent and is perpendicular to $\vec{m}$ in \eqref{eq:normal_chord}.\\\\
+In general, the parameter values for points of intersection of a line given by \eqref{eq:normal_chord} with a conic is given by
+{\tiny
+\begin{multline}
+\lambda_i = \frac{1}
+{
+\vec{m}^T\vec{V}\vec{m}
+}
+\lbrak{-\vec{m}^T\brak{\vec{V}\vec{h}+\vec{u}}}
+\\
+\pm
+\rbrak{\sqrt{
+\sbrak{
+\vec{m}^T\brak{\vec{V}\vec{h}+\vec{u}}
+}^2
+-
+\brak
+{
+\vec{h}^T\vec{V}\vec{h} + 2\vec{u}^T\vec{h} +f
+}
+\brak{\vec{m}^T\vec{V}\vec{m}}
+}
+}
+\label{eq:tangent_roots}
+\end{multline}
+}
+Using \eqref{eq:tangent_roots} and \eqref{eq:normal_chord}, the intersection point $\vec{q}$ can be written as
+\begin{align}
+	\label{eq:point_of_tangency}
+	\vec{q} = \vec{h} + \lambda_i\vec{m}
+\end{align}
+Substituting \eqref{eq:point_of_tangency} in \eqref{eq:tangency_condition},
+\begin{align}
+	\label{eq:normal_simp_1}
+	\vec{n}^\top(\vec{V}(\vec{h}+\lambda_i\vec{m})+\vec{u}) = 0\\
+	\label{eq:normal_simp_2}
+	\implies \lambda_i\vec{n}^\top\vec{V}\vec{m} = -\vec{n}^\top(\vec{Vh}+\vec{u})
+\end{align}
+Substituting value of $\lambda_i$ from \eqref{eq:tangent_roots} in \eqref{eq:normal_simp_2}
+{\tiny
+\begin{multline}
+	\frac{1}{\vec{m}^\top\vec{V}\vec{m}}\lbrak{-\vec{m}^\top\brak{\vec{Vh}+\vec{u}}} \\ 
+	\pm \rbrak{\sqrt{\sbrak{\vec{m}^T\brak{\vec{V}\vec{h}+\vec{u}}}^2-\brak{\vec{h}^T\vec{V}\vec{h} + 2\vec{u}^T\vec{h} +f}\brak{\vec{m}^T\vec{V}\vec{m}}}}\vec{n}^\top\vec{V}\vec{m} \\
+	= -\vec{n}^\top\brak{\vec{Vh}+\vec{u}}
+	\label{eq:normal_simp_3}
+\end{multline}
+}
+Rearranging the terms,
+{\tiny
+\begin{multline}
+	\pm \sqrt{\sbrak{\vec{m}^T\brak{\vec{V}\vec{h}+\vec{u}}}^2-\brak{\vec{h}^T\vec{V}\vec{h} + 2\vec{u}^T\vec{h} +f}\brak{\vec{m}^T\vec{V}\vec{m}}} \\ = \brak{\vec{Vh}+\vec{u}}^\top\brak{\brak{\vec{n}^\top\vec{V}\vec{m}}\vec{m}-\brak{\vec{m}^\top\vec{V}\vec{m}}\vec{n}}
+\end{multline}
+}
+Squaring on both sides
+{\tiny
+\begin{multline}
+	\sbrak{\vec{m}^T\brak{\vec{V}\vec{h}+\vec{u}}}^2-\brak{\vec{h}^T\vec{V}\vec{h} + 2\vec{u}^T\vec{h} +f}\brak{\vec{m}^T\vec{V}\vec{m}} \\ = \sbrak{\brak{\vec{Vh}+\vec{u}}^\top\brak{\brak{\vec{n}^\top\vec{V}\vec{m}}\vec{m}-\brak{\vec{m}^\top\vec{V}\vec{m}}\vec{n}}}^2
+	\label{eq:normal_solution}
+\end{multline}
+}
+If $\vec{n}$ is take as $\myvec{1 \\ \mu}$, then $\vec{m}$ is $\myvec{\mu \\ -1}$. Substituting these values in \eqref{eq:normal_solution} and solving for $\mu$, the different possible normals passing through $\vec{h}$ are obtained.
+\end{document}
