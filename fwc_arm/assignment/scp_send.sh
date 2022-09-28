@@ -4,5 +4,5 @@ uname="mh"
 path="/home/$uname/flash_vaman"
 cd $1/GCC_Project
 make
-cd ../..
+cd ../../
 scp $1/GCC_Project/output/bin/$1.bin $uname@$ip:$path
