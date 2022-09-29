@@ -1,8 +1,8 @@
 #!/bin/bash
-ext="_assignment"
-dir=$1$ext
+#ext="_assignment"
+dir=$1
 echo $dir
-python3 $dir/codes/$dir.py
+#python3 $dir/codes/$dir.py
 cd $dir
 texfot pdflatex $dir.tex
 cd ..

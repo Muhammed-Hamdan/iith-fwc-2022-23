@@ -13,6 +13,11 @@ sys.path.insert(0,os.path.join(script_dir, lib_relative))
 from line.funcs import *
 from conics.funcs import circ_gen
 
+#if using termux
+import subprocess
+import shlex
+#end if
+
 # Returns normal vectors of tangents from external point p to conic (V,u,f)
 def get_tangent_from_pt(V,u,f,p):
     sigma = (V@p+u)@(V@p+u).T - (p.T@V@p + 2*u.T@p + f)*V
@@ -53,8 +58,8 @@ T1 = h - ((m1.T@(V@h+u))/(m1.T@V@m1))*m1
 T2 = h - ((m2.T@(V@h+u))/(m2.T@V@m2))*m2
 m1 = T1 - h
 dist = LA.norm(T1 - h)
-k1 = dist*(1+delta1)  # 0.4 is user input for distance from pt P1
-P2 = h + (k1/LA.norm(m1))*m1    # Works for now, but fix for direction (T1-P1)
+k1 = dist*(1+delta1)  
+P2 = h + (k1/LA.norm(m1))*m1    
 
 n3_a, n3_b = get_tangent_from_pt(V,u,f,P2)
 n3 = get_non_parallel_vector(n1, n3_a, n3_b)
@@ -64,7 +69,7 @@ PE = LA.inv(PE_A)@PE_c
 
 m2 = PE - T2
 dist = LA.norm(PE - T2)
-k2 = dist/(1+delta2) # 0.6 is user input for distance from pt T2  
+k2 = dist/(1+delta2) 
 P3 = T2 + (k2/LA.norm(m2))*m2
 
 n4_a, n4_b = get_tangent_from_pt(V,u,f,P3)
@@ -107,4 +112,9 @@ plt.xlabel('$x$')
 plt.ylabel('$y$')
 plt.grid() # minor
 plt.axis('equal')
-plt.show()
+
+#if using termux
+plt.savefig(os.path.join(script_dir, fig_relative))
+subprocess.run(shlex.split("bash view_fig.sh"))
+#else
+#plt.show()
