@@ -1,0 +1,13 @@
+Netlist_File: helloworldfpga.net Netlist_ID: SHA256:7a6cd56c087095aa741dd4c4fecc823f785ebfdaddd43300c00c81d7e21bd87b
+Array size: 39 x 35 logic blocks
+
+#block name	x	y	subblk	block number
+#----------	--	--	------	------------
+$iopadmap$helloworldfpga.blink	26	3	0	#0
+$iopadmap$helloworldfpga.blueled	30	32	0	#1
+$iopadmap$helloworldfpga.greenled	24	32	0	#2
+$iopadmap$helloworldfpga.redled	22	32	0	#3
+reset		10	32	0	#4
+blink_LUT1_O.f_frag	22	31	0	#5
+$false		3	1	0	#6
+$true		2	1	0	#7

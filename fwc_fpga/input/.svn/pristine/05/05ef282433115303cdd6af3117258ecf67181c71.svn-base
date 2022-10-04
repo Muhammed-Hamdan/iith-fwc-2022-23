@@ -1,0 +1,285 @@
+VPR FPGA Placement and Routing.
+Version: 8.1.0-dev+dadca7ecf
+Revision: v8.0.0-rc2-2894-gdadca7ecf
+Compiled: 2021-01-14T13:13:16
+Compiler: GNU 9.3.0 on Linux-5.4.0-faked aarch64
+Build Info: release IPO VTR_ASSERT_LEVEL=2
+
+University of Toronto
+verilogtorouting.org
+vtr-users@googlegroups.com
+This is free open source code under MIT license.
+
+VPR was run with the following command-line:
+vpr /root/symbiflow/quicklogic-arch-defs/share/arch/ql-eos-s3_wlcsp/arch.timing.xml helloworldfpga.eblif --device ql-eos-s3 --max_router_iterations 500 --routing_failure_predictor off --router_high_fanout_threshold -1 --constant_net_method route --route_chan_width 100 --clock_modeling route --place_delay_model delta_override --router_lookahead map --check_route quick --strict_checks off --allow_dangling_combinational_nodes on --disable_errors check_unbuffered_edges:check_route --congested_routing_iteration_threshold 0.8 --incremental_reroute_delay_ripup off --base_cost_type delay_normalized_length_bounded --bb_factor 10 --initial_pres_fac 4.0 --check_rr_graph off --suppress_warnings ,sum_pin_class:check_unbuffered_edges:load_rr_indexed_data_T_values:check_rr_node:trans_per_R:check_route:set_rr_graph_tool_comment:warn_model_missing_timing --read_rr_graph /root/symbiflow/quicklogic-arch-defs/share/arch/ql-eos-s3_wlcsp/rr_graph_ql-eos-s3_wlcsp.rr_graph.real.bin --read_placement_delay_lookup /root/symbiflow/quicklogic-arch-defs/share/arch/ql-eos-s3_wlcsp/rr_graph_ql-eos-s3_wlcsp.place_delay.bin --sdc_file /storage/emulated/0/github/vaman/fpga/setup/codes/input/build/helloworldfpga_dummy.sdc --pack
+
+
+Architecture file: /root/symbiflow/quicklogic-arch-defs/share/arch/ql-eos-s3_wlcsp/arch.timing.xml
+Circuit name: helloworldfpga
+
+# Loading Architecture Description
+# Loading Architecture Description took 0.43 seconds (max_rss 26.7 MiB, delta_rss +23.4 MiB)
+# Building complex block graph
+# Building complex block graph took 0.09 seconds (max_rss 33.4 MiB, delta_rss +6.7 MiB)
+# Load circuit
+# Load circuit took 0.00 seconds (max_rss 33.4 MiB, delta_rss +0.0 MiB)
+# Clean circuit
+Absorbed 2 LUT buffers
+Inferred    3 additional primitive pins as constant generators since they have no combinationally connected inputs
+Inferred    2 additional primitive pins as constant generators due to constant inputs
+Inferred    0 additional primitive pins as constant generators since they have no combinationally connected inputs
+Inferred    0 additional primitive pins as constant generators due to constant inputs
+Inferred    0 additional primitive pins as constant generators since they have no combinationally connected inputs
+Inferred    0 additional primitive pins as constant generators due to constant inputs
+Swept input(s)      : 0
+Swept output(s)     : 0 (0 dangling, 0 constant)
+Swept net(s)        : 1
+Swept block(s)      : 1
+Constant Pins Marked: 5
+# Clean circuit took 0.00 seconds (max_rss 33.4 MiB, delta_rss +0.0 MiB)
+# Compress circuit
+# Compress circuit took 0.00 seconds (max_rss 33.4 MiB, delta_rss +0.0 MiB)
+# Verify circuit
+# Verify circuit took 0.00 seconds (max_rss 33.4 MiB, delta_rss +0.0 MiB)
+Circuit Statistics:
+  Blocks: 13
+    .input    :       1
+    .output   :       4
+    BIDIR_CELL:       5
+    F_FRAG    :       1
+    GND       :       1
+    VCC       :       1
+  Nets  : 9
+    Avg Fanout:     2.4
+    Max Fanout:     8.0
+    Min Fanout:     1.0
+  Netlist Clocks: 0
+# Build Timing Graph
+  Timing Graph Nodes: 31
+  Timing Graph Edges: 35
+  Timing Graph Levels: 8
+# Build Timing Graph took 0.00 seconds (max_rss 33.4 MiB, delta_rss +0.0 MiB)
+Netlist contains 0 clocks
+# Load Timing Constraints
+
+SDC file '/storage/emulated/0/github/vaman/fpga/setup/codes/input/build/helloworldfpga_dummy.sdc' contained no SDC commands
+Setting default timing constraints:
+   * constrain all primay inputs and primary outputs on a virtual external clock 'virtual_io_clock'
+   * optimize virtual clock to run as fast as possible
+Timing constraints created 1 clocks
+  Constrained Clock 'virtual_io_clock' (Virtual Clock)
+
+# Load Timing Constraints took 0.00 seconds (max_rss 33.4 MiB, delta_rss +0.0 MiB)
+Timing analysis: ON
+Circuit netlist file: helloworldfpga.net
+Circuit placement file: helloworldfpga.place
+Circuit routing file: helloworldfpga.route
+Circuit SDC file: /storage/emulated/0/github/vaman/fpga/setup/codes/input/build/helloworldfpga_dummy.sdc
+
+Packer: ENABLED
+Placer: DISABLED
+Router: DISABLED
+Analysis: DISABLED
+
+NetlistOpts.abosrb_buffer_luts            : true
+NetlistOpts.sweep_dangling_primary_ios    : true
+NetlistOpts.sweep_dangling_nets           : true
+NetlistOpts.sweep_dangling_blocks         : true
+NetlistOpts.sweep_constant_primary_outputs: false
+NetlistOpts.netlist_verbosity             : 1
+NetlistOpts.const_gen_inference           : COMB_SEQ
+
+PackerOpts.allow_unrelated_clustering: auto
+PackerOpts.alpha_clustering: 0.750000
+PackerOpts.beta_clustering: 0.900000
+PackerOpts.cluster_seed_type: BLEND2
+PackerOpts.connection_driven: true
+PackerOpts.global_clocks: true
+PackerOpts.hill_climbing_flag: false
+PackerOpts.inter_cluster_net_delay: 1.000000
+PackerOpts.timing_driven: true
+PackerOpts.target_external_pin_util: auto
+
+RoutingArch.directionality: BI_DIRECTIONAL
+RoutingArch.switch_block_type: WILTON
+RoutingArch.Fs: 3
+
+# Packing
+Begin packing 'helloworldfpga.eblif'.
+
+After removing unused inputs...
+	total blocks: 13, total nets: 9, total inputs: 1, total outputs: 4
+Begin prepacking.
+Finish prepacking.
+Using inter-cluster delay: 1.2e-14
+Warning 1: Unable to determine most common block type (perhaps the device grid was empty?)
+Warning 2: Unable to infer which block type is a logic block
+Warning 3: Unable to identify logic block type to apply default pin utilization targets to; this may result in denser packing than desired
+Warning 4: Unable to determine most common block type (perhaps the device grid was empty?)
+Warning 5: Unable to infer which block type is a logic block
+Warning 6: Unable to identify logic block type to apply default packer high fanout thresholds; this may result in denser packing than desired
+Packing with pin utilization targets: TL-LOGIC:1,1 TL-RAM:1,1 TL-MULT:1,1 TL-BIDIR:1,1 TL-CLOCK:1,1 TL-SDIOMUX:1,1 TL-GMUX:1,1 TL-ASSP:1,1 TL-SYN_VCC:1,1 TL-SYN_GND:1,1
+Packing with high fanout thresholds: TL-LOGIC:128 TL-RAM:128 TL-MULT:128 TL-BIDIR:128 TL-CLOCK:128 TL-SDIOMUX:128 TL-GMUX:128 TL-ASSP:128 TL-SYN_VCC:128 TL-SYN_GND:128
+Not enough resources expand FPGA size to (39 x 35)
+Complex block 0: '$iopadmap$helloworldfpga.blink' (PB-BIDIR) .
+Complex block 1: '$iopadmap$helloworldfpga.blueled' (PB-BIDIR) .
+Complex block 2: '$iopadmap$helloworldfpga.greenled' (PB-BIDIR) .
+Complex block 3: '$iopadmap$helloworldfpga.redled' (PB-BIDIR) .
+Complex block 4: 'reset' (PB-BIDIR) .
+Complex block 5: 'blink_LUT1_O.f_frag' (PB-LOGIC) .
+Complex block 6: '$false' (PB-SYN_GND) .
+Complex block 7: '$true' (PB-SYN_VCC) .
+	EMPTY: # blocks: 0, average # input + clock pins used: 0, average # output pins used: 0
+	PB-GMUX: # blocks: 0, average # input + clock pins used: 0, average # output pins used: 0
+	PB-LOGIC: # blocks: 1, average # input + clock pins used: 3, average # output pins used: 1
+	PB-CLOCK: # blocks: 0, average # input + clock pins used: 0, average # output pins used: 0
+	PB-MULT: # blocks: 0, average # input + clock pins used: 0, average # output pins used: 0
+	PB-SDIOMUX: # blocks: 0, average # input + clock pins used: 0, average # output pins used: 0
+	PB-RAM: # blocks: 0, average # input + clock pins used: 0, average # output pins used: 0
+	PB-SYN_VCC: # blocks: 1, average # input + clock pins used: 0, average # output pins used: 1
+	PB-BIDIR: # blocks: 5, average # input + clock pins used: 2.8, average # output pins used: 0.2
+	PB-SYN_GND: # blocks: 1, average # input + clock pins used: 0, average # output pins used: 1
+	PB-ASSP: # blocks: 0, average # input + clock pins used: 0, average # output pins used: 0
+Absorbed logical nets 5 out of 9 nets, 4 nets not absorbed.
+Incr Slack updates 1 in 6.198e-06 sec
+Full Max Req/Worst Slack updates 1 in 3.385e-06 sec
+Incr Max Req/Worst Slack updates 0 in 0 sec
+Incr Criticality updates 0 in 0 sec
+Full Criticality updates 1 in 3.229e-06 sec
+FPGA sized to 39 x 35 (ql-eos-s3)
+Device Utilization: 0.01 (target 1.00)
+	Block Utilization: 0.00 Type: PB-LOGIC
+	Block Utilization: 1.00 Type: PB-SYN_VCC
+	Block Utilization: 0.16 Type: PB-BIDIR
+	Block Utilization: 1.00 Type: PB-SYN_GND
+
+
+Netlist conversion complete.
+
+# Packing took 0.03 seconds (max_rss 33.4 MiB, delta_rss +0.0 MiB)
+# Load Packing
+Begin loading packed FPGA netlist file.
+Netlist generated from file 'helloworldfpga.net'.
+Detected 2 constant generators (to see names run with higher pack verbosity)
+Finished loading packed FPGA netlist file (took 0.006616 seconds).
+# Load Packing took 0.01 seconds (max_rss 33.7 MiB, delta_rss +0.3 MiB)
+Warning 7: Netlist contains 0 global net to non-global architecture pin connections
+Warning 8: Logic block #6 ($false) has only 1 output pin '$false.GND0_GND[0]'. It may be a constant generator.
+Warning 9: Logic block #7 ($true) has only 1 output pin '$true.VCC0_VCC[0]'. It may be a constant generator.
+
+Netlist num_nets: 4
+Netlist num_blocks: 8
+Netlist EMPTY blocks: 0.
+Netlist PB-GMUX blocks: 0.
+Netlist PB-LOGIC blocks: 1.
+Netlist PB-CLOCK blocks: 0.
+Netlist PB-MULT blocks: 0.
+Netlist PB-SDIOMUX blocks: 0.
+Netlist PB-RAM blocks: 0.
+Netlist PB-SYN_VCC blocks: 1.
+Netlist PB-BIDIR blocks: 5.
+Netlist PB-SYN_GND blocks: 1.
+Netlist PB-ASSP blocks: 0.
+Netlist inputs pins: 1
+Netlist output pins: 14
+
+
+Pb types usage...
+  PB-LOGIC      : 1
+   LOGIC        : 1
+    FRAGS       : 1
+     f_frag     : 1
+  PB-SYN_VCC    : 1
+   VCC          : 1
+  PB-BIDIR      : 5
+   BIDIR        : 5
+    INPUT       : 1
+     bidir      : 1
+     inpad      : 1
+    OUTPUT      : 4
+     bidir      : 4
+     outpad     : 4
+  PB-SYN_GND    : 1
+   GND          : 1
+
+# Create Device
+## Build Device Grid
+FPGA sized to 39 x 35: 1365 grid tiles (ql-eos-s3)
+
+Resource usage...
+	Netlist
+		0	blocks of type: PB-GMUX
+	Architecture
+		5	blocks of type: TL-GMUX
+	Netlist
+		1	blocks of type: PB-LOGIC
+	Architecture
+		891	blocks of type: TL-LOGIC
+	Netlist
+		0	blocks of type: PB-CLOCK
+	Architecture
+		5	blocks of type: TL-CLOCK
+	Netlist
+		0	blocks of type: PB-MULT
+	Architecture
+		2	blocks of type: TL-MULT
+	Netlist
+		0	blocks of type: PB-SDIOMUX
+	Architecture
+		14	blocks of type: TL-SDIOMUX
+	Netlist
+		0	blocks of type: PB-RAM
+	Architecture
+		4	blocks of type: TL-RAM
+	Netlist
+		1	blocks of type: PB-SYN_VCC
+	Architecture
+		1	blocks of type: TL-SYN_VCC
+	Netlist
+		5	blocks of type: PB-BIDIR
+	Architecture
+		32	blocks of type: TL-BIDIR
+	Netlist
+		1	blocks of type: PB-SYN_GND
+	Architecture
+		1	blocks of type: TL-SYN_GND
+	Netlist
+		0	blocks of type: PB-ASSP
+	Architecture
+		1	blocks of type: TL-ASSP
+
+Device Utilization: 0.01 (target 1.00)
+	Physical Tile TL-LOGIC:
+	Block Utilization: 0.00 Logical Block: PB-LOGIC
+	Physical Tile TL-RAM:
+	Block Utilization: 0.00 Logical Block: PB-RAM
+	Physical Tile TL-MULT:
+	Block Utilization: 0.00 Logical Block: PB-MULT
+	Physical Tile TL-BIDIR:
+	Block Utilization: 0.16 Logical Block: PB-BIDIR
+	Physical Tile TL-CLOCK:
+	Block Utilization: 0.00 Logical Block: PB-CLOCK
+	Physical Tile TL-SDIOMUX:
+	Block Utilization: 0.00 Logical Block: PB-SDIOMUX
+	Physical Tile TL-GMUX:
+	Block Utilization: 0.00 Logical Block: PB-GMUX
+	Physical Tile TL-ASSP:
+	Block Utilization: 0.00 Logical Block: PB-ASSP
+	Physical Tile TL-SYN_VCC:
+	Block Utilization: 1.00 Logical Block: PB-SYN_VCC
+	Physical Tile TL-SYN_GND:
+	Block Utilization: 1.00 Logical Block: PB-SYN_GND
+
+## Build Device Grid took 0.01 seconds (max_rss 33.7 MiB, delta_rss +0.0 MiB)
+## Loading routing resource graph
+
+
+## Loading routing resource graph took 0.56 seconds (max_rss 341.4 MiB, delta_rss +307.7 MiB)
+  RR Graph Nodes: 1396446
+  RR Graph Edges: 2337988
+# Create Device took 1.81 seconds (max_rss 389.1 MiB, delta_rss +355.4 MiB)
+
+
+Flow timing analysis took 5.9219e-05 seconds (3.9167e-05 STA, 2.0052e-05 slack) (1 full updates: 1 setup, 0 hold, 0 combined).
+VPR succeeded
+The entire flow of VPR took 2.39 seconds (max_rss 389.1 MiB)

@@ -1,0 +1,5 @@
+// reset: IO_23, X: IO_24, fsm_clk: I0_22 (blue led), Z: IO_25
+set_io reset	33
+set_io X	32
+set_io fsm_clk	34	
+set_io Z	31

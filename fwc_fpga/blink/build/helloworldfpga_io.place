@@ -1,0 +1,5 @@
+#Block Name   x   y   z    pcf_line
+#------------ --  --  -    ----
+$iopadmap$helloworldfpga.redled  22  32  0  # set_io redled		34
+$iopadmap$helloworldfpga.greenled  24  32  0  # set_io greenled		39
+$iopadmap$helloworldfpga.blueled  30  32  0  # set_io blueled		38

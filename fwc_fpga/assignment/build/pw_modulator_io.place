@@ -1,0 +1,6 @@
+#Block Name  x   y   z    pcf_line
+#----------- --  --  -    ----
+reset        20  33  0  # set_io reset	33
+X            18  32  0  # set_io X	32
+$iopadmap$pw_modulator.fsm_clk  22  32  0  # set_io fsm_clk	34
+$iopadmap$pw_modulator.Z  16  32  0  # set_io Z	31

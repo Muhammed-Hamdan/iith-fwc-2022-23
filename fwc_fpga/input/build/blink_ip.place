@@ -1,0 +1,13 @@
+Netlist_File: blink_ip.net Netlist_ID: SHA256:4979fc02a0dc2ecb6944ab019f7f5d52e8e331e0791fb596f059f3e6e2f7e03c
+Array size: 39 x 35 logic blocks
+
+#block name	x	y	subblk	block number
+#----------	--	--	------	------------
+$iopadmap$blink_ip.blink	26	3	0	#0
+$iopadmap$blink_ip.blueled	30	32	0	#1
+$iopadmap$blink_ip.greenled	24	32	0	#2
+$iopadmap$blink_ip.redled	22	32	0	#3
+reset		10	32	0	#4
+blink_LUT1_O.f_frag	22	31	0	#5
+$false		3	1	0	#6
+$true		2	1	0	#7

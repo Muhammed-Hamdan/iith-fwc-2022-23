@@ -1,0 +1,589 @@
+<?xml version="1.0"?>
+<block name="helloworldfpga.net" instance="FPGA_packed_netlist[0]" architecture_id="SHA256:ff45ae019adfd8ddc9651aa485da7d1cc80afac7f587a182516f1773344b8923" atom_netlist_id="SHA256:8efd30300c0a922cc0794ab7efa04696366b57b1f4daf6bc6613e4bcb5b8a804">
+	<inputs>reset</inputs>
+	<outputs>out:blink out:blueled out:greenled out:redled</outputs>
+	<clocks></clocks>
+	<block name="$iopadmap$helloworldfpga.blink" instance="PB-BIDIR[0]" mode="default">
+		<inputs>
+			<port name="BIDIR0_IE">$true</port>
+			<port name="BIDIR0_INEN">$false</port>
+			<port name="BIDIR0_IQC">open</port>
+			<port name="BIDIR0_IQE">open</port>
+			<port name="BIDIR0_IQIN">open</port>
+			<port name="BIDIR0_IQR">open</port>
+			<port name="BIDIR0_OQE">open</port>
+			<port name="BIDIR0_OQI">$iopadmap$blink</port>
+		</inputs>
+		<outputs>
+			<port name="BIDIR0_IQZ">open</port>
+			<port name="BIDIR0_IZ">open</port>
+		</outputs>
+		<clocks />
+		<block name="$iopadmap$helloworldfpga.blink" instance="BIDIR[0]" mode="OUTPUT">
+			<inputs>
+				<port name="IE">PB-BIDIR.BIDIR0_IE[0]-&gt;PB-BIDIR.BIDIR0_IE_to_BIDIR[0].IE</port>
+				<port name="INEN">PB-BIDIR.BIDIR0_INEN[0]-&gt;PB-BIDIR.BIDIR0_INEN_to_BIDIR[0].INEN</port>
+				<port name="IQE">open</port>
+				<port name="IQIN">open</port>
+				<port name="IQR">open</port>
+				<port name="OQE">open</port>
+				<port name="OQI">PB-BIDIR.BIDIR0_OQI[0]-&gt;PB-BIDIR.BIDIR0_OQI_to_BIDIR[0].OQI</port>
+			</inputs>
+			<outputs>
+				<port name="IQZ">open</port>
+				<port name="IZ">open</port>
+			</outputs>
+			<clocks>
+				<port name="IQC">open</port>
+			</clocks>
+			<block name="$iopadmap$helloworldfpga.blink" instance="OUTPUT[0]" mode="default">
+				<inputs>
+					<port name="IE">BIDIR.IE[0]-&gt;OUTPUT-IE</port>
+					<port name="INEN">BIDIR.INEN[0]-&gt;OUTPUT-INEN</port>
+					<port name="IQE">open</port>
+					<port name="IQIN">open</port>
+					<port name="IQR">open</port>
+					<port name="OQE">open</port>
+					<port name="OQI">BIDIR.OQI[0]-&gt;OUTPUT-OQI</port>
+				</inputs>
+				<outputs>
+					<port name="IQZ">open</port>
+					<port name="IZ">open</port>
+				</outputs>
+				<clocks>
+					<port name="IQC">open</port>
+				</clocks>
+				<block name="$iopadmap$helloworldfpga.blink" instance="bidir[0]">
+					<attributes>
+						<attribute name="src">"/root/symbiflow/quicklogic-arch-defs/share/techmaps/quicklogic/pp3/techmap/cells_map.v:81.9-88.8"</attribute>
+						<attribute name="module_not_derived">00000000000000000000000000000001</attribute>
+					</attributes>
+					<parameters>
+						<parameter name="OSEL">1</parameter>
+						<parameter name="WPD">0</parameter>
+						<parameter name="FIXHOLD">0</parameter>
+						<parameter name="ESEL">1</parameter>
+						<parameter name="DS">0</parameter>
+					</parameters>
+					<inputs>
+						<port name="I_EN">OUTPUT.INEN[0]-&gt;bidir-I_EN</port>
+						<port name="I_PAD_$inp">open</port>
+						<port name="O_DAT">OUTPUT.OQI[0]-&gt;bidir-O_DAT</port>
+						<port name="O_EN">OUTPUT.IE[0]-&gt;bidir-O_EN</port>
+					</inputs>
+					<outputs>
+						<port name="I_DAT">open</port>
+						<port name="O_PAD_$out">blink</port>
+					</outputs>
+					<clocks />
+				</block>
+				<block name="out:blink" instance="outpad[0]">
+					<attributes />
+					<parameters />
+					<inputs>
+						<port name="outpad">bidir[0].O_PAD_$out[0]-&gt;outpad-outpad</port>
+					</inputs>
+					<outputs />
+					<clocks />
+				</block>
+			</block>
+		</block>
+	</block>
+	<block name="$iopadmap$helloworldfpga.blueled" instance="PB-BIDIR[1]" mode="default">
+		<inputs>
+			<port name="BIDIR0_IE">$true</port>
+			<port name="BIDIR0_INEN">$false</port>
+			<port name="BIDIR0_IQC">open</port>
+			<port name="BIDIR0_IQE">open</port>
+			<port name="BIDIR0_IQIN">open</port>
+			<port name="BIDIR0_IQR">open</port>
+			<port name="BIDIR0_OQE">open</port>
+			<port name="BIDIR0_OQI">$iopadmap$blink</port>
+		</inputs>
+		<outputs>
+			<port name="BIDIR0_IQZ">open</port>
+			<port name="BIDIR0_IZ">open</port>
+		</outputs>
+		<clocks />
+		<block name="$iopadmap$helloworldfpga.blueled" instance="BIDIR[0]" mode="OUTPUT">
+			<inputs>
+				<port name="IE">PB-BIDIR.BIDIR0_IE[0]-&gt;PB-BIDIR.BIDIR0_IE_to_BIDIR[0].IE</port>
+				<port name="INEN">PB-BIDIR.BIDIR0_INEN[0]-&gt;PB-BIDIR.BIDIR0_INEN_to_BIDIR[0].INEN</port>
+				<port name="IQE">open</port>
+				<port name="IQIN">open</port>
+				<port name="IQR">open</port>
+				<port name="OQE">open</port>
+				<port name="OQI">PB-BIDIR.BIDIR0_OQI[0]-&gt;PB-BIDIR.BIDIR0_OQI_to_BIDIR[0].OQI</port>
+			</inputs>
+			<outputs>
+				<port name="IQZ">open</port>
+				<port name="IZ">open</port>
+			</outputs>
+			<clocks>
+				<port name="IQC">open</port>
+			</clocks>
+			<block name="$iopadmap$helloworldfpga.blueled" instance="OUTPUT[0]" mode="default">
+				<inputs>
+					<port name="IE">BIDIR.IE[0]-&gt;OUTPUT-IE</port>
+					<port name="INEN">BIDIR.INEN[0]-&gt;OUTPUT-INEN</port>
+					<port name="IQE">open</port>
+					<port name="IQIN">open</port>
+					<port name="IQR">open</port>
+					<port name="OQE">open</port>
+					<port name="OQI">BIDIR.OQI[0]-&gt;OUTPUT-OQI</port>
+				</inputs>
+				<outputs>
+					<port name="IQZ">open</port>
+					<port name="IZ">open</port>
+				</outputs>
+				<clocks>
+					<port name="IQC">open</port>
+				</clocks>
+				<block name="$iopadmap$helloworldfpga.blueled" instance="bidir[0]">
+					<attributes>
+						<attribute name="src">"/root/symbiflow/quicklogic-arch-defs/share/techmaps/quicklogic/pp3/techmap/cells_map.v:81.9-88.8"</attribute>
+						<attribute name="module_not_derived">00000000000000000000000000000001</attribute>
+					</attributes>
+					<parameters>
+						<parameter name="OSEL">1</parameter>
+						<parameter name="WPD">0</parameter>
+						<parameter name="FIXHOLD">0</parameter>
+						<parameter name="ESEL">1</parameter>
+						<parameter name="DS">0</parameter>
+					</parameters>
+					<inputs>
+						<port name="I_EN">OUTPUT.INEN[0]-&gt;bidir-I_EN</port>
+						<port name="I_PAD_$inp">open</port>
+						<port name="O_DAT">OUTPUT.OQI[0]-&gt;bidir-O_DAT</port>
+						<port name="O_EN">OUTPUT.IE[0]-&gt;bidir-O_EN</port>
+					</inputs>
+					<outputs>
+						<port name="I_DAT">open</port>
+						<port name="O_PAD_$out">blueled</port>
+					</outputs>
+					<clocks />
+				</block>
+				<block name="out:blueled" instance="outpad[0]">
+					<attributes />
+					<parameters />
+					<inputs>
+						<port name="outpad">bidir[0].O_PAD_$out[0]-&gt;outpad-outpad</port>
+					</inputs>
+					<outputs />
+					<clocks />
+				</block>
+			</block>
+		</block>
+	</block>
+	<block name="$iopadmap$helloworldfpga.greenled" instance="PB-BIDIR[2]" mode="default">
+		<inputs>
+			<port name="BIDIR0_IE">$true</port>
+			<port name="BIDIR0_INEN">$false</port>
+			<port name="BIDIR0_IQC">open</port>
+			<port name="BIDIR0_IQE">open</port>
+			<port name="BIDIR0_IQIN">open</port>
+			<port name="BIDIR0_IQR">open</port>
+			<port name="BIDIR0_OQE">open</port>
+			<port name="BIDIR0_OQI">$false</port>
+		</inputs>
+		<outputs>
+			<port name="BIDIR0_IQZ">open</port>
+			<port name="BIDIR0_IZ">open</port>
+		</outputs>
+		<clocks />
+		<block name="$iopadmap$helloworldfpga.greenled" instance="BIDIR[0]" mode="OUTPUT">
+			<inputs>
+				<port name="IE">PB-BIDIR.BIDIR0_IE[0]-&gt;PB-BIDIR.BIDIR0_IE_to_BIDIR[0].IE</port>
+				<port name="INEN">PB-BIDIR.BIDIR0_INEN[0]-&gt;PB-BIDIR.BIDIR0_INEN_to_BIDIR[0].INEN</port>
+				<port name="IQE">open</port>
+				<port name="IQIN">open</port>
+				<port name="IQR">open</port>
+				<port name="OQE">open</port>
+				<port name="OQI">PB-BIDIR.BIDIR0_OQI[0]-&gt;PB-BIDIR.BIDIR0_OQI_to_BIDIR[0].OQI</port>
+			</inputs>
+			<outputs>
+				<port name="IQZ">open</port>
+				<port name="IZ">open</port>
+			</outputs>
+			<clocks>
+				<port name="IQC">open</port>
+			</clocks>
+			<block name="$iopadmap$helloworldfpga.greenled" instance="OUTPUT[0]" mode="default">
+				<inputs>
+					<port name="IE">BIDIR.IE[0]-&gt;OUTPUT-IE</port>
+					<port name="INEN">BIDIR.INEN[0]-&gt;OUTPUT-INEN</port>
+					<port name="IQE">open</port>
+					<port name="IQIN">open</port>
+					<port name="IQR">open</port>
+					<port name="OQE">open</port>
+					<port name="OQI">BIDIR.OQI[0]-&gt;OUTPUT-OQI</port>
+				</inputs>
+				<outputs>
+					<port name="IQZ">open</port>
+					<port name="IZ">open</port>
+				</outputs>
+				<clocks>
+					<port name="IQC">open</port>
+				</clocks>
+				<block name="$iopadmap$helloworldfpga.greenled" instance="bidir[0]">
+					<attributes>
+						<attribute name="src">"/root/symbiflow/quicklogic-arch-defs/share/techmaps/quicklogic/pp3/techmap/cells_map.v:81.9-88.8"</attribute>
+						<attribute name="module_not_derived">00000000000000000000000000000001</attribute>
+					</attributes>
+					<parameters>
+						<parameter name="OSEL">1</parameter>
+						<parameter name="WPD">0</parameter>
+						<parameter name="FIXHOLD">0</parameter>
+						<parameter name="ESEL">1</parameter>
+						<parameter name="DS">0</parameter>
+					</parameters>
+					<inputs>
+						<port name="I_EN">OUTPUT.INEN[0]-&gt;bidir-I_EN</port>
+						<port name="I_PAD_$inp">open</port>
+						<port name="O_DAT">OUTPUT.OQI[0]-&gt;bidir-O_DAT</port>
+						<port name="O_EN">OUTPUT.IE[0]-&gt;bidir-O_EN</port>
+					</inputs>
+					<outputs>
+						<port name="I_DAT">open</port>
+						<port name="O_PAD_$out">greenled</port>
+					</outputs>
+					<clocks />
+				</block>
+				<block name="out:greenled" instance="outpad[0]">
+					<attributes />
+					<parameters />
+					<inputs>
+						<port name="outpad">bidir[0].O_PAD_$out[0]-&gt;outpad-outpad</port>
+					</inputs>
+					<outputs />
+					<clocks />
+				</block>
+			</block>
+		</block>
+	</block>
+	<block name="$iopadmap$helloworldfpga.redled" instance="PB-BIDIR[3]" mode="default">
+		<inputs>
+			<port name="BIDIR0_IE">$true</port>
+			<port name="BIDIR0_INEN">$false</port>
+			<port name="BIDIR0_IQC">open</port>
+			<port name="BIDIR0_IQE">open</port>
+			<port name="BIDIR0_IQIN">open</port>
+			<port name="BIDIR0_IQR">open</port>
+			<port name="BIDIR0_OQE">open</port>
+			<port name="BIDIR0_OQI">$false</port>
+		</inputs>
+		<outputs>
+			<port name="BIDIR0_IQZ">open</port>
+			<port name="BIDIR0_IZ">open</port>
+		</outputs>
+		<clocks />
+		<block name="$iopadmap$helloworldfpga.redled" instance="BIDIR[0]" mode="OUTPUT">
+			<inputs>
+				<port name="IE">PB-BIDIR.BIDIR0_IE[0]-&gt;PB-BIDIR.BIDIR0_IE_to_BIDIR[0].IE</port>
+				<port name="INEN">PB-BIDIR.BIDIR0_INEN[0]-&gt;PB-BIDIR.BIDIR0_INEN_to_BIDIR[0].INEN</port>
+				<port name="IQE">open</port>
+				<port name="IQIN">open</port>
+				<port name="IQR">open</port>
+				<port name="OQE">open</port>
+				<port name="OQI">PB-BIDIR.BIDIR0_OQI[0]-&gt;PB-BIDIR.BIDIR0_OQI_to_BIDIR[0].OQI</port>
+			</inputs>
+			<outputs>
+				<port name="IQZ">open</port>
+				<port name="IZ">open</port>
+			</outputs>
+			<clocks>
+				<port name="IQC">open</port>
+			</clocks>
+			<block name="$iopadmap$helloworldfpga.redled" instance="OUTPUT[0]" mode="default">
+				<inputs>
+					<port name="IE">BIDIR.IE[0]-&gt;OUTPUT-IE</port>
+					<port name="INEN">BIDIR.INEN[0]-&gt;OUTPUT-INEN</port>
+					<port name="IQE">open</port>
+					<port name="IQIN">open</port>
+					<port name="IQR">open</port>
+					<port name="OQE">open</port>
+					<port name="OQI">BIDIR.OQI[0]-&gt;OUTPUT-OQI</port>
+				</inputs>
+				<outputs>
+					<port name="IQZ">open</port>
+					<port name="IZ">open</port>
+				</outputs>
+				<clocks>
+					<port name="IQC">open</port>
+				</clocks>
+				<block name="$iopadmap$helloworldfpga.redled" instance="bidir[0]">
+					<attributes>
+						<attribute name="src">"/root/symbiflow/quicklogic-arch-defs/share/techmaps/quicklogic/pp3/techmap/cells_map.v:81.9-88.8"</attribute>
+						<attribute name="module_not_derived">00000000000000000000000000000001</attribute>
+					</attributes>
+					<parameters>
+						<parameter name="OSEL">1</parameter>
+						<parameter name="WPD">0</parameter>
+						<parameter name="FIXHOLD">0</parameter>
+						<parameter name="ESEL">1</parameter>
+						<parameter name="DS">0</parameter>
+					</parameters>
+					<inputs>
+						<port name="I_EN">OUTPUT.INEN[0]-&gt;bidir-I_EN</port>
+						<port name="I_PAD_$inp">open</port>
+						<port name="O_DAT">OUTPUT.OQI[0]-&gt;bidir-O_DAT</port>
+						<port name="O_EN">OUTPUT.IE[0]-&gt;bidir-O_EN</port>
+					</inputs>
+					<outputs>
+						<port name="I_DAT">open</port>
+						<port name="O_PAD_$out">redled</port>
+					</outputs>
+					<clocks />
+				</block>
+				<block name="out:redled" instance="outpad[0]">
+					<attributes />
+					<parameters />
+					<inputs>
+						<port name="outpad">bidir[0].O_PAD_$out[0]-&gt;outpad-outpad</port>
+					</inputs>
+					<outputs />
+					<clocks />
+				</block>
+			</block>
+		</block>
+	</block>
+	<block name="reset" instance="PB-BIDIR[4]" mode="default">
+		<inputs>
+			<port name="BIDIR0_IE">$false</port>
+			<port name="BIDIR0_INEN">$true</port>
+			<port name="BIDIR0_IQC">open</port>
+			<port name="BIDIR0_IQE">open</port>
+			<port name="BIDIR0_IQIN">open</port>
+			<port name="BIDIR0_IQR">open</port>
+			<port name="BIDIR0_OQE">open</port>
+			<port name="BIDIR0_OQI">open</port>
+		</inputs>
+		<outputs>
+			<port name="BIDIR0_IQZ">open</port>
+			<port name="BIDIR0_IZ">BIDIR[0].IZ[0]-&gt;BIDIR[0].IZ_to_PB-BIDIR.BIDIR0_IZ</port>
+		</outputs>
+		<clocks />
+		<block name="reset" instance="BIDIR[0]" mode="INPUT">
+			<inputs>
+				<port name="IE">PB-BIDIR.BIDIR0_IE[0]-&gt;PB-BIDIR.BIDIR0_IE_to_BIDIR[0].IE</port>
+				<port name="INEN">PB-BIDIR.BIDIR0_INEN[0]-&gt;PB-BIDIR.BIDIR0_INEN_to_BIDIR[0].INEN</port>
+				<port name="IQE">open</port>
+				<port name="IQIN">open</port>
+				<port name="IQR">open</port>
+				<port name="OQE">open</port>
+				<port name="OQI">open</port>
+			</inputs>
+			<outputs>
+				<port name="IQZ">open</port>
+				<port name="IZ">INPUT[0].IZ[0]-&gt;BIDIR-IZ</port>
+			</outputs>
+			<clocks>
+				<port name="IQC">open</port>
+			</clocks>
+			<block name="reset" instance="INPUT[0]" mode="default">
+				<inputs>
+					<port name="IE">BIDIR.IE[0]-&gt;INPUT-IE</port>
+					<port name="INEN">BIDIR.INEN[0]-&gt;INPUT-INEN</port>
+					<port name="IQE">open</port>
+					<port name="IQIN">open</port>
+					<port name="IQR">open</port>
+					<port name="OQE">open</port>
+					<port name="OQI">open</port>
+				</inputs>
+				<outputs>
+					<port name="IQZ">open</port>
+					<port name="IZ">bidir[0].I_DAT[0]-&gt;INPUT-IZ</port>
+				</outputs>
+				<clocks>
+					<port name="IQC">open</port>
+				</clocks>
+				<block name="$iopadmap$helloworldfpga.reset" instance="bidir[0]">
+					<attributes>
+						<attribute name="src">"/root/symbiflow/quicklogic-arch-defs/share/techmaps/quicklogic/pp3/techmap/cells_map.v:43.9-50.8"</attribute>
+						<attribute name="module_not_derived">00000000000000000000000000000001</attribute>
+					</attributes>
+					<parameters>
+						<parameter name="OSEL">1</parameter>
+						<parameter name="WPD">0</parameter>
+						<parameter name="FIXHOLD">0</parameter>
+						<parameter name="ESEL">1</parameter>
+						<parameter name="DS">0</parameter>
+					</parameters>
+					<inputs>
+						<port name="I_EN">INPUT.INEN[0]-&gt;bidir-I_EN</port>
+						<port name="I_PAD_$inp">inpad[0].inpad[0]-&gt;bidir-I_PAD_$inp</port>
+						<port name="O_DAT">open</port>
+						<port name="O_EN">INPUT.IE[0]-&gt;bidir-O_EN</port>
+					</inputs>
+					<outputs>
+						<port name="I_DAT">$iopadmap$reset</port>
+						<port name="O_PAD_$out">open</port>
+					</outputs>
+					<clocks />
+				</block>
+				<block name="reset" instance="inpad[0]">
+					<attributes />
+					<parameters />
+					<inputs />
+					<outputs>
+						<port name="inpad">reset</port>
+					</outputs>
+					<clocks />
+				</block>
+			</block>
+		</block>
+	</block>
+	<block name="blink_LUT1_O.f_frag" instance="PB-LOGIC[5]" mode="default">
+		<inputs>
+			<port name="FAKE_CONST">open</port>
+			<port name="LOGIC0_BA1">open</port>
+			<port name="LOGIC0_BA2">open</port>
+			<port name="LOGIC0_BAB">open</port>
+			<port name="LOGIC0_BB1">open</port>
+			<port name="LOGIC0_BB2">open</port>
+			<port name="LOGIC0_BSL">open</port>
+			<port name="LOGIC0_F1">$true</port>
+			<port name="LOGIC0_F2">$false</port>
+			<port name="LOGIC0_FS">$iopadmap$reset</port>
+			<port name="LOGIC0_QDI">open</port>
+			<port name="LOGIC0_QDS">open</port>
+			<port name="LOGIC0_QEN">open</port>
+			<port name="LOGIC0_QRT">open</port>
+			<port name="LOGIC0_QST">open</port>
+			<port name="LOGIC0_TA1">open</port>
+			<port name="LOGIC0_TA2">open</port>
+			<port name="LOGIC0_TAB">open</port>
+			<port name="LOGIC0_TB1">open</port>
+			<port name="LOGIC0_TB2">open</port>
+			<port name="LOGIC0_TBS">open</port>
+			<port name="LOGIC0_TSL">open</port>
+		</inputs>
+		<outputs>
+			<port name="LOGIC0_CZ">open</port>
+			<port name="LOGIC0_FZ">LOGIC[0].FZ[0]-&gt;LOGIC[0].FZ_to_PB-LOGIC.LOGIC0_FZ</port>
+			<port name="LOGIC0_QZ">open</port>
+			<port name="LOGIC0_TZ">open</port>
+		</outputs>
+		<clocks>
+			<port name="LOGIC0_QCK">open</port>
+		</clocks>
+		<block name="blink_LUT1_O.f_frag" instance="LOGIC[0]" mode="FRAGS">
+			<inputs>
+				<port name="BA1">open</port>
+				<port name="BA2">open</port>
+				<port name="BAB">open</port>
+				<port name="BB1">open</port>
+				<port name="BB2">open</port>
+				<port name="BSL">open</port>
+				<port name="F1">PB-LOGIC.LOGIC0_F1[0]-&gt;PB-LOGIC.LOGIC0_F1_to_LOGIC[0].F1</port>
+				<port name="F2">PB-LOGIC.LOGIC0_F2[0]-&gt;PB-LOGIC.LOGIC0_F2_to_LOGIC[0].F2</port>
+				<port name="FAKE_CONST">open</port>
+				<port name="FS">PB-LOGIC.LOGIC0_FS[0]-&gt;PB-LOGIC.LOGIC0_FS_to_LOGIC[0].FS</port>
+				<port name="QCK">open</port>
+				<port name="QDI">open</port>
+				<port name="QDS">open</port>
+				<port name="QEN">open</port>
+				<port name="QRT">open</port>
+				<port name="QST">open</port>
+				<port name="TA1">open</port>
+				<port name="TA2">open</port>
+				<port name="TAB">open</port>
+				<port name="TB1">open</port>
+				<port name="TB2">open</port>
+				<port name="TBS">open</port>
+				<port name="TSL">open</port>
+			</inputs>
+			<outputs>
+				<port name="CZ">open</port>
+				<port name="FZ">FRAGS[0].FZ[0]-&gt;LOGIC-FZ</port>
+				<port name="QZ">open</port>
+				<port name="TZ">open</port>
+			</outputs>
+			<clocks />
+			<block name="blink_LUT1_O.f_frag" instance="FRAGS[0]" mode="default">
+				<inputs>
+					<port name="BA1">open</port>
+					<port name="BA2">open</port>
+					<port name="BAB">open</port>
+					<port name="BB1">open</port>
+					<port name="BB2">open</port>
+					<port name="BSL">open</port>
+					<port name="F1">LOGIC.F1[0]-&gt;FRAGS-F1</port>
+					<port name="F2">LOGIC.F2[0]-&gt;FRAGS-F2</port>
+					<port name="FAKE_CONST">open</port>
+					<port name="FS">LOGIC.FS[0]-&gt;FRAGS-FS</port>
+					<port name="QCK">open</port>
+					<port name="QDI">open</port>
+					<port name="QDS">open</port>
+					<port name="QEN">open</port>
+					<port name="QRT">open</port>
+					<port name="QST">open</port>
+					<port name="TA1">open</port>
+					<port name="TA2">open</port>
+					<port name="TAB">open</port>
+					<port name="TB1">open</port>
+					<port name="TB2">open</port>
+					<port name="TBS">open</port>
+					<port name="TSL">open</port>
+				</inputs>
+				<outputs>
+					<port name="CZ">open</port>
+					<port name="FZ">f_frag[0].FZ[0]-&gt;FRAGS-FZ</port>
+					<port name="QZ">open</port>
+					<port name="TZ">open</port>
+				</outputs>
+				<clocks />
+				<block name="open" instance="c_frag_modes[0]" />
+				<block name="blink_LUT1_O.f_frag" instance="f_frag[0]">
+					<attributes>
+						<attribute name="src">"/share/yosys/quicklogic/pp3_lut_map.v:28.63-28.99|/root/symbiflow/quicklogic-arch-defs/share/techmaps/quicklogic/pp3/techmap/cells_map.v:485.10-490.4"</attribute>
+						<attribute name="module_not_derived">00000000000000000000000000000001</attribute>
+					</attributes>
+					<parameters />
+					<inputs>
+						<port name="F1">FRAGS.F1[0]-&gt;f_frag-F1</port>
+						<port name="F2">FRAGS.F2[0]-&gt;f_frag-F2</port>
+						<port name="FS">FRAGS.FS[0]-&gt;f_frag-FS</port>
+					</inputs>
+					<outputs>
+						<port name="FZ">$iopadmap$blink</port>
+					</outputs>
+					<clocks />
+				</block>
+				<block name="open" instance="q_frag_modes[0]" />
+			</block>
+		</block>
+	</block>
+	<block name="$false" instance="PB-SYN_GND[6]" mode="default">
+		<inputs />
+		<outputs>
+			<port name="GND0_GND">GND[0].GND[0]-&gt;GND[0].GND_to_PB-SYN_GND.GND0_GND</port>
+		</outputs>
+		<clocks />
+		<block name="$false" instance="GND[0]">
+			<attributes />
+			<parameters />
+			<inputs />
+			<outputs>
+				<port name="GND">$false</port>
+			</outputs>
+			<clocks />
+		</block>
+	</block>
+	<block name="$true" instance="PB-SYN_VCC[7]" mode="default">
+		<inputs />
+		<outputs>
+			<port name="VCC0_VCC">VCC[0].VCC[0]-&gt;VCC[0].VCC_to_PB-SYN_VCC.VCC0_VCC</port>
+		</outputs>
+		<clocks />
+		<block name="$true" instance="VCC[0]">
+			<attributes />
+			<parameters />
+			<inputs />
+			<outputs>
+				<port name="VCC">$true</port>
+			</outputs>
+			<clocks />
+		</block>
+	</block>
+</block>

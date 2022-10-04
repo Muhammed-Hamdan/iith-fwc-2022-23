@@ -1,0 +1,11 @@
+set_io reset	27
+set_io blink	57
+set_io redled	34
+set_io greenled		39
+set_io blueled		38
+
+
+
+
+
+
