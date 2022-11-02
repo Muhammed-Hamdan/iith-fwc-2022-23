@@ -1,5 +1,6 @@
 # To copy repository
 svn co https://github.com/Muhammed-Hamdan/iith-fwc-2022-23/trunk/ugv_integ
+cd ugv_integ
 
 # To build ESP32 firmware
 cd esp32_pwmctrl
