@@ -137,8 +137,8 @@ export MV=mv
 export ECHO=echo
 export PROJ_DIR=$(shell pwd)
 #export PROJ_ROOT=$(PROJ_DIR)/../../../..
-#export PROJ_ROOT=/data/data/com.termux/files/home/pygmy-dev/pygmy-sdk
-export PROJ_ROOT=/home/mh/qorc-sdk
+export PROJ_ROOT=/data/data/com.termux/files/home/pygmy-dev/pygmy-sdk
+#export PROJ_ROOT=/home/mh/qorc-sdk
 export OUTPUT_PATH=$(PROJ_DIR)/output
 export DEPEND_PATH=$(PROJ_DIR)/output/depend
 

@@ -11,6 +11,8 @@ pio run -t nobuild -t upload
 
 # To build m4 firmware
 cd m4_pwmctrl/GCC_Project
+# modify line 140 of config.mk to setup path to pygmy-sdk or qorc-sdk
+# default path is /data/data/com.termux/files/home/pygmy-dev/pygmy-sdk 
 make
 # If using termux, Use scp to send output/m4_pwmctrl.bin to PC
 
