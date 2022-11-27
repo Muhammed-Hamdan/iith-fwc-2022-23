@@ -1,0 +1,73 @@
+\documentclass[journal,10pt,twocolumn]{article}
+\usepackage{graphicx}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[cmex10]{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{dirtree}
+\usepackage{xcolor}
+
+\providecommand{\textblue}[1]{\textcolor{blue}{#1}}
+\providecommand{\textgreen}[1]{\textcolor{green}{#1}}
+\providecommand{\textred}[1]{\textcolor{red}{#1}}
+
+\title{\textbf{Format Instructions for File Collection Script}}
+
+\begin{document}
+
+\maketitle
+\paragraph{ This document describes the format specifications that have to followed in order for a custom shell script to successfully identify and collect the files of the matrices and optimization assignments.}
+
+\section{\large Directory structure}
+Given below is the directory structure to be followed while hosting the assignments on Github. Additional files and folders containing other assignments can be present. One of the folders (line) has been expanded to reveal the format of the file contents inside it. The same format must be followed for organizing the files of other assignments as well.\\
+\dirtree{%
+	.1 /. 
+	.2 matrices. 
+	.3 line. 
+	.4 \textred{codes}. 
+	.5 *\textblue{.py}. 
+	.4 \textred{figs}\DTcomment{Figures as .pdf or .png}. 
+	.5 *\textblue{.pdf}. 
+	.5 *\textblue{.pdf}. 
+	.5 *\textblue{.pdf}. 
+	.4 *\textblue{.aux}. 
+	.4 *\textblue{.log}. 
+	.4 *\textblue{.pdf}. 
+	.4 *\textblue{.tex}. 
+	.3 circle. 
+	.3 conic. 
+	.2 optimization. 
+	.3 basic. 
+	.3 advanced\\. 
+}
+The folder names that are not colored are compulsory phrases that can be part of a longer folder name. So, given the phrase 'matrices', the folder names like 'matrices\_assignment', 'module1 matrices' and 'matrices' are valid. The colored items (folder names in red and file names in blue) must be named exactly as given. Files with a '*' symbol can be given any name.
+
+\section{\large Github link}
+The link to be uploaded must be the link of the Github webpage that displays the topmost folders of the directory structure i.e folders with phrases matrices and optimization. The folders can be present at the top level of a repository or nested inside multiple folders of the repository.
+	\subsection{\normalsize Examples}
+		\begin{itemize}
+			\item \begin{verbatim} https://github.com/username/reponame \end{verbatim}
+			\item \begin{verbatim} https://github.com/username/reponame/tree
+			/main/folder1 \end{verbatim}
+			\item \begin{verbatim} https://github.com/username/reponame/tree
+			/main/folder1/folder2 \end{verbatim}
+		\end{itemize}
+
+\section{\large Assignment question}
+The possible formats while posting assignment questions from different textbooks/sources are described below. The blue colored text represent fields that must be substituted with appropriate values.
+	\subsection{\normalsize NCERT}
+		\begin{itemize}
+			\item Q(\textblue{qno}), Exercise \textblue{chno}\textbf{.}\textblue{exno}, Class \textblue{clsno}
+			\item Q(\textblue{qno}), Miscellaneous Exercise - Chapter \textblue{chno}, Class \textblue{clsno}
+			\item Q(\textblue{qno}), Example - Chapter \textblue{chno}, Class \textblue{clsno}
+		\end{itemize}
+		where
+		\begin{itemize}
+			\item[-] \textbf{qno}: Question number
+			\item[-] \textbf{chno}: Chapter number
+			\item[-] \textbf{exno}: Exercise number
+			\item[-] \textbf{clsno}: Class number
+		\end{itemize}
+
+\end{document}
