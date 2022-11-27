@@ -1,0 +1,59 @@
+/home/mh/vaman_integ/gpio_ctrl_test/GCC_Project/output/eoss3_hal_rtc.o: \
+ /home/mh/qorc-sdk/HAL/src/eoss3_hal_rtc.c \
+ /home/mh/vaman_integ/gpio_ctrl_test/inc/Fw_global_config.h \
+ /home/mh/qorc-sdk/HAL/inc/eoss3_dev.h \
+ /home/mh/qorc-sdk/Libraries/CMSIS/inc/core_cm4.h \
+ /home/mh/qorc-sdk/Libraries/CMSIS/inc/core_cmInstr.h \
+ /home/mh/qorc-sdk/Libraries/CMSIS/inc/core_cmFunc.h \
+ /home/mh/qorc-sdk/Libraries/CMSIS/inc/core_cm4_simd.h \
+ /home/mh/qorc-sdk/HAL/inc/eoss3_hal_rtc.h \
+ /home/mh/qorc-sdk/HAL/inc/eoss3_hal_def.h \
+ /home/mh/qorc-sdk/Libraries/Utils/inc/common.h \
+ /home/mh/qorc-sdk/HAL/inc/test_types.h \
+ /home/mh/vaman_integ/gpio_ctrl_test/inc/FreeRTOSConfig.h \
+ /home/mh/vaman_integ/gpio_ctrl_test/inc/Fw_global_config.h \
+ /home/mh/qorc-sdk/Libraries/Utils/inc/dbg_uart.h \
+ /home/mh/qorc-sdk/FreeRTOS/include/FreeRTOS.h \
+ /home/mh/qorc-sdk/FreeRTOS/include/projdefs.h \
+ /home/mh/qorc-sdk/FreeRTOS/include/portable.h \
+ /home/mh/qorc-sdk/FreeRTOS/include/deprecated_definitions.h \
+ /home/mh/qorc-sdk/FreeRTOS/portable/GCC/ARM_CM4F_quicklogic_s3XX/portmacro.h \
+ /home/mh/qorc-sdk/FreeRTOS/include/mpu_wrappers.h
+
+/home/mh/vaman_integ/gpio_ctrl_test/inc/Fw_global_config.h:
+
+/home/mh/qorc-sdk/HAL/inc/eoss3_dev.h:
+
+/home/mh/qorc-sdk/Libraries/CMSIS/inc/core_cm4.h:
+
+/home/mh/qorc-sdk/Libraries/CMSIS/inc/core_cmInstr.h:
+
+/home/mh/qorc-sdk/Libraries/CMSIS/inc/core_cmFunc.h:
+
+/home/mh/qorc-sdk/Libraries/CMSIS/inc/core_cm4_simd.h:
+
+/home/mh/qorc-sdk/HAL/inc/eoss3_hal_rtc.h:
+
+/home/mh/qorc-sdk/HAL/inc/eoss3_hal_def.h:
+
+/home/mh/qorc-sdk/Libraries/Utils/inc/common.h:
+
+/home/mh/qorc-sdk/HAL/inc/test_types.h:
+
+/home/mh/vaman_integ/gpio_ctrl_test/inc/FreeRTOSConfig.h:
+
+/home/mh/vaman_integ/gpio_ctrl_test/inc/Fw_global_config.h:
+
+/home/mh/qorc-sdk/Libraries/Utils/inc/dbg_uart.h:
+
+/home/mh/qorc-sdk/FreeRTOS/include/FreeRTOS.h:
+
+/home/mh/qorc-sdk/FreeRTOS/include/projdefs.h:
+
+/home/mh/qorc-sdk/FreeRTOS/include/portable.h:
+
+/home/mh/qorc-sdk/FreeRTOS/include/deprecated_definitions.h:
+
+/home/mh/qorc-sdk/FreeRTOS/portable/GCC/ARM_CM4F_quicklogic_s3XX/portmacro.h:
+
+/home/mh/qorc-sdk/FreeRTOS/include/mpu_wrappers.h:
