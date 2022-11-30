@@ -1,4 +1,4 @@
-\documentclass[journal,10pt]{article}
+\documentclass[journal,10pt,twocolumn]{article}
 \usepackage{graphicx}
 \usepackage[margin=0.5in]{geometry}
 \usepackage[cmex10]{amsmath}
@@ -25,49 +25,10 @@ According to the EOSS3 Technical Reference Manual (TRM), the ARM M4-F core can o
 	\item If the IO pin is used as output, its driver must be set to FPGA.
 	\item If the IO pin is used as input, its driver must be set to a register belonging to the Always-On power domain
 \end{enumerate}
-The above configurations can be done by writing appropiate values to the PAD\_x\_CTRL registers. If an IO controller is present on the FPGA, the M4 can access all the IO pins by writing to and reading from a few registers present in the IO controller.
-
-\section{\large C-function for IO}
+The above configurations can be done by writing appropiate values to the PAD\_x\_CTRL registers. If an IO controller is present on the FPGA, the M4 can access all the IO pins by writing to and reading from a few registers present in the IO controller. \\\\
+The C-function definition to configure the IO pins (PyHal\_GPIO\_Set) can be found in below link (lines 134-166):
 \begin{verbatim}
-//gpionum --> 0 --> 31 corresponding to the IO PADs
-//gpioval --> 0 or 1
-#define FGPIO_DIRECTION_REG (0x40024008)
-#define FGPIO_OUTPUT_REG (0x40024004)
-#define FGPIO_INPUT_REG (0x40024000)
-
-#define IO_MUX_FUNC_1 		(0x00000001)
-#define IO_MUX_CTRL_MASK 	(0x00000018)
-#define IO_MUX_CTRL_FABRIC 	(0x00000010)
-//Set GPIO(=gpionum) Mode: Input(iomode = 0) or Output(iomode = 1)
-//Before Set/Get GPIO value, the direction must be correctly set
-void PyHal_GPIO_SetDir(uint8_t gpionum,uint8_t iomode)
-{
-    uint32_t tempscratch32;
-    __IO uint32_t *pad_ctrl = NULL;
-
-    if (gpionum > 31)
-        return;
-
-    // IO_MUX setting for any pin used by GPIO controller:
-    // common: make funcsel FBIO_x
-    // output: make control fabric, input: make control A0 reg
-
-    pad_ctrl = (__IO uint32_t*)IO_MUX_BASE + (uint32_t)gpionum;
-    *pad_ctrl &= (~IO_MUX_CTRL_MASK);
-    *pad_ctrl |= (uint32_t)(iomode!=0)*IO_MUX_CTRL_FABRIC;
-    if(iomode!=0)
-	*pad_ctrl |= IO_MUX_CTRL_FABRIC;
-    if(gpionum==0 || gpionum==1 || gpionum==15 || gpionum==17) 
-	*pad_ctrl |= IO_MUX_FUNC_1;
-    
-
-    tempscratch32 = *(uint32_t*)(FGPIO_DIRECTION_REG);
-    if (iomode)
-        *(uint32_t*)(FGPIO_DIRECTION_REG) = tempscratch32 | (0x1 << gpionum);
-    else
-        *(uint32_t*)(FGPIO_DIRECTION_REG) = tempscratch32 & (~(0x1 << gpionum));
-
-}
+https://github.com/Muhammed-Hamdan/iith-fwc-2022
+-23/blob/main/fwc_arm/setup/gpio_fix/src/main.c
 \end{verbatim}
-
 \end{document}
