@@ -1,0 +1,23 @@
+set_io in_data(0)   IO_2
+set_io in_data(1)   IO_3
+set_io in_data(2)   IO_4
+set_io in_data(3)   IO_5
+set_io in_data(4)   IO_6
+set_io in_data(5)   IO_7
+set_io in_data(6)   IO_8
+set_io in_data(7)   IO_10
+
+set_io count(0)   IO_18
+set_io count(1)   IO_19
+set_io count(2)   IO_20
+set_io count(3)   IO_21
+set_io count(4)   IO_22
+set_io count(5)   IO_23
+set_io count(6)   IO_24
+set_io count(7)   IO_25
+
+set_io latch	IO_26
+set_io dec	IO_27
+set_io div	IO_28
+set_io zero	IO_29
+set_io clk	IO_30
