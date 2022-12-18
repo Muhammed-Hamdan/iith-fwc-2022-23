@@ -6,7 +6,7 @@ maxrange = 100
 x = np.linspace(-1, maxlim, maxrange) #points on x-axis
 simlen = int(1e6) #number of samples
 cdf = [] #declaring probability list
-uni_randvar = np.loadtxt('uni.dat',dtype='double')
+uni_randvar = np.loadtxt('../rvsample/uni.dat',dtype='double')
 tran_randvar = -2*np.log(1-uni_randvar)
 
 for i in range(0,maxrange):
