@@ -1,0 +1,1264 @@
+\documentclass[journal,10pt,twocolumn]{IEEEtran}
+\usepackage{graphicx}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[cmex10]{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{dirtree}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage[justification=centering,font={rm,md,scriptsize}]{caption}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{mathtools}
+%\usepackage{hyperref}
+
+
+%Add chapter functionality in IEEEtran class
+\newcounter{Chapcounter}
+\newcommand\showmycounter{\addtocounter{Chapcounter}{1}\themycounter}
+\newcommand{\chapter}[1] 
+{ {\centering          
+  \addtocounter{Chapcounter}{1} \large \textbf{Chapter \theChapcounter ~#1}}  
+  \addcontentsline{toc}{section}{Chapter ~\theChapcounter~~ #1}    
+  \setcounter{section}{0}
+}
+%%%%
+
+\counterwithin{enumi}{section}
+\counterwithin{equation}{enumi}
+\counterwithin{figure}{enumi}
+
+\renewcommand\thesection{\theChapcounter.\arabic{section}}
+\renewcommand\thesectiondis{\theChapcounter.\arabic{section}}
+\newcommand\figref{Fig.~\ref}
+
+\setenumerate{label=\thesection.\arabic*}
+
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+\providecommand{\ztrans}{\overset{\mathcal{Z}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\gauss}[2]{\mathcal{N}\ensuremath{\left(#1,#2\right)}}
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+
+\let\vec\mathbf
+
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+
+\begin{document}
+
+\title{Digital Communication}
+\author{Mohamed Hamdan}
+\date{December 2022}
+
+\maketitle
+
+\tableofcontents
+
+\bigskip
+
+\chapter{Two Dice}
+\section{Sum of Independant Random Variables}
+Two dice, one blue and one grey, are thrown at the same time.   The event defined by the sum of the two numbers appearing on the top of the dice can have 11 possible outcomes 2, 3, 4, 5, 6, 6, 8, 9, 10, 11 and 12.  A student argues that each of these outcomes has a probability $\frac{1}{11}$.  Do you agree with this argument?  Justify your answer.
+%
+
+\begin{enumerate}
+\item  {\em The Uniform Distribution: }Let $X_i \in \cbrak{1,2,3,4,5,6}, i = 1,2,$ be the random variables representing the outcome for each die.  Assuming the dice to be fair, the probability mass function (pmf) is expressed as 
+\begin{align}
+\label{eq:dice_pmf_xi}
+p_{X_i}(n) = \pr{X_i = n} = 
+\begin{cases}
+\frac{1}{6} & 1 \le n \le 6
+\\
+0 & otherwise
+\end{cases}
+\end{align}
+The desired outcome is
+\begin{align}
+\label{eq:dice_xdef}
+X &= X_1 + X_2,
+\\
+\implies X &\in \cbrak{1,2,\dots,12}
+\end{align}
+%
+The objective is to show that
+\begin{align}
+p_X(n) \ne \frac{1}{11}
+\label{eq:dice_wrong}
+\end{align}
+\item {\em Convolution: }
+From \eqref{eq:dice_xdef},
+\begin{align}
+p_X(n) &= \pr{X_1 + X_2 = n} = \pr{X_1  = n -X_2}
+\\
+&= \sum_{k}^{}\pr{X_1  = n -k | X_2 = k}p_{X_2}(k)
+\label{eq:dice_x_sum}
+\end{align}%
+after unconditioning.  $\because X_1$ and $X_2$ are independent,
+\begin{multline}
+\pr{X_1  = n -k | X_2 = k} 
+\\
+= \pr{X_1  = n -k} = p_{X_1}(n-k)
+\label{eq:dice_x1_indep}
+\end{multline}
+From \eqref{eq:dice_x_sum} and \eqref{eq:dice_x1_indep},
+\begin{align}
+p_X(n) = \sum_{k}^{}p_{X_1}(n-k)p_{X_2}(k) = p_{X_1}(n)*p_{X_2}(n)
+\label{eq:dice_x_conv}
+\end{align}
+where $*$ denotes the convolution operation. 
+%\cite{proakis_dsp}.  
+Substituting from \eqref{eq:dice_pmf_xi}
+in \eqref{eq:dice_x_conv},
+\begin{align}
+p_X(n) = \frac{1}{6}\sum_{k=1}^{6}p_{X_1}(n-k)= \frac{1}{6}\sum_{k=n-6}^{n-1}p_{X_1}(k)
+\label{eq:dice_x_conv_x1}
+\end{align}
+\begin{align}
+\because p_{X_1}(k) &= 0, \quad k \le 1, k \ge 6.
+\end{align}
+From \eqref{eq:dice_x_conv_x1},
+%
+\begin{align}
+p_X(n) &= 
+\begin{cases}
+0 & n < 1
+\\
+\frac{1}{6}\sum_{k=1}^{n-1}p_{X_1}(k) &  1 \le n-1 \le  6
+\\
+\frac{1}{6}\sum_{k=n-6}^{6}p_{X_1}(k) & 1 < n-6 \le 6
+\\
+0 & n > 12
+\end{cases}
+\label{eq:dice_x_conv_cond}
+\end{align}
+Substituting from \eqref{eq:dice_pmf_xi} in \eqref{eq:dice_x_conv_cond},
+\begin{align}
+p_X(n) &= 
+\begin{cases}
+0 & n < 1
+\\
+\frac{n-1}{36} &  2 \le n \le  7
+\\
+\frac{13-n}{36} & 7 < n \le 12
+\\
+0 & n > 12
+\end{cases}
+\label{eq:dice_x_conv_final}
+\end{align}
+satisfying \eqref{eq:dice_wrong}.
+\item {\em The $Z$-transform: }
+The $Z$-transform of $p_X(n)$ is defined as 
+%\cite{proakis_dsp}
+\begin{align}
+P_X(z) = \sum_{n = -\infty}^{\infty}p_X(n)z^{-n}, \quad z \in \mathbb{C}
+\label{eq:dice_xz}
+\end{align}
+%
+From \eqref{eq:dice_pmf_xi} and \eqref{eq:dice_xz}, 
+\begin{align}
+P_{X_1}(z) =P_{X_2}(z) &= \frac{1}{6}\sum_{n = 1}^{6}z^{-n}
+\\
+&=\frac{z^{-1}\brak{1-z^{-6}}}{6\brak{1-z^{-1}}}, \quad \abs{z} > 1
+\label{eq:dice_xiz}
+\end{align}
+upon summing up the geometric progression.  
+\begin{align}
+\because p_X(n) &= p_{X_1}(n)*p_{X_2}(n),
+\\
+P_X(z) &= P_{X_1}(z)P_{X_2}(z)
+\label{eq:dice_xzprod_def}
+\end{align}
+The above property follows from Fourier analysis and is fundamental to signal processing. 
+%\cite{proakis_dsp}. 
+From \eqref{eq:dice_xiz} and \eqref{eq:dice_xzprod_def},
+\begin{align}
+P_X(z) &= \cbrak{\frac{z^{-1}\brak{1-z^{-6}}}{6\brak{1-z^{-1}}}}^2
+\\
+&= \frac{1}{36}\frac{z^{-2}\brak{1-2z^{-6}+z^{-12}}}{\brak{1-z^{-1}}^2}
+\label{eq:dice_xzprod}
+\end{align}
+Using the fact that 
+%\cite{proakis_dsp}
+\begin{align}
+p_X(n-k) &\system{Z}P_X(z)z^{-k},
+\\
+nu(n)&\system{Z} \frac{z^{-1}}{\brak{1-z^{-1}}^2}
+\end{align}
+after some algebra, it can be shown that
+%{\tiny
+\begin{multline}
+\frac{1}{36}\lsbrak{\brak{n-1}u(n-1) - 2 \brak{n-7}u(n-7)}
+\\
+\rsbrak{ +\brak{n-13}u(n-13)}
+\\
+\system{Z}
+\frac{1}{36}\frac{z^{-2}\brak{1-2z^{-6}+z^{-12}}}{\brak{1-z^{-1}}^2}
+\label{eq:dice_xz_closed}
+\end{multline}
+%}
+
+where 
+\begin{align}
+u(n) =
+\begin{cases}
+1 & n \ge 0
+\\
+0 & n < 0
+\end{cases}
+\end{align}
+
+From \eqref{eq:dice_xz}, \eqref{eq:dice_xzprod} and \eqref{eq:dice_xz_closed}
+\begin{multline}
+p_{X}(n) = \frac{1}{36}\lsbrak{\brak{n-1}u(n-1) 
+}
+\\
+\rsbrak{- 2 \brak{n-7}u(n-7)+\brak{n-13}u(n-13)}
+\end{multline}
+which is the same as \eqref{eq:dice_x_conv_final}.  Note that  \eqref{eq:dice_x_conv_final} can be obtained from \eqref{eq:dice_xz_closed} using contour integration as well.
+% \cite{proakis_dsp}.  
+
+\item 
+The experiment of rolling the dice was simulated using Python for 10000 samples.  These were generated using Python libraries for uniform distribution. The frequencies for each outcome were then used to compute the resulting pmf, which  is plotted in Figure \ref{fig:dice}.  The theoretical pmf obtained in \eqref{eq:dice_x_conv_final} is plotted for comparison.  
+%
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter1/pmf.pdf}
+\caption{Plot of $p_X(n)$.  Simulations are close to the analysis. }
+\label{fig:dice}
+\end{figure}
+\item The python code is available in 
+\begin{lstlisting}
+/codes/chapter1/dice.py
+\end{lstlisting}
+
+\end{enumerate}
+
+\chapter{Random Numbers}
+\section{Uniform Random Numbers}
+Let $U$ be a uniform random variable between 0 and 1.
+\begin{enumerate}
+\item Generate $10^6$ samples of $U$ using a C program and save into a file called uni.dat .
+\label{prob:uni_gen}
+\\
+\solution Download the following files and execute the  C program.
+\begin{lstlisting}
+codes/include/coeffs.h
+codes/chapter2/uni_gen_stat.c
+\end{lstlisting}
+
+%
+\item
+Load the uni.dat file into python and plot the empirical CDF of $U$ using the samples in uni.dat. The CDF is defined as
+\begin{align}
+F_{U}(x) = \pr{U \le x}
+\end{align}
+\\
+\solution  The following code plots \figref{fig:uni_cdf}
+\begin{lstlisting}
+codes/chapter2/cdf_plot_uni.py
+\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter2/uni_cdf.pdf}
+\caption{The CDF of $U$}
+\label{fig:uni_cdf}
+\end{figure}
+
+%
+\item
+Find a  theoretical expression for $F_{U}(x)$.\\
+\solution
+\begin{align} 
+F_{U}(x) = \int_{-\infty}^{x} f_{U}(x)\,dx
+\label{eq:pdf_to_cdf}
+\end{align}
+For the uniform random variable $U$, $f_{U}(x)$ is given by  
+\begin{align}
+	f_U(x) &= 
+	\begin{cases}
+	1 &  0 \le x \le  1
+	\\
+	0 & elsewhere
+	\\
+	\end{cases}
+	\label{eq:uni_pdf}
+\end{align}
+Substituting \eqref{eq:uni_pdf} in \eqref{eq:pdf_to_cdf}, $F_U(x)$ is found to be
+\begin{align}
+	F_U(x) &= 
+	\begin{cases}
+	0 & x < 0
+	\\	
+	x & 0 \le x \le  1
+	\\
+	1 & x > 0
+	\\
+	\end{cases}
+	\label{eq:uni_cdf}
+\end{align}
+
+\item
+\label{prob:print_uni}
+The mean of $U$ is defined as
+%
+\begin{equation}
+E\sbrak{U} = \frac{1}{N}\sum_{i=1}^{N}U_i
+\end{equation}
+%
+and its variance as
+%
+\begin{equation}
+\text{var}\sbrak{U} = E\sbrak{U- E\sbrak{U}}^2 
+\end{equation}
+
+Write a C program to  find the mean and variance of $U$.\\
+\solution The following code prints the mean and variance of $U$
+\begin{lstlisting}
+codes/chapter2/uni_gen_stat.c
+\end{lstlisting}
+The output of the program is
+\begin{verbatim}
+Uniform stats:
+Mean: 0.500007
+Variance: 0.083301
+\end{verbatim}
+
+\item Verify your result theoretically given that
+%
+\begin{equation}
+E\sbrak{U^k} = \int_{-\infty}^{\infty}x^kdF_{U}(x)
+\end{equation}\\
+\solution For a random variable $X$, the mean $\mu_X$ and variance $\sigma_X^2$ are given by
+\begin{align}
+	\label{eq:mean_exp}
+	\mu_X &= E\sbrak{X} = \int_{-\infty}^{\infty}xdF_{U}(x) \\
+	\label{eq:var_exp}
+	\sigma_X^2 &= E\sbrak{X^2} - \mu_X^2 = \int_{-\infty}^{\infty}x^2dF_{U}(x) - \mu_X^2
+\end{align}  
+Substituting the CDF of $U$ from \eqref{eq:uni_cdf} in \eqref{eq:mean_exp} and \eqref{eq:var_exp}, we get
+\begin{align}
+	\label{eq:mean_uni}
+	\mu_U &= \frac{1}{2} \\
+	\label{eq:var_uni}
+	\sigma_U^2 &= \frac{1}{12}
+\end{align}  
+which match with the values printed in problem \ref{prob:print_uni}
+\end{enumerate}
+\section{Central Limit Theorem}
+\begin{enumerate}
+%
+%
+\item
+Generate $10^6$ samples of the random variable
+%
+\begin{equation}
+X = \sum_{i=1}^{12}U_i -6
+\end{equation}
+%
+using a C program, where $U_i, i = 1,2,\dots, 12$ are  a set of independent uniform random variables between 0 and 1
+and save in a file called gau.dat\\
+\solution Download the following files and execute the  C program.
+\begin{lstlisting}
+codes/include/coeffs.h
+codes/chapter2/gau_gen_stat.c
+\end{lstlisting}
+%
+\item
+Load gau.dat in python and plot the empirical CDF of $X$ using the samples in gau.dat. What properties does a CDF have?
+\\
+\solution The CDF of $X$ is plotted in \figref{fig:gauss_cdf}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter2/gau_cdf.pdf}
+\caption{The CDF of $X$}
+\label{fig:gauss_cdf}
+\end{figure}
+The properties of a CDF are
+\begin{eqnarray}
+	F_X(-\infty) = 0\\
+	F_X(\infty) = 1\\
+	\frac{dF_X(x)}{dx} \ge 0
+\end{eqnarray}
+\item
+Load gau.dat in python and plot the empirical PDF of $X$ using the samples in gau.dat. The PDF of $X$ is defined as
+\begin{align}
+p_{X}(x) = \frac{d}{dx}F_{X}(x)
+\end{align}
+What properties does the PDF have?
+\\
+\solution The PDF of $X$ is plotted in \figref{fig:gauss_pdf} using the code below
+\begin{lstlisting}
+codes/chapter2/cdf_pdf_plot_gau.py
+\end{lstlisting}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter2/gau_pdf.pdf}
+\caption{The PDF of $X$}
+\label{fig:gauss_pdf}
+\end{figure}
+
+The properties of PDF are
+\begin{eqnarray}
+	f_X(x) \ge 0\\
+	\int_{-\infty}^{\infty} f_X(x) \,dx = 1
+\end{eqnarray}
+
+\item Find the mean and variance of $X$ by writing a C program.
+\solution The following code prints the mean and variance of $X$
+\begin{lstlisting}
+codes/chapter2/gau_gen_stat.c
+\end{lstlisting}
+The output of the program is
+\begin{verbatim}
+Gaussian stats:
+Mean: 0.000294
+Variance: 0.999562	
+\end{verbatim}
+\item Given that 
+\begin{align}
+p_{X}(x) = \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}}, -\infty < x < \infty,
+\label{eq:gau_pdf}
+\end{align}
+repeat the above exercise theoretically.\\
+\solution Substituting the PDF from \eqref{eq:gau_pdf} in \eqref{eq:mean_exp},
+\begin{flalign}
+	\mu_X &= \int_{-\infty}^{\infty} \frac{x}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}} \,dx&\\
+	\intertext{Using}&\\
+	\int x \cdot \exp \left( -a x^2 \right) \mathrm{d}x &= -\frac{1}{2a} \cdot \exp \left( -a x^2 \right)&\\
+	\mu_X &= \frac{1}{\sqrt{2\pi}}\left[-\exp\brak{-\frac{x^2}{2}}\right]_{-\infty}^{\infty}&\\  
+	\mu_X &= 0
+\end{flalign}
+Substituting $\mu_X$ and the PDF in \eqref{eq:var_exp} to compute variance,
+\begin{flalign}
+	\sigma_X^2 &= \int_{-\infty}^{\infty} \frac{x^2}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}} \,dx&\\ \nonumber
+	\intertext{Substituting} t &= \frac{x^2}{2},&\\	
+	\sigma_X^2 &= \frac{2}{\sqrt{\pi}} \int_{0}^{\infty} t^{\frac{1}{2}}\exp\brak{-t} \,dt&\\	\nonumber
+	&= \frac{2}{\sqrt{\pi}} \int_{0}^{\infty} t^{\frac{3}{2}-1}\exp\brak{-t} \,dt&\\
+	\intertext{Using the gamma function} \Gamma(x) &= \int_{0}^{\infty} z^{x-1} \cdot e^{-z} \, \mathrm{d}z \,&\\
+	\sigma_X^2 &= \frac{2}{\sqrt{\pi}}\Gamma(\frac{3}{2})&\\	\nonumber
+	&= \frac{2}{\sqrt{\pi}}\frac{\sqrt{\pi}}{2}&\\	\nonumber
+	&=1	
+\end{flalign}
+%
+\end{enumerate}
+\section{From Uniform to Other}
+\begin{enumerate}
+%
+\item
+Generate samples of 
+%
+\begin{equation}
+V = -2\ln\brak{1-U}
+\end{equation}
+%
+and plot its CDF. \\
+\solution The samples for $U$ are loaded from uni.dat file generated in problem \ref{prob:print_uni}. The CDF of $V$ is plotted in \figref{fig:log_uni_cdf} using the code below, 
+\begin{lstlisting}
+codes/chapter2/function_1.py
+\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter2/log_uni_cdf.pdf}
+\caption{The CDF of $V$}
+\label{fig:log_uni_cdf}
+\end{figure}
+\item Find a theoretical expression for $F_V(x)$.
+\begin{flalign}
+	F_V(x) &= P(V < x)&\\
+	&= P(-2\ln\brak{1-U} < x)&\\
+	&= P(U < 1 - e^{\frac{-x}{2}})&\\
+	&= F_U(1 - e^{\frac{-x}{2}})
+\end{flalign}
+Using $F_U(x)$ defined in \eqref{eq:uni_cdf},
+\begin{align}
+	F_V(x) &=
+	\begin{cases}
+		0 & x < 0\\
+		1 - e^{\frac{-x}{2}} & x \ge 0
+	\end{cases}
+\end{align} 
+%
+%\item
+%Generate the Rayleigh distribution from Uniform. Verify your result through graphical plots.
+\end{enumerate}
+
+\section{Triangular Distribution}
+%
+\begin{enumerate}
+\item Generate 
+	\begin{align}
+		T = U_1+U_2
+	\end{align}\\
+\solution Download the following files and execute the  C program.
+\begin{lstlisting}
+codes/include/coeffs.h
+codes/chapter2/two_uni_gen.c
+\end{lstlisting}
+\item Find the CDF of $T$.\\
+\solution Loading the samples from uni1.dat and uni2.dat in python, the CDF is plotted in \figref{fig:tri_cdf} 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter2/tri_cdf.pdf}
+\caption{The CDF of $T$}
+\label{fig:tri_cdf}
+\end{figure}
+\item Find the PDF of $T$.\\
+\solution The PDF of $T$ is plotted in \figref{fig:tri_pdf} using the code below
+\begin{lstlisting}
+codes/chapter2/function_2.py
+\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter2/tri_pdf.pdf}
+\caption{The PDF of $T$}
+\label{fig:tri_pdf}
+\end{figure}
+\item Find the theoretical expressions for the PDF and CDF of $T$.\\
+\solution Since $T$ is the sum of two independant random variables $U1$ and $U2$, the PDF of $T$ is given by
+\begin{flalign}
+	p_T(x) &= p_{U1}(x) \ast p_{U2}(x)
+\end{flalign}
+Using the PDF of $U$ from \eqref{eq:uni_pdf}, the convolution results in
+\begin{align}
+	p_T(x) &=
+	\begin{cases}
+		0 & x < 0\\
+		x & 0 \le x \le 1\\
+		2-x & 1 \le x \le 2\\
+		0 & x > 2
+	\end{cases}
+	\label{eq:tri_pdf}
+\end{align}
+The CDF of $T$ is found using \eqref{eq:pdf_to_cdf} by replacing $U$ with $T$. Evaluating the integral for the piecewise function $p_T(x)$, 
+\begin{align}
+	F_T(x) &=
+	\begin{cases}
+		0 & x < 0\\
+		\frac{x^2}{2} & 0 \le x \le 1\\
+		2x-\frac{x^2}{2}-1 & 1 \le x \le 2\\
+		1 & x > 2
+	\end{cases}
+\end{align}
+\item Verify your results through a plot. \\
+\solution The theoretical and numerical plots for the CDF and PDF of $T$ closely match in \figref{fig:tri_cdf} and \figref{fig:tri_pdf}
+\end{enumerate}
+\chapter{Maximum Likelihood Detection: BPSK}
+\section{Maximum Likelihood}
+\begin{enumerate}
+\item Generate equiprobable $X \in \cbrak{1,-1}$.
+\item Generate 
+\begin{equation}
+Y = AX+N,
+\end{equation}
+		where $A = 5$ dB,  and $N \sim \gauss{0}{1}$.
+	\item Plot $Y$ using a scatter plot.
+	\item Guess how to estimate $X$ from $Y$.
+\item
+\label{ml-ch4_sim}
+Find 
+\begin{equation}
+	P_{e|0} = \pr{\hat{X} = -1|X=1}
+\end{equation}
+and 
+\begin{equation}
+	P_{e|1} = \pr{\hat{X} = 1|X=-1}
+\end{equation}
+%
+\item Find $P_e$ assuming that $X$ has equiprobable symbols.
+
+%
+\item
+Verify by plotting  the theoretical $P_e$ with respect to $A$ from 0 to 10 dB.  
+%
+\item Now, consider a threshold $\delta$  while estimating $X$ from $Y$. Find the value of $\delta$ that maximizes the theoretical $P_e$.
+\item Repeat the above exercise when 
+	\begin{align}
+		p_{X}(0) = p
+	\end{align}
+\item Repeat the above exercise using the MAP criterion.
+
+\end{enumerate}
+\chapter{Transformation of Random Variables}
+\section{Gaussian to Other}
+\begin{enumerate}
+\item
+Let $X_1 \sim  \gauss{0}{1}$ and $X_2 \sim  \gauss{0}{1}$. Plot the CDF and PDF of
+%
+\begin{equation}
+V = X_1^2 + X_2^2
+\end{equation}
+%
+
+%
+%
+\item
+If
+%
+\begin{equation}
+F_{V}(x) = 
+\begin{cases}
+1 - e^{-\alpha x} & x \geq 0 \\
+0 & x < 0,
+\end{cases}
+\end{equation}
+%
+find $\alpha$.
+
+%
+\item
+\label{ch3_raleigh_sim}
+Plot the CDF and PDf of
+%
+\begin{equation}
+A = \sqrt{V}
+\end{equation}
+%
+
+
+\end{enumerate}
+
+\section{Conditional Probability}
+\begin{enumerate}
+\item
+\label{ch4_sim}
+Plot 
+\begin{equation}
+P_e = \pr{\hat{X} = -1|X=1}
+\end{equation}
+%
+for 
+\begin{equation}
+Y = AX+N,
+\end{equation}
+where $A$ is Raleigh with $E\sbrak{A^2} = \gamma, N \sim \gauss{0}{1}, X \in \brak{-1,1}$ for $0 \le \gamma \le 10$ dB.
+
+%
+\item
+Assuming that $N$ is a constant, find an expression for $P_e$.  Call this $P_e(N)$
+
+%
+\item
+%
+\label{ch4_anal}
+For a function $g$,
+\begin{equation}
+E\sbrak{g(X)} = \int_{-\infty}^{\infty}g(x)p_{X}(x)\, dx
+\end{equation}
+%
+Find $P_e = E\sbrak{P_e(N)}$.
+
+%
+\item
+Plot $P_e$ in problems \ref{ch4_sim} and \ref{ch4_anal} on the same graph w.r.t $\gamma$.  Comment.
+
+\end{enumerate}
+\chapter{Bivariate Random Variables: FSK}
+\section{Two Dimensions}
+Let 
+\begin{equation}
+\mbf{y} = A\mbf{x} + \mbf{n},
+\end{equation}
+where 
+\begin{align}
+x &\in \brak{\mbf{s}_0,\mbf{s}_1}, 
+\mbf{s}_0 = 
+\begin{pmatrix}
+1 
+\\
+0
+\end{pmatrix},
+\mbf{s}_1 = 
+\begin{pmatrix}
+0 
+\\
+1
+\end{pmatrix}
+\\
+\mbf{n} &= 
+\begin{pmatrix}
+n_1
+\\
+n_2
+\end{pmatrix},
+n_1,n_2 \sim \gauss{0}{1}.
+\end{align}
+%
+\begin{enumerate}
+%%
+\item
+\label{ch5_fsk}
+Plot 
+%
+\begin{equation}
+\mbf{y}|\mbf{s}_0 \text{ and } \mbf{y}|\mbf{s}_1
+\end{equation}
+%
+on the same graph using a scatter plot.
+
+%
+\item
+For the above problem, find a decision rule for detecting the symbols $\mbf{s}_0 $ and $\mbf{s}_1$.
+
+%
+\item
+Plot 
+\begin{equation} 
+P_e = \pr{\hat{\mbf{x}} = \mbf{s}_1|\mbf{x} = \mbf{s}_0}
+\end{equation}
+with respect to the SNR from 0 to 10 dB.
+
+%
+\item
+Obtain an expression for $P_e$. Verify this by comparing the theory and simulation plots on the same graph.
+
+%
+		\end{enumerate}
+\chapter{Exercises}
+\section{BPSK}
+\begin{enumerate}
+\item
+The {\em signal constellation diagram} for BPSK is given by Fig. \ref{fig:bpsk_const}.  The symbols $s_0$ and $s_1$ are equiprobable.  $\sqrt{E_b}$ is the energy transmitted per bit. Assuming a zero mean additive white gaussian noise (AWGN) with variance $\frac{N_0}{2}$,
+obtain the symbols that are received.
+
+%
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter6/bpsk_const.eps}
+\caption{}
+\label{fig:bpsk_const}
+\end{figure}
+\solution The possible received symbols are
+\begin{align}
+y|s_0 &= \sqrt{E_b} + n
+\\
+y|s_1 &= -\sqrt{E_b} + n
+\end{align}
+%
+where the AWGN $n \sim \gauss{0}{\frac{N_0}{2}}$.
+%
+\item
+\label{prob:bpsk_decision}
+From Fig. \ref{fig:bpsk_const} obtain a decision rule for BPSK
+
+\solution The decision rule is
+\begin{equation}
+y \dec{s_0}{s_1} 0
+\end{equation}
+\item
+Repeat the previous exercise using the MAP criterion.
+
+\item
+Using the decision rule in Problem \ref{prob:bpsk_decision}, obtain an expression for the probability of error for BPSK.
+
+\solution
+Since the symbols are equiprobable, it is sufficient if the error is calculated assuming that a 0 was sent.  This results in
+\begin{align}
+P_e &= \pr{y < 0|s_0} = \pr{\sqrt{E_b} + n < 0}
+\\
+&= \pr{ -n > \sqrt{E_b} } = \pr{ n > \sqrt{E_b} }
+\label{eq:bpsk_proof_n0}
+\end{align}
+since $n$ has a symmetric pdf.
+Let $w \sim \gauss{0}{1}$.  Then $n = \sqrt{\frac{N_0}{2}}w$. Substituting this in \eqref{eq:bpsk_proof_n0},
+\begin{align}
+P_e &=  \pr{ \sqrt{\frac{N_0}{2}}w > \sqrt{E_b} } = \pr{ w > \sqrt{\frac{2E_b}{N_0}} }
+\\
+&= \qfunc{\sqrt{\frac{2E_b}{N_0}}}
+\end{align}
+%
+where $\qfunc{x} \triangleq \pr{w > x}, x \ge 0$.
+\item
+The PDF of $w \sim \gauss{0}{1}$ is given by
+%
+\begin{equation}
+p_{w}(x) = \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}}, -\infty < x < \infty
+\end{equation}
+and the complementary error function is defined as
+\begin{equation}
+\operatorname {erfc} (x)={\frac {2}{\sqrt {\pi }}}\int _{x}^{\infty }e^{-t^{2}}\,dt.
+\end{equation}
+%
+Show that 
+\begin{equation}
+Q(x) = \frac{1}{2}\operatorname {erfc}\left({\frac  {x}{{\sqrt  {2}}}}\right)
+\end{equation}
+
+\item
+Verify the bit error rate (BER) plots for BPSK through simulation and analysis for 0 to 10 dB.
+
+\solution
+The following code
+%\lstinputlisting{./codes/bpsk_ber.py}
+%\iffalse
+\begin{lstlisting}
+codes/bpsk_ber.py
+\end{lstlisting}
+%	\fi
+yields \figref{fig:bpsk_ber}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter6/bpsk_ber.eps}
+\caption{}
+\label{fig:bpsk_ber}
+\end{figure}
+
+\item
+Show that
+\begin{equation}
+Q(x) = \frac{1}{\pi}\int^{\frac{\pi}{2}}_{0}e^{-\frac{x^2}{2\sin^2 \theta}}\,d\theta
+\end{equation}
+\end{enumerate}
+\section{Coherent BFSK}
+\begin{enumerate}
+\item
+The signal constellation for binary frequency shift keying (BFSK) is given in \figref{fig:bfsk_const}.
+Obtain the equations for the received symbols.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter6/bfsk_const.eps}
+\caption{}
+\label{fig:bfsk_const}
+\end{figure}
+\solution
+The received symbols are given by
+\begin{align}
+\mathbf{y}|s_0 = 
+\myvec{
+\sqrt{E_b} \\
+0
+}
++
+\myvec{
+ n_{1}\\
+n_{2}
+},
+\end{align}
+and 
+\begin{align}
+\mathbf{y}|s_1 = 
+\myvec{
+0\\
+\sqrt{E_b} 
+}
++
+\myvec{
+n_{1}\\
+ n_{2}
+},
+\end{align}
+where $n_1,n_2 \sim \gauss{0}{\frac{N_0}{2}}$. and
+$
+\mathbf{y} = 
+\myvec{
+y_{1}\\
+ y_{2}
+}
+$.
+\item
+Obtain a decision rule for BFSK from \figref{fig:bfsk_const}.
+
+\solution The decision rule is
+\begin{equation}
+y_1 \dec{s_0}{s_1} y_2
+\end{equation}
+\item
+Repeat the previous exercise using the MAP criterion.
+
+\item
+Derive and plot the probability of error.  Verify through simulation.
+\end{enumerate}
+
+%
+\section{QPSK}
+\begin{enumerate}
+\item
+Let
+\begin{equation}
+\mathbf{r} = \mathbf{s}+ \mathbf{n}
+\end{equation}
+where $\mathbf{s} \in \cbrak{s_0,s_1,s_2, s_3}$ and
+\begin{align}
+\mathbf{s}_0 &= 
+\myvec{
+\sqrt{E_b}\\
+0
+},
+\mathbf{s}_1 = 
+\myvec{
+0\\
+\sqrt{E_b}
+},
+\\
+\mathbf{s}_2 &= 
+\myvec{
+-\sqrt{E_b}\\
+0
+},
+\mathbf{s}_3 = 
+\myvec{
+0\\
+-\sqrt{E_b}
+},
+\\
+E\sbrak{\mathbf{n}} &= \mathbf{0}, E\sbrak{\mathbf{n}\mathbf{n}^T} = \sigma^2 \mathbf{I}
+\end{align}
+%
+\begin{enumerate}[label=(\alph{enumii})]
+\item Show that the MAP decision for detecting $\mathbf{s}_0$ results in
+\begin{equation}
+\abs{r}_2 < r_1
+\end{equation}
+\item Express $\pr{\hat{\mathbf{s}} = \mathbf{s}_0|\mathbf{s} = \mathbf{s}_0}$ in terms of $r_1, r_2$.
+Let $X=n_2-n_1, Y = -n_2-n_1$, where $\mathbf{n}=\brak{n_1,n_2}$.
+Their correlation coefficient is defined as
+%
+\begin{align}
+\rho = \frac{E\sbrak{\brak{X-\mu_x}\brak{Y-\mu_y}}}{\sigma_x\sigma_y}
+\end{align}
+%
+$X$ and $Y$ are said to be uncorrelated if $\rho = 0$
+\item Show that if $X$ and $Y$ are uncorrelated 
+Verify this numerically.
+\item Show that $X$ and $Y$ are independent, i.e. $p_{XY}(x,y) = p_{X}(x)p_{Y}(y)$.
+\item Show that $X,Y \sim \mathcal{N}\brak{0,2\sigma^2}$.
+\item Show that $\pr{\hat{\mathbf{s}} = \mathbf{s}_0|\mathbf{s} = \mathbf{s}_0} =\pr{ X < A,  Y < A}$.
+\item Find $\pr{ X < A,  Y < A}$.
+\item Verify the above through simulation.
+\end{enumerate}
+\end{enumerate}
+
+\section{$M$-PSK}
+\begin{enumerate}
+
+\item
+Consider a system where 
+$\mathbf{s}_i=
+\myvec{
+\cos\brak{\frac{2\pi i}{M}}\\
+\cos\brak{\frac{2\pi i}{M}}
+}, i = 0, 1 , \dots M-1
+$
+.
+Let
+%
+\begin{align}
+\mathbf{r}|s_0 = 
+\myvec{
+r_1\\
+r_2
+}
+=
+\myvec{
+\sqrt{E_s}+n_1\\
+n_2
+}
+\end{align}
+where $n_1,n_2 \sim \mathcal{N}\brak{0,\frac{N_0}{2}}$.
+
+\begin{enumerate}[label=(\alph{enumii})]
+\item Substituting 
+\begin{align}
+r_1=R\cos \theta \\
+r_2=R\sin \theta
+\end{align}
+show that the joint pdf of $R,\theta$ is
+%
+\begin{equation}
+p\brak{R,\theta}=\frac{R}{\pi N_0}\exp\brak{-\frac{R^2-2R\sqrt{E_s}\cos \theta + E_s}{N_0}}
+\end{equation}
+%
+\item Show that 
+%
+\begin{align}
+\lim_{\alpha \rightarrow \infty}\int_{0}^{\infty}\brak{V-\alpha }e^{-\brak{V-\alpha}^2 }\,dV
+&= 0
+\\
+\lim_{\alpha \rightarrow \infty}\int_{0}^{\infty} e^{-\brak{V-\alpha}^2 }\,dV
+&=  \sqrt{\pi}
+\end{align}
+%
+\item 
+Using the above, evaluate
+%
+\begin{align}
+\int_{0}^{\infty}V\exp\cbrak{-\brak{V^2 - 2V \sqrt{\gamma}\cos \theta +\gamma}}\,dV
+\end{align}
+%
+for large values of $\gamma$.
+\item
+Find a compact expression for 
+%
+\begin{align}
+I = 1 - \sqrt{\frac{\gamma}{\pi}}\int_{-\frac{\pi}{M}}^{\frac{\pi}{M}}e^{- \gamma\sin^2\theta }\cos \theta\, d\theta
+\end{align}
+\item Find $P_{e|\mathbf{s}_0}$.
+\end{enumerate}
+\end{enumerate}
+\section{Noncoherent BFSK}
+\begin{enumerate}
+\item
+Show that
+%
+\begin{align}
+I_{0}(x) &= \frac{1}{2\pi}\int_{0}^{2\pi}e^{x\cos\theta}\,d\theta \\
+I_{0}(x) &= \frac{1}{2\pi}\int_{0}^{2\pi}e^{x\cos\brak{\theta-\phi}}\,d\theta \\
+\frac{1}{2\pi}\int_{0}^{2\pi}e^{m_1\cos\theta + m_2\sin\theta}\,d\theta &= I_0\brak{\sqrt{m_1^2+m_2^2}} 
+\end{align}
+%
+where the modified Bessel function of order $n$ (integer) is defined as 
+%
+\begin{align}
+I_{n}(x) = \frac{1}{\pi}\int_{0}^{\pi}e^{x\cos\theta}\cos n\theta\,d\theta
+\end{align}
+\item
+Let
+%
+\begin{align}
+\mathbf{r}|0= \sqrt{E_b}
+\myvec{
+\cos \phi_0\\
+\sin \phi_0 \\
+0\\
+0
+}
++\mathbf{n}_0,
+\mathbf{r}|1= \sqrt{E_b}
+\myvec{
+0\\
+0 \\
+\cos \phi_1\\
+\sin \phi_1 
+}
++\mathbf{n}_1
+\end{align}
+%
+where $\mathbf{n}_0,\mathbf{n}_1\sim \mathcal{N}\brak{\mathbf{0}, \frac{N_0}{2}\mathbf{I}}$.
+%
+\begin{enumerate}[label=(\alph{enumii})]
+\item Taking $\mathbf{r} = \brak{r_1,r_2,r_3,r_4}^{T},$, find the pdf $p\brak{\mathbf{r}|0,\phi_0}$ in
+terms of $r_1,r_2,r_3,r_4,\phi,E_b$ and $N_0$. Assume that all noise variables are independent.
+%
+\item 
+If $\phi_0$ is uniformly distributed between 0 and $2\pi$, find $p\brak{\mathbf{r}|0}$.  Note that this expression will no longer contain $\phi_0$.
+%
+\item
+Show that the ML detection criterion for this scheme is
+%
+\begin{align}
+I_0\brak{k\sqrt{r_1^2+r_2^2}}\dec{0}{1}I_0\brak{k\sqrt{r_3^2+r_4^2}}
+\end{align}
+%
+where $k$ is a constant.
+%
+\item 
+The above criterion reduces to something simpler.  Can you guess what it is?  Justify your answer.
+%
+\item 
+Show that 
+%
+\begin{align}
+P_{e|0}=\pr{r_1^2+r_2^2 < r_3^2+r_4^2 | 0}
+\end{align}
+%
+\item 
+Show that the pdf of $Y=r_3^2+r_4^2$ id
+%
+\begin{align}
+p_{Y}(y) = \frac{1}{N_0}e^{-\frac{y}{N_0}}, y > 0
+\end{align}
+%
+\item 
+Find 
+%
+\begin{align}
+g\brak{r_1,r_2} = \pr{r_1^2+r_2^2<Y|0,r_1,r_2}.
+\end{align}
+\item 
+Show that $E\sbrak{e^{-\frac{X^2}{2\sigma^2}}}=\frac{1}{\sqrt{2}}e^{-\frac{\mu^2}{4\sigma^2}}$ for $X \sim 
+\mathcal{N}\brak{\mu,\sigma^2}$.
+%
+\item 
+Now show that
+%
+\begin{align}
+E\sbrak{g\brak{r_1,r_2}}=\frac{1}{2}e^{-\frac{E_b}{2N_0}}.
+\end{align}
+%
+\end{enumerate}
+\item
+ Let $U,V\sim\mathcal{N}\brak{0,\frac{k}{2}}$ be i.i.d.  Assuming that
+%
+\begin{align}
+U = \sqrt{R} \cos \Theta \\
+V = \sqrt{R} \sin \Theta
+\end{align}
+\begin{enumerate}[label=(\alph{enumii})]
+\item 
+Compute the jacobian for $U,V$ with respect to $X$ and $\Theta$ defined by
+%
+\begin{align}
+J = \det\brak{
+\begin{matrix}
+\frac{\partial U}{\partial R} & \frac{\partial U}{\partial \Theta} \\
+\frac{\partial V}{\partial R} & \frac{\partial V}{\partial \Theta}
+\end{matrix}
+}
+\end{align}
+\item 
+The joint pdf for $R,\Theta$ is given by,
+%
+\begin{align}
+p_{R,\Theta}\brak{r,\theta} = p_{U,V}\brak{u,v}J\vert_{u = \sqrt{r}\cos\theta,v = \sqrt{r}\sin\theta}
+\end{align}
+%
+Show that
+%
+\begin{align}
+p_{R}(r) = 
+\begin{cases}
+\frac{1}{k}e^{-\frac{r}{k}} & r > 0, \\
+0 & r < 0,
+\end{cases}
+\end{align}
+%
+assuming that $\Theta$ is uniformly distributed between 0 to $2\pi$.
+\item
+Show that the pdf of $Y = R_1-R_2$, where $R_1$ and $R_2$ are i.i.d. and have the same distribution as $R$ is
+%
+\begin{align}
+p_{Y}(y) = \frac{1}{2k}e^{-\frac{\abs{y}}{k}}
+\end{align}
+%
+\item 
+ Find the pdf of 
+%
+\begin{align}
+Z = p + \sqrt{p}\sbrak{U \cos \phi + V \sin \phi}
+\end{align}
+%
+where $\phi$ is a constant.
+\item 
+Find $\pr{Y > Z}$.
+\item 
+If $U\sim\mathcal{N}\brak{m_1,\frac{k}{2}},V\sim\mathcal{N}\brak{m_2,\frac{k}{2}}$, where $m_1,m_2, k$ are constants, show that the pdf of 
+%
+\begin{align}
+R = \sqrt{U^2+V^2}
+\end{align}
+%
+is
+%
+\begin{align}
+p_{R}\brak{r} = \frac{e^{-\frac{r +m}{k}}}{ k}I_{0}\brak{\frac{2\sqrt{mr}}{k}},\quad m = \sqrt{m_1^2+m_2^2}
+\end{align}
+%
+\item
+Show that
+\begin{align}
+I_0(x) = \sum_{n=0}^{\infty}\frac{x^{2n}}{4^n\brak{n!}^2}
+\end{align}
+\item 
+If
+%
+\begin{align}
+p_{Z}(z) &= 
+\begin{cases}
+\frac{1}{k} e^{-\frac{z}{k}} & z \geq 0 \\
+0 & z < 0
+\end{cases}
+\end{align}
+%
+find $\pr{R < Z}$.
+\end{enumerate}
+\end{enumerate}
+\section{Craig's Formula and MGF}
+\begin{enumerate}
+\item
+The Moment Generating Function (MGF) of $X$ is defined as
+%
+\begin{align}
+M_{X}(s) = E\sbrak{e^{s X}}
+\end{align}
+%
+where $X$ is a random variable and $E\sbrak{\cdot}$ is the expectation.  
+%
+%
+\begin{enumerate}[label=(\alph{enumii})]
+\item Let $Y \sim \gauss{0}{1}$.  Define
+%
+\begin{align}
+Q(x) = \pr{Y > x}, x > 0
+\end{align}
+%
+Show that
+\begin{equation}
+Q(x) = \frac{1}{\pi}\int^{\frac{\pi}{2}}_{0}e^{-\frac{x^2}{2\sin^2 \theta}}\,d\theta
+\end{equation}
+\item 
+Let $h\sim\mathcal{CN}\brak{0,\frac{\Omega}{2}},n\sim\mathcal{CN}\brak{0,\frac{N_0}{2}}$.  Find the distribution of $\abs{h}^2$.
+\item Let
+%
+\begin{align}
+P_e = \pr{\Re \cbrak{h^*y} < 0}, \text{ where } y = \brak{\sqrt{E_s}h + n},
+\end{align}
+%
+Show that
+%
+\begin{align}
+P_e = \int_{0}^{\infty}\qfunc{\sqrt{2x}}p_{A}(x) \,dx
+\end{align}
+where $A = \frac{E_s\abs{h}^2}{N_0}$.
+\item Show that
+%
+\begin{align}
+P_e 
+%&= E\sbrak{\qfunc{\sqrt{2A}}} \\
+%&=  \frac{1}{\pi}\int_{0}^{\frac{\pi}{2}}E\sbrak{e^{-\frac{A}{\sin^2\theta}}}\,d\theta \\
+&=  \frac{1}{\pi}\int_{0}^{\frac{\pi}{2}}M_{A}\brak{-\frac{1}{\sin^2\theta}}\,d\theta
+\label{ch4_pe_mgf}
+\end{align}
+%
+\item compute $M_A(s)$.
+%
+\item 
+Find $P_e$.
+\item 
+If $\gamma = \frac{\Omega E_s}{N_0}$, show that $P_e < \frac{1}{2\gamma}$. 
+\end{enumerate}
+\end{enumerate}
+%
+\end{document}
