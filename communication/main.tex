@@ -13,6 +13,7 @@
 \usepackage{enumitem}
 \usepackage{listings}
 \usepackage{mathtools}
+\usepackage{fancyvrb}
 %\usepackage{hyperref}
 
 
@@ -36,6 +37,14 @@
 \newcommand\figref{Fig.~\ref}
 
 \setenumerate{label=\thesection.\arabic*}
+
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
 
 \providecommand{\mbf}{\mathbf}
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
@@ -349,11 +358,11 @@ Write a C program to  find the mean and variance of $U$.\\
 codes/chapter2/uni_gen_stat.c
 \end{lstlisting}
 The output of the program is
-\begin{verbatim}
+\begin{lstlisting}
 Uniform stats:
 Mean: 0.500007
 Variance: 0.083301
-\end{verbatim}
+\end{lstlisting}
 
 \item Verify your result theoretically given that
 %
@@ -442,11 +451,11 @@ The properties of PDF are
 codes/chapter2/gau_gen_stat.c
 \end{lstlisting}
 The output of the program is
-\begin{verbatim}
+\begin{lstlisting}
 Gaussian stats:
 Mean: 0.000294
 Variance: 0.999562	
-\end{verbatim}
+\end{lstlisting}
 \item Given that 
 \begin{align}
 p_{X}(x) = \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}}, -\infty < x < \infty,
@@ -578,14 +587,45 @@ The CDF of $T$ is found using \eqref{eq:pdf_to_cdf} by replacing $U$ with $T$. E
 \chapter{Maximum Likelihood Detection: BPSK}
 \section{Maximum Likelihood}
 \begin{enumerate}
-\item Generate equiprobable $X \in \cbrak{1,-1}$.
+\item Generate equiprobable $X \in \cbrak{1,-1}$.\\
+\solution $X$ can be generated in python using the below code section,
+\begin{lstlisting}[language=python]
+import numpy as np	
+num_samples = 500
+x_var = np.random.choice([-1, 1], num_samples)
+\end{lstlisting}
 \item Generate 
 \begin{equation}
 Y = AX+N,
 \end{equation}
-		where $A = 5$ dB,  and $N \sim \gauss{0}{1}$.
-	\item Plot $Y$ using a scatter plot.
-	\item Guess how to estimate $X$ from $Y$.
+		where $A = 5$ dB,  and $N \sim \gauss{0}{1}$.\\
+\solution $Y$ can be generated in python using the below code section,
+\begin{lstlisting}[language=python]
+import numpy as np	
+num_samples = 500
+x_var = np.random.choice([-1, 1], num_samples)
+n_var = np.random.normal(0, 1, num_samples)
+A_db = 5
+A = 10**(0.1*A_db)
+y_var = A*x_var + n_var
+\end{lstlisting}
+\item Plot $Y$ using a scatter plot.\\
+\solution The scatter plot of $Y$ is plotted in \figref{fig:bpsk_scatter} using the below code,
+\begin{lstlisting}
+codes/chapter3/bpsk_scatter.py
+\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter3/bpsk_scatter.pdf}
+\caption{Scatter plot of $Y$}
+\label{fig:bpsk_scatter}
+\end{figure}
+\item Guess how to estimate $X$ from $Y$.\\
+\solution
+\begin{equation}
+y \dec{1}{-1} 0
+\label{eq:bpsk_decision}
+\end{equation}
 \item
 \label{ml-ch4_sim}
 Find 
@@ -595,20 +635,151 @@ Find
 and 
 \begin{equation}
 	P_{e|1} = \pr{\hat{X} = 1|X=-1}
-\end{equation}
+\end{equation}\\
+\solution Based on the decision rule in \eqref{eq:bpsk_decision},
+\begin{flalign*}
+	\pr{\hat{X} = -1|X=1} &= \pr{Y < 0|X=1}&\\
+	&= \pr{AX + N < 0|X=1}&\\ 
+	&= \pr{A + N < 0}&\\
+	&= \pr{N < -A}
+\end{flalign*}
+Similarly,
+\begin{flalign*}
+	\pr{\hat{X} = 1|X=-1} &= \pr{Y > 0|X=-1}&\\
+	&= \pr{N > A}
+\end{flalign*}
+Since $N \sim \gauss{0}{1}$,
+\begin{flalign}
+	\label{eq:std_norm_symmetric}
+	\pr{N < -A} &= \pr{N > A}&\\
+	\label{eq:bpks_prob_err_cond}
+	\implies P_{e|0} &= P_{e|1} = \pr{N > A}
+\end{flalign}
 %
-\item Find $P_e$ assuming that $X$ has equiprobable symbols.
-
+\item Find $P_e$ assuming that $X$ has equiprobable symbols.\\
+\solution
+\begin{flalign}
+	P_e &= \pr{X=1}P_{e|1} + \pr{X=-1}P_{e|0}&\\
+	\intertext{Since $X$ is equiprobable}\\
+	\label{eq:bpsk_prob_error_equi}
+	P_e &= \frac{1}{2}P_{e|1} + \frac{1}{2}P_{e|0}
+\end{flalign}
+Substituting from \eqref{eq:bpks_prob_err_cond}
+\begin{equation}
+	P_e = \pr{N > A}
+\end{equation}
+Given a random varible $X \sim \gauss{0}{1}$ the Q-function is defined as
+\begin{align}
+	Q(x) &= \pr{X > x}\\
+	\label{eq:q_func_integral}
+	Q(x) &= \frac{1}{\sqrt{2\pi}} \int_x^\infty \exp\left(-\frac{u^2}{2}\right) \, du.\\
+\end{align}
+Using the Q-function, $P_e$ is rewritten as
+\begin{equation}
+	P_e = Q(A)
+\end{equation} 
 %
 \item
-Verify by plotting  the theoretical $P_e$ with respect to $A$ from 0 to 10 dB.  
+Verify by plotting  the theoretical $P_e$ with respect to $A$ from 0 to 10 dB.\\
+\solution The theoretical $P_e$ is plotted in \figref{fig:bpsk_pe_snr}, along with numerical estimations from generated samples of $Y$. The below code is used for the plot, 
+\begin{lstlisting}
+codes/chapter3/bpsk_pe_vs_snr.py
+\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter3/bpsk_pe_snr.pdf}
+\caption{$P_e$ versus $A$ plot}
+\label{fig:bpsk_pe_snr}
+\end{figure}
 %
-\item Now, consider a threshold $\delta$  while estimating $X$ from $Y$. Find the value of $\delta$ that maximizes the theoretical $P_e$.
+\item Now, consider a threshold $\delta$  while estimating $X$ from $Y$. Find the value of $\delta$ that maximizes the theoretical $P_e$.\\
+\label{prob:bpsk_delta_equi}
+\solution Given the decision rule, 
+\begin{equation}
+y \dec{1}{-1} \delta
+\label{eq:bpsk_decision_delta}
+\end{equation}
+\begin{flalign*}
+	P_{e|0} &= \pr{\hat{X} = -1|X=1}&\\
+	&= \pr{Y < \delta|X=1}&\\
+	&= \pr{AX + N < \delta|X=1}&\\ 
+	&= \pr{A + N < \delta}&\\
+	&= \pr{N < -A + \delta}&\\
+	&= \pr{N > A - \delta}&\\
+	&= Q(A-\delta)
+\end{flalign*}
+\begin{flalign*}
+	P_{e|1} &= \pr{\hat{X} = 1|X=-1}&\\
+	&= \pr{Y > \delta|X=-1}&\\
+	&= \pr{N > A + \delta}&\\
+	&= Q(A+\delta)
+\end{flalign*}
+Using \eqref{eq:bpsk_prob_error_equi}, $P_e$ is given by
+\begin{flalign}
+	P_e &= \frac{1}{2}Q(A+\delta) + \frac{1}{2}Q(A-\delta)
+\end{flalign}
+Using the integral for Q-function from \eqref{eq:q_func_integral},
+\begin{align}
+	\label{eq:prob_error_delta_equi}
+	P_e &= k(\int_{A+\delta}^\infty \exp\left(-\frac{u^2}{2}\right) \, du + \int_{A-\delta}^\infty \exp\left(-\frac{u^2}{2}\right) \, du)\\
+	\intertext{where k is a constant}	\nonumber
+\end{align}
+Differentiating \eqref{eq:prob_error_delta_equi} wrt $\delta$ (using Leibniz's rule) and equating to $0$, we get
+\begin{flalign*}
+	\exp\left(-\frac{(A+\delta)^2}{2}\right)-\exp\left(-\frac{(A-\delta)^2}{2}\right) &= 0&\\
+	\frac{\exp\left(-\frac{(A+\delta)^2}{2}\right)}{\exp\left(-\frac{(A-\delta)^2}{2}\right)} &= 1&\\
+	\exp\left(-\frac{(A+\delta)^2-(A-\delta)^2}{2}\right) &= 1&\\
+	\exp\left(-2A\delta\right) &= 1&\\
+	\intertext{Taking $\ln$ on both sides}\\
+	-2A\delta &= 0&\\
+	\implies \delta &= 0
+\end{flalign*}
+$P_e$ is maximum for $\delta = 0$
 \item Repeat the above exercise when 
+\label{prob:bpsk_decision_uneqi}
 	\begin{align}
 		p_{X}(0) = p
-	\end{align}
-\item Repeat the above exercise using the MAP criterion.
+	\end{align}\\
+\solution Since $X$ is not equiprobable, $P_e$ is given by,
+\begin{flalign}
+	P_e &= (1-p)P_{e|1} + pP_{e|0}&\\
+	&= (1-p)Q(A+\delta) + pQ(A-\delta)
+\end{flalign}
+Using the integral for Q-function from \eqref{eq:q_func_integral},
+\begin{multline}
+	\label{eq:prob_error_delta_nonequi}
+	P_e = k((1-p)\int_{A+\delta}^\infty \exp\left(-\frac{u^2}{2}\right) \, du + \\
+	p\int_{A-\delta}^\infty \exp\left(-\frac{u^2}{2}\right) \, du)
+\end{multline}
+where $k$ is a constant.\\
+Following the same steps as in problem \ref{prob:bpsk_delta_equi}, $\delta$ for maximum $P_e$ evaluates to,
+\begin{equation}
+	\delta = \frac{1}{2A}\ln\left(\frac{1}{p}-1\right)
+\end{equation}
+\item Repeat the above exercise using the MAP criterion.\\
+\solution 
+%Add defn of MAP criterion
+For the case of BPSK, the point of equality between $\pr{X=1}p_Y(y|X=1)$ and $\pr{X=-1}p_Y(y|X=-1)$ is the optimum threshold. If this threshold is $\delta$, then
+\begin{flalign*}
+	pp_Y(y|X=1) > (1-p)p_Y(y|X=-1) &\intertext{when $y > \delta$}
+	pp_Y(y|X=1) < (1-p)p_Y(y|X=-1) &\intertext{when $y < \delta$} 	
+\end{flalign*}
+The above inequalities can be visualized in \figref{fig:bpsk_map_density} for $p = 0.3$ and $A = 3$
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter3/bpsk_map_density.pdf}
+\caption{$p_X(X=x_i)p_Y(y|x=x_i)$ versus $y$ plot for $X \in \{-1,1\}$}
+\label{fig:bpsk_map_density}
+\end{figure}
+Given $Y=AX+N$ where $N \sim \gauss{0}{1}$, the optimum threshold is found as solution to the below equation
+\begin{equation}
+	p\exp\left(-\frac{(y_{eq}-A)^2}{2}\right) = (1-p)\exp\left(-\frac{(y_{eq}+A)^2}{2}\right)
+\end{equation}
+Solving for $y_{eq}$, we get
+\begin{equation}
+	y_{eq} = \delta = \frac{1}{2A}\ln\left(\frac{1}{p}-1\right)
+\end{equation}
+which is same as $\delta$ obtained in problem \ref{prob:bpsk_decision_uneqi}
 
 \end{enumerate}
 \chapter{Transformation of Random Variables}
