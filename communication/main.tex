@@ -912,7 +912,7 @@ for
 Y = AX+N,
 \end{equation}
 where $A$ is Raleigh with $E\sbrak{A^2} = \gamma, N \sim \gauss{0}{1}, X \in \brak{-1,1}$ for $0 \le \gamma \le 10$ dB.\\
-\solution The blue dots in \figref{fig:bpsk_pe_snr_rayleigh} is the required plot generated using below code
+\solution The blue dots in \figref{fig:bpsk_pe_snr_rayleigh} is the required plot. The below code is used to generate the plot,
 \begin{lstlisting}
 codes/chapter4/prob_error.py
 \end{lstlisting}
@@ -924,7 +924,8 @@ Assuming that $N$ is a constant, find an expression for $P_e$.  Call this $P_e(N
 	\nonumber
 	P_e &= \pr{\hat{X} = -1|X=1}&\\ \nonumber
 	&= \pr{Y<0|X=1}&\\ \nonumber
-	&= \pr{AX+N<0|X=1}&\\ \nonumber
+	&= \pr{AX+N<0|X=1}&\\ 
+	\label{eq:prob_err_rayleigh_gen}
 	&= \pr{A+N<0}&\\ \nonumber
 	&= \pr{A<-N}&\\
 	\label{eq:prob_err_bpsk_rayleigh_cdf}
@@ -975,13 +976,21 @@ Find $P_e = E\sbrak{P_e(N)}$.\\
 %
 \item
 Plot $P_e$ in problems \ref{ch4_sim} and \ref{ch4_anal} on the same graph w.r.t $\gamma$.  Comment.\\
-\solution $P_e$ plotted in same graph in \figref{fig:bpsk_pe_snr_rayleigh}. The value of $P_e$ is much higher when the channel gain $A$ is Rayleigh distributed than the case where $A$ is a constant (compare with \figref{fig:bpsk_pe_snr}).
+\solution $P_e$ plotted in same graph in \figref{fig:bpsk_pe_snr_rayleigh}. The value of $P_e$ is much higher when the channel %
+gain $A$ is Rayleigh distributed than the case where $A$ is a constant (compare with \figref{fig:bpsk_pe_snr}).
 \begin{figure}[H]
 \centering
 \includegraphics[width=\columnwidth]{./figs/chapter4/prob_error.pdf}
 \caption{$P_e$ versus $\gamma$}
 \label{fig:bpsk_pe_snr_rayleigh}
 \end{figure}
+From \eqref{eq:prob_err_rayleigh_gen}, $P_e$ is given by
+\begin{equation}
+	P_e = \pr{A+N<0}
+\end{equation}
+One method of computing \eqref{eq:prob_err_rayleigh_gen} is by finding the PDF of $Z=A+N$ (as the convolution of the individual PDFs of %
+$A$ and $N$) and then integrating $p_Z(z)$ from $-\infty$ to $0$. The other method is by first computing $P_e$ for constant $N$ and then finding %
+the expectation of $P_e(N)$. Both provide the same result but the computation of integrals is simpler when using the latter method. 
 
 \end{enumerate}
 \chapter{Bivariate Random Variables: FSK}
@@ -1025,26 +1034,71 @@ Plot
 \mbf{y}|\mbf{s}_0 \text{ and } \mbf{y}|\mbf{s}_1
 \end{equation}
 %
-on the same graph using a scatter plot.
+on the same graph using a scatter plot.\\
+\solution The scatter plot in \figref{fig:biv_scatter} is generated using the below code,
+\begin{lstlisting}
+codes/chapter5/biv_scatter.py
+\end{lstlisting}
+%
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter5/biv_scatter.pdf}
+\caption{Scatter plot of $\mbf{y}|\mbf{s}_0$ and $\mbf{y}|\mbf{s}_1$ }
+\label{fig:biv_scatter}
+\end{figure}
 
 %
 \item
-For the above problem, find a decision rule for detecting the symbols $\mbf{s}_0 $ and $\mbf{s}_1$.
-
+For the above problem, find a decision rule for detecting the symbols $\mbf{s}_0 $ and $\mbf{s}_1$.\\
+\solution Let $\mbf{y} = \myvec{y_1&y_2}^T$. Then the decision rule is
+\begin{equation}
+	y_1 \dec{0}{1} y_2
+	\label{eq:biv_fsk_decision}
+\end{equation}
 %
 \item
 Plot 
 \begin{equation} 
 P_e = \pr{\hat{\mbf{x}} = \mbf{s}_1|\mbf{x} = \mbf{s}_0}
+\label{eq:prob_error_fsk}
 \end{equation}
-with respect to the SNR from 0 to 10 dB.
-
+with respect to the SNR from 0 to 10 dB.\\
+\solution The blue dots in \figref{fig:biv_pe_snr} are the $P_e$ versus SNR plot. It is generated using the below code,
+\begin{lstlisting}
+codes/chapter5/biv_pe_snr.py
+\end{lstlisting}
 %
 \item
-Obtain an expression for $P_e$. Verify this by comparing the theory and simulation plots on the same graph.
+Obtain an expression for $P_e$. Verify this by comparing the theory and simulation plots on the same graph.\\
+\solution Using the decision rule from \eqref{eq:biv_fsk_decision},
+\begin{align}
+	\nonumber
+	P_e &= \pr{\hat{\mbf{x}} = \mbf{s}_1|\mbf{x} = \mbf{s}_0}\\\nonumber
+	&= \pr{y_1 < y_2|\mbf{x} = \mbf{s}_0}\\\nonumber
+	&= \pr{A+n_1 < n_2}\\
+	\label{eq:prob_error_fsk_inter}
+	&= \pr{n_1-n_2 < -A}
+\end{align}
+\textbf{Theorem:} The sum of $N$ independant random variables $X_1,X_2,...,X_N$ with $X_i \sim \gauss{\mu_i}{\sigma_i}$ is itself normally distributed %
+with $\mu =\sum_{i=1}^n \mu_i$ and $\sigma^2 = \sum_{i=1}^n \sigma_i^2$.\\
+Let $Z=n_1-n_2$. From the above theorem, $Z \sim \gauss{0}{\sqrt{2}}$. \eqref{eq:prob_error_fsk_inter} can be further simplified as,
+\begin{align*}
+	P_e &= \pr{Z < -A}&\\
+	&= \pr{Z > A}&\\
+	&= Q(\frac{A}{\sqrt{2}})&\\
+	&= \frac{1}{\sqrt{2\pi}}\int_{\frac{A}{\sqrt{2}}}^{\infty} \exp\left(-\frac{x^2}{2}\right)  \,dx 
+\end{align*}
+\figref{fig:biv_pe_snr} compares the theoretical and simulation plots.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter5/biv_pe_vs_snr.pdf}
+\caption{$P_e$ versus SNR plot for FSK}
+\label{fig:biv_pe_snr}
+\end{figure}
 %
-		\end{enumerate}
+\end{enumerate}
+
 \chapter{Exercises}
 \section{BPSK}
 \begin{enumerate}
