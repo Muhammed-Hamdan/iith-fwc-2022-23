@@ -24,7 +24,7 @@ plt.vlines(delta, np.min(y_x1), np.max(y_x1), colors=['red'])
 plt.grid()
 plt.xlabel("$y$")
 plt.ylabel("$P_X(x)P_Y(y|x)$")
-plt.legend(['pP_Y(y|x=1)', '(1-p)P_Y(y|x=-1)', "$y=\\frac{1}{2A}\ln\left(\\frac{1}{p}-1\\right)$"])
+plt.legend(['$pP_Y(y|x=1)$', '$(1-p)P_Y(y|x=-1)$', "$y=\\frac{1}{2A}\ln\left(\\frac{1}{p}-1\\right)$"])
 
 plt.savefig('../../figs/chapter3/bpsk_map_density.pdf')
 plt.savefig('../../figs/chapter3/bpsk_map_density.png')

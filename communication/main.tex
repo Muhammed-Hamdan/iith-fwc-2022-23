@@ -424,6 +424,7 @@ The properties of a CDF are
 Load gau.dat in python and plot the empirical PDF of $X$ using the samples in gau.dat. The PDF of $X$ is defined as
 \begin{align}
 p_{X}(x) = \frac{d}{dx}F_{X}(x)
+\label{eq:cdf_to_pdf}
 \end{align}
 What properties does the PDF have?
 \\
@@ -758,13 +759,17 @@ Following the same steps as in problem \ref{prob:bpsk_delta_equi}, $\delta$ for 
 \end{equation}
 \item Repeat the above exercise using the MAP criterion.\\
 \solution 
-%Add defn of MAP criterion
-For the case of BPSK, the point of equality between $\pr{X=1}p_Y(y|X=1)$ and $\pr{X=-1}p_Y(y|X=-1)$ is the optimum threshold. If this threshold is $\delta$, then
+The MAP rule can be stated as\\
+\begin{flalign}
+\text{Set } \hat{x} &= x_i \text{ if}&\\ \nonumber
+p_X(x_k)p_Y(y|x_k) &\text{ is maximum for } k = i
+\end{flalign}
+For the case of BPSK, the point of equality between $p_X(x=1)p_Y(y|x=1)$ and $p_X(x=-1)p_Y(y|x=-1)$ is the optimum threshold. If this threshold is $\delta$, then
 \begin{flalign*}
-	pp_Y(y|X=1) > (1-p)p_Y(y|X=-1) &\intertext{when $y > \delta$}
-	pp_Y(y|X=1) < (1-p)p_Y(y|X=-1) &\intertext{when $y < \delta$} 	
+	pp_Y(y|x=1) > (1-p)p_Y(y|x=-1) &\text{ when } y > \delta&\\
+	pp_Y(y|x=1) < (1-p)p_Y(y|x=-1) &\text{ when } y < \delta 	
 \end{flalign*}
-The above inequalities can be visualized in \figref{fig:bpsk_map_density} for $p = 0.3$ and $A = 3$
+The above inequalities can be visualized in \figref{fig:bpsk_map_density} for $p = 0.3$ and $A = 3$.
 \begin{figure}[H]
 \centering
 \includegraphics[width=\columnwidth]{./figs/chapter3/bpsk_map_density.pdf}
@@ -790,7 +795,23 @@ Let $X_1 \sim  \gauss{0}{1}$ and $X_2 \sim  \gauss{0}{1}$. Plot the CDF and PDF 
 %
 \begin{equation}
 V = X_1^2 + X_2^2
-\end{equation}
+\end{equation}\\
+\solution The CDF and PDF of $V$ are plotted in \figref{fig:chisq_cdf} and \figref{fig:chisq_pdf} respectively using the below code
+\begin{lstlisting}
+codes/chapter3/sum_of_squares.py
+\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter4/chisq_cdf.pdf}
+\caption{CDF of $V$}
+\label{fig:chisq_cdf}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter4/chisq_pdf.pdf}
+\caption{PDF of $V$}
+\label{fig:chisq_pdf}
+\end{figure}
 %
 
 %
@@ -806,8 +827,20 @@ F_{V}(x) =
 \end{cases}
 \end{equation}
 %
-find $\alpha$.
-
+find $\alpha$.\\
+\solution Let $Z=X^2$ where $X \sim \gauss{0}{1}$. Defining the CDF for $Z$,
+\begin{flalign*}
+	P_Z(z) &= \pr{Z < z}&\\
+	&= \pr{X^2 < z}&\\
+	&= \pr{-\sqrt{z} < X < \sqrt{z}}&\\
+	&= \int_{-\sqrt{z}}^{\sqrt{z}} p_X(x)  \,dx 
+\end{flalign*}
+Using \eqref{eq:cdf_to_pdf}, the PDF of $Z$ is given by
+\begin{align*}
+	\frac{d}{dz}P_Z(z) &= p_Z(z)\\
+	= \frac{p_X(\sqrt{z})+p_X(-\sqrt{z})}{2\sqrt{z}} & \text{ (Using Lebniz's rule)} 
+\end{align*}
+Substituting 
 %
 \item
 \label{ch3_raleigh_sim}
