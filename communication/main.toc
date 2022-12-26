@@ -9,13 +9,13 @@
 \contentsline {section}{\numberline {3.1}Maximum Likelihood}{5}{}%
 \contentsline {section}{Chapter \nobreakspace {}4\nobreakspace {}\nobreakspace {} Transformation of Random Variables}{7}{}%
 \contentsline {section}{\numberline {4.1}Gaussian to Other}{7}{}%
-\contentsline {section}{\numberline {4.2}Conditional Probability}{8}{}%
-\contentsline {section}{Chapter \nobreakspace {}5\nobreakspace {}\nobreakspace {} Bivariate Random Variables: FSK}{8}{}%
-\contentsline {section}{\numberline {5.1}Two Dimensions}{8}{}%
-\contentsline {section}{Chapter \nobreakspace {}6\nobreakspace {}\nobreakspace {} Exercises}{8}{}%
-\contentsline {section}{\numberline {6.1}BPSK}{8}{}%
-\contentsline {section}{\numberline {6.2}Coherent BFSK}{9}{}%
-\contentsline {section}{\numberline {6.3}QPSK}{10}{}%
-\contentsline {section}{\numberline {6.4}$M$-PSK}{10}{}%
-\contentsline {section}{\numberline {6.5}Noncoherent BFSK}{10}{}%
-\contentsline {section}{\numberline {6.6}Craig's Formula and MGF}{11}{}%
+\contentsline {section}{\numberline {4.2}Conditional Probability}{9}{}%
+\contentsline {section}{Chapter \nobreakspace {}5\nobreakspace {}\nobreakspace {} Bivariate Random Variables: FSK}{9}{}%
+\contentsline {section}{\numberline {5.1}Two Dimensions}{9}{}%
+\contentsline {section}{Chapter \nobreakspace {}6\nobreakspace {}\nobreakspace {} Exercises}{10}{}%
+\contentsline {section}{\numberline {6.1}BPSK}{10}{}%
+\contentsline {section}{\numberline {6.2}Coherent BFSK}{10}{}%
+\contentsline {section}{\numberline {6.3}QPSK}{11}{}%
+\contentsline {section}{\numberline {6.4}$M$-PSK}{11}{}%
+\contentsline {section}{\numberline {6.5}Noncoherent BFSK}{11}{}%
+\contentsline {section}{\numberline {6.6}Craig's Formula and MGF}{12}{}%

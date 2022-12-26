@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.29)  26 DEC 2022 10:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.29)  26 DEC 2022 12:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -605,6 +605,27 @@ Package pdftex.def Info: ./figs/chapter4/chisq_pdf.pdf  used on input line 811.
 
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
 [7 <./figs/chapter3/bpsk_map_density.pdf>]
+<./figs/chapter4/rayleigh_cdf.pdf, id=363, 462.52798pt x 346.89601pt>
+File: ./figs/chapter4/rayleigh_cdf.pdf Graphic file (type pdf)
+<use ./figs/chapter4/rayleigh_cdf.pdf>
+Package pdftex.def Info: ./figs/chapter4/rayleigh_cdf.pdf  used on input line 8
+86.
+(pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
+<./figs/chapter4/rayleigh_pdf.pdf, id=364, 462.52798pt x 346.89601pt>
+File: ./figs/chapter4/rayleigh_pdf.pdf Graphic file (type pdf)
+<use ./figs/chapter4/rayleigh_pdf.pdf>
+Package pdftex.def Info: ./figs/chapter4/rayleigh_pdf.pdf  used on input line 8
+92.
+(pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
+ [8 <./figs/chapter4/chisq_cdf.pdf> <./figs/chapter4/chisq_pdf.pdf> <./figs/cha
+pter4/rayleigh_cdf.pdf>]
+<./figs/chapter4/prob_error.pdf, id=434, 462.52798pt x 346.89601pt>
+File: ./figs/chapter4/prob_error.pdf Graphic file (type pdf)
+<use ./figs/chapter4/prob_error.pdf>
+Package pdftex.def Info: ./figs/chapter4/prob_error.pdf  used on input line 981
+.
+(pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
+ [9 <./figs/chapter4/rayleigh_pdf.pdf> <./figs/chapter4/prob_error.pdf>]
 Package epstopdf Info: Source file: <./figs/chapter6/bpsk_const.eps>
 (epstopdf)                    date: 2022-12-12 09:51:22
 (epstopdf)                    size: 354313 bytes
@@ -614,16 +635,15 @@ o.pdf>
 (epstopdf)                    size: 9648 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/chapter6/bpsk_const
 -eps-converted-to.pdf ./figs/chapter6/bpsk_const.eps>
-(epstopdf)             \includegraphics on input line 963.
+(epstopdf)             \includegraphics on input line 1058.
 Package epstopdf Info: Output file is already uptodate.
-<./figs/chapter6/bpsk_const-eps-converted-to.pdf, id=363, 562.1pt x 308.15125pt
+<./figs/chapter6/bpsk_const-eps-converted-to.pdf, id=500, 562.1pt x 308.15125pt
 >
 File: ./figs/chapter6/bpsk_const-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bpsk_const-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/chapter6/bpsk_const-eps-converted-to.pdf  used 
-on input line 963.
+on input line 1058.
 (pdftex.def)             Requested size: 265.0125pt x 145.28249pt.
- [8 <./figs/chapter4/chisq_cdf.pdf> <./figs/chapter4/chisq_pdf.pdf>]
 Package epstopdf Info: Source file: <./figs/chapter6/bpsk_ber.eps>
 (epstopdf)                    date: 2022-12-12 09:51:22
 (epstopdf)                    size: 26134 bytes
@@ -633,14 +653,14 @@ pdf>
 (epstopdf)                    size: 14694 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/chapter6/bpsk_ber-e
 ps-converted-to.pdf ./figs/chapter6/bpsk_ber.eps>
-(epstopdf)             \includegraphics on input line 1037.
+(epstopdf)             \includegraphics on input line 1132.
 Package epstopdf Info: Output file is already uptodate.
-<./figs/chapter6/bpsk_ber-eps-converted-to.pdf, id=413, 462.72874pt x 346.29375
+<./figs/chapter6/bpsk_ber-eps-converted-to.pdf, id=501, 462.72874pt x 346.29375
 pt>
 File: ./figs/chapter6/bpsk_ber-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bpsk_ber-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/chapter6/bpsk_ber-eps-converted-to.pdf  used on
- input line 1037.
+ input line 1132.
 (pdftex.def)             Requested size: 265.0125pt x 198.33003pt.
 Package epstopdf Info: Source file: <./figs/chapter6/bfsk_const.eps>
 (epstopdf)                    date: 2022-12-12 09:51:22
@@ -651,28 +671,28 @@ o.pdf>
 (epstopdf)                    size: 10537 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/chapter6/bfsk_const
 -eps-converted-to.pdf ./figs/chapter6/bfsk_const.eps>
-(epstopdf)             \includegraphics on input line 1056.
+(epstopdf)             \includegraphics on input line 1151.
 Package epstopdf Info: Output file is already uptodate.
-<./figs/chapter6/bfsk_const-eps-converted-to.pdf, id=414, 517.935pt x 303.1325p
+<./figs/chapter6/bfsk_const-eps-converted-to.pdf, id=502, 517.935pt x 303.1325p
 t>
 File: ./figs/chapter6/bfsk_const-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bfsk_const-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/chapter6/bfsk_const-eps-converted-to.pdf  used 
-on input line 1056.
+on input line 1151.
 (pdftex.def)             Requested size: 265.0125pt x 155.10895pt.
- [9 <./figs/chapter6/bpsk_const-eps-converted-to.pdf> <./figs/chapter6/bpsk_ber
--eps-converted-to.pdf> <./figs/chapter6/bfsk_const-eps-converted-to.pdf>]
-Underfull \hbox (badness 2856) in paragraph at lines 1172--1182
+ [10 <./figs/chapter6/bpsk_const-eps-converted-to.pdf> <./figs/chapter6/bpsk_be
+r-eps-converted-to.pdf> <./figs/chapter6/bfsk_const-eps-converted-to.pdf>]
+Underfull \hbox (badness 2856) in paragraph at lines 1267--1277
 []\OT1/ptm/m/n/10 Consider a sys-tem where $\OT1/cmr/bx/n/10 s[] \OT1/cmr/m/n/1
 0 = [] \OML/cmm/m/it/10 ; i \OT1/cmr/m/n/10 =
  []
 
-[10] [11] (./main.aux) ) 
+[11] [12] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 9257 strings out of 478287
- 149608 string characters out of 5849289
- 731566 words of memory out of 5000000
- 27343 multiletter control sequences out of 15000+600000
+ 9292 strings out of 478287
+ 150651 string characters out of 5849289
+ 731769 words of memory out of 5000000
+ 27375 multiletter control sequences out of 15000+600000
  503371 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,15n,63p,396b,1609s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -695,10 +715,10 @@ xlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on main.pdf (11 pages, 401503 bytes).
+Output written on main.pdf (12 pages, 429005 bytes).
 PDF statistics:
- 543 PDF objects out of 1000 (max. 8388607)
- 201 compressed objects within 3 object streams
+ 631 PDF objects out of 1000 (max. 8388607)
+ 230 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

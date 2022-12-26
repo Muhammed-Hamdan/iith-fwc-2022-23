@@ -825,6 +825,7 @@ F_{V}(x) =
 1 - e^{-\alpha x} & x \geq 0 \\
 0 & x < 0,
 \end{cases}
+\label{eq:chisq2_cdf_gen}
 \end{equation}
 %
 find $\alpha$.\\
@@ -836,19 +837,62 @@ find $\alpha$.\\
 	&= \int_{-\sqrt{z}}^{\sqrt{z}} p_X(x)  \,dx 
 \end{flalign*}
 Using \eqref{eq:cdf_to_pdf}, the PDF of $Z$ is given by
-\begin{align*}
+\begin{align}
+	\nonumber
 	\frac{d}{dz}P_Z(z) &= p_Z(z)\\
+	\label{eq:square_pdf_gen}
 	= \frac{p_X(\sqrt{z})+p_X(-\sqrt{z})}{2\sqrt{z}} & \text{ (Using Lebniz's rule)} 
-\end{align*}
-Substituting 
+\end{align}
+Substituting the standard gaussian density function $p_X(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$ in \eqref{eq:square_pdf_gen},
+\begin{equation}
+	p_Z(z) =
+	\begin{cases}
+	\frac{1}{\sqrt{2\pi z}}e^{-\frac{z}{2}} & z \ge 0\\
+	0 & z < 0
+	\end{cases} 
+	\label{eq:chisq_pdf}
+\end{equation}
+The PDF of $X_1^2$ and $X_2^2$ are given by \eqref{eq:chisq_pdf}. Since $V$ is the sum of two independant random variables,
+\begin{flalign*}
+	p_V(v) &= p_{X_1^2}(x_1) \ast p_{X_2^2}(x_2)&\\
+	&= \frac{1}{2\pi} \int_{0}^{v} \frac{e^{-\frac{x}{2}}}{\sqrt{x}}\frac{e^{-\frac{v-x}{2}}}{\sqrt{v-x}}  \,dx&\\
+	&= \frac{e^{-\frac{v}{2}}}{2\pi} \int_{0}^{v} \frac{1}{\sqrt{x(v-x)}}  \,dx&\\
+	&= \frac{e^{-\frac{v}{2}}}{2\pi} \sbrak{-\arcsin\left(\dfrac{v-2x}{v}\right)}_0^v&\\
+	&= \frac{e^{-\frac{v}{2}}}{2\pi} \pi&\\
+	&= \frac{e^{-\frac{v}{2}}}{2} \text{ for } v \ge 0
+\end{flalign*}
+$F_V(v)$ can be obtained from $p_V(v)$ using \eqref{eq:pdf_to_cdf}
+\begin{flalign}
+	\nonumber
+	F_V(v) &= \frac{1}{2} \int_{0}^{v} \exp\left(-\frac{v}{2}\right)&\\
+	\label{eq:chisq2_cdf}
+	&= 1-\exp\left(-\frac{v}{2}\right) \text{ for } v \ge 0
+\end{flalign}
+Comparing \eqref{eq:chisq2_cdf} with \eqref{eq:chisq2_cdf_gen}, $\alpha = \frac{1}{2}$ 
 %
 \item
 \label{ch3_raleigh_sim}
-Plot the CDF and PDf of
+Plot the CDF and PDF of
 %
 \begin{equation}
 A = \sqrt{V}
-\end{equation}
+\end{equation}\\
+\solution The CDF and PDF of $A$ are plotted in \figref{fig:rayleigh_cdf} and \figref{fig:rayleigh_pdf} respectively using the below code
+\begin{lstlisting}
+codes/chapter3/square_root.py
+\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter4/rayleigh_cdf.pdf}
+\caption{CDF of $A$}
+\label{fig:rayleigh_cdf}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter4/rayleigh_pdf.pdf}
+\caption{PDF of $A$}
+\label{fig:rayleigh_pdf}
+\end{figure}
 %
 
 
@@ -867,12 +911,45 @@ for
 \begin{equation}
 Y = AX+N,
 \end{equation}
-where $A$ is Raleigh with $E\sbrak{A^2} = \gamma, N \sim \gauss{0}{1}, X \in \brak{-1,1}$ for $0 \le \gamma \le 10$ dB.
-
+where $A$ is Raleigh with $E\sbrak{A^2} = \gamma, N \sim \gauss{0}{1}, X \in \brak{-1,1}$ for $0 \le \gamma \le 10$ dB.\\
+\solution The blue dots in \figref{fig:bpsk_pe_snr_rayleigh} is the required plot generated using below code
+\begin{lstlisting}
+codes/chapter4/prob_error.py
+\end{lstlisting}
 %
 \item
-Assuming that $N$ is a constant, find an expression for $P_e$.  Call this $P_e(N)$
-
+Assuming that $N$ is a constant, find an expression for $P_e$.  Call this $P_e(N)$\\
+\solution Assuming the decision rule in \eqref{eq:bpsk_decision}, when $N$ is constant, $P_e$ is given by 
+\begin{flalign}
+	\nonumber
+	P_e &= \pr{\hat{X} = -1|X=1}&\\ \nonumber
+	&= \pr{Y<0|X=1}&\\ \nonumber
+	&= \pr{AX+N<0|X=1}&\\ \nonumber
+	&= \pr{A+N<0}&\\ \nonumber
+	&= \pr{A<-N}&\\
+	\label{eq:prob_err_bpsk_rayleigh_cdf}
+	&=
+	\begin{cases}
+	F_A(-N) & N \ge 0\\
+	0 & N < 0
+	\end{cases}
+\end{flalign}
+For a Rayleigh random variable $X$ with $E\sbrak{X^2} = \gamma$, the PDF and CDF are given by
+\begin{align}
+	\label{eq:rayleigh_pdf}
+	p_X(x) &= \frac{2x}{\gamma}\exp\left(-\frac{x^2}{\gamma}\right) \text{ for } x \ge 0\\
+	\label{eq:rayleigh_cdf}
+	F_X(X) &= 1-\exp\left(-\frac{x^2}{\gamma}\right) \text{ for } x \ge 0
+\end{align}
+Substituting \eqref{eq:rayleigh_cdf} in \eqref{eq:prob_err_bpsk_rayleigh_cdf},
+\begin{equation}
+	\label{eq:prob_err_bpsk_rayleigh_fN}
+	P_e(N) =
+	\begin{cases} 
+	1-\exp\left(-\frac{N^2}{\gamma}\right) & N \ge 0\\
+	0 & N < 0
+	\end{cases}
+\end{equation}
 %
 \item
 %
@@ -882,11 +959,29 @@ For a function $g$,
 E\sbrak{g(X)} = \int_{-\infty}^{\infty}g(x)p_{X}(x)\, dx
 \end{equation}
 %
-Find $P_e = E\sbrak{P_e(N)}$.
-
+Find $P_e = E\sbrak{P_e(N)}$.\\
+\solution Using $P_e(N)$ from \eqref{eq:prob_err_bpsk_rayleigh_fN},
+\begin{flalign*}
+	P_e &= \int_{-\infty}^{\infty} P_e(x)p_N(x) \,dx&\\
+	&= \int_{0}^{\infty} \left(1-e^{-\frac{x^2}{\gamma}}\right)\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} \,dx
+\end{flalign*}
+	
+\begin{multline*}
+	P_e = \frac{1}{\sqrt{2\pi}}\int_{0}^{\infty} e^{-\frac{x^2}{2}}  \,dx \\ - \frac{1}{\sqrt{2\pi}}\int_{0}^{\infty} \exp\left(-x^2\left(\frac{1}{\gamma}+\frac{1}{2}\right)\right)  \,dx
+\end{multline*}
+\begin{flalign*}
+	P_e &= \frac{1}{2} - \frac{1}{2}\sqrt{\frac{\gamma}{2+\gamma}}
+\end{flalign*} 
 %
 \item
-Plot $P_e$ in problems \ref{ch4_sim} and \ref{ch4_anal} on the same graph w.r.t $\gamma$.  Comment.
+Plot $P_e$ in problems \ref{ch4_sim} and \ref{ch4_anal} on the same graph w.r.t $\gamma$.  Comment.\\
+\solution $P_e$ plotted in same graph in \figref{fig:bpsk_pe_snr_rayleigh}. The value of $P_e$ is much higher when the channel gain $A$ is Rayleigh distributed than the case where $A$ is a constant (compare with \figref{fig:bpsk_pe_snr}).
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter4/prob_error.pdf}
+\caption{$P_e$ versus $\gamma$}
+\label{fig:bpsk_pe_snr_rayleigh}
+\end{figure}
 
 \end{enumerate}
 \chapter{Bivariate Random Variables: FSK}
