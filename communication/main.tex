@@ -761,6 +761,7 @@ Following the same steps as in problem \ref{prob:bpsk_delta_equi}, $\delta$ for 
 \solution 
 The MAP rule can be stated as\\
 \begin{flalign}
+\label{eq:map_rule}
 \text{Set } \hat{x} &= x_i \text{ if}&\\ \nonumber
 p_X(x_k)p_Y(y|x_k) &\text{ is maximum for } k = i
 \end{flalign}
@@ -1085,7 +1086,7 @@ Let $Z=n_1-n_2$. From the above theorem, $Z \sim \gauss{0}{\sqrt{2}}$. \eqref{eq
 \begin{align*}
 	P_e &= \pr{Z < -A}&\\
 	&= \pr{Z > A}&\\
-	&= Q(\frac{A}{\sqrt{2}})&\\
+	&= \qfunc{\frac{A}{\sqrt{2}}}&\\
 	&= \frac{1}{\sqrt{2\pi}}\int_{\frac{A}{\sqrt{2}}}^{\infty} \exp\left(-\frac{x^2}{2}\right)  \,dx 
 \end{align*}
 \figref{fig:biv_pe_snr} compares the theoretical and simulation plots.
@@ -1131,11 +1132,18 @@ From Fig. \ref{fig:bpsk_const} obtain a decision rule for BPSK
 y \dec{s_0}{s_1} 0
 \end{equation}
 \item
-Repeat the previous exercise using the MAP criterion.
+Repeat the previous exercise using the MAP criterion.\\
+\solution When the symbols are equiprobable, the MAP rule stated in \eqref{eq:map_rule} simplifies to finding the symbol $s_i$ that %
+maximizes the conditional PDF $p_Y(y|s_i)$. In the case of BPSK, $y|s_0 \sim \gauss{\sqrt{E_b}}{\frac{N_0}{2}}$ and $y|s_1 \sim \gauss{-\sqrt{E_b}}{\frac{N_0}{2}}$. %
+The two PDFs meet at $Y=0$. So,
+\begin{align*}
+	p_Y(y|s_0) > p_Y(y|s_1) &\text{ when } y > 0&\\
+	p_Y(y|s_0) < p_Y(y|s_1) &\text{ when } y < 0 	
+\end{align*}
+The optimum threshold is therefore $Y=0$
 
 \item
 Using the decision rule in Problem \ref{prob:bpsk_decision}, obtain an expression for the probability of error for BPSK.
-
 \solution
 Since the symbols are equiprobable, it is sufficient if the error is calculated assuming that a 0 was sent.  This results in
 \begin{align}
@@ -1167,7 +1175,14 @@ and the complementary error function is defined as
 Show that 
 \begin{equation}
 Q(x) = \frac{1}{2}\operatorname {erfc}\left({\frac  {x}{{\sqrt  {2}}}}\right)
-\end{equation}
+\end{equation}\\
+\solution From the definition of Q-function in \eqref{eq:q_func_integral},
+\begin{align*}
+	Q(x) &= \frac{1}{\sqrt{2\pi}}\int_{x}^{\infty} e^{-\frac{t}{2}} \,dt \\
+	& \intertext{Substitute $u=\frac{t}{\sqrt{2}}$} \\
+	Q(x) &= \frac{1}{\sqrt{\pi}}\int_{\frac{x}{\sqrt{2}}}^{\infty} e^{-u^2} \,du \\
+	&= \frac{1}{2}\operatorname {erfc}\left({\frac  {x}{{\sqrt  {2}}}}\right)
+\end{align*}
 
 \item
 Verify the bit error rate (BER) plots for BPSK through simulation and analysis for 0 to 10 dB.
@@ -1177,13 +1192,13 @@ The following code
 %\lstinputlisting{./codes/bpsk_ber.py}
 %\iffalse
 \begin{lstlisting}
-codes/bpsk_ber.py
+codes/chapter6/bpsk_ber.py
 \end{lstlisting}
 %	\fi
 yields \figref{fig:bpsk_ber}
 \begin{figure}[H]
 \centering
-\includegraphics[width=\columnwidth]{./figs/chapter6/bpsk_ber.eps}
+\includegraphics[width=\columnwidth]{./figs/chapter6/bpsk_ber.pdf}
 \caption{}
 \label{fig:bpsk_ber}
 \end{figure}
@@ -1192,7 +1207,24 @@ yields \figref{fig:bpsk_ber}
 Show that
 \begin{equation}
 Q(x) = \frac{1}{\pi}\int^{\frac{\pi}{2}}_{0}e^{-\frac{x^2}{2\sin^2 \theta}}\,d\theta
+\end{equation}\\
+\solution Consider the bivariate gaussian distribution of $X,Y \sim \gauss{0}{1}$,
+\begin{equation}
+	p_{X,Y}(x,y) = \frac{1}{2\pi}\exp\left(-\frac{x^2+y^2}{2}\right)
+	\label{eq:bivariate_std_gaussian_pdf}
 \end{equation}
+Using $p_{X,Y}(x,y)$, the Q-function can be expressed as,
+\begin{align}
+	Q(z) &= \int_{z}^{\infty}\int_{-\infty}^{\infty} p_{X,Y}(x,y) \,dx\,dy \\
+	\label{eq:qfunc_biv_integ}
+	&= \frac{1}{2\pi}\int_{z}^{\infty}\int_{-\infty}^{\infty} \exp\left(-\frac{x^2+y^2}{2}\right) \,dx\,dy
+\end{align}
+Transforming the integral in \eqref{eq:qfunc_biv_integ} to polar coordinates $(r,\theta)$,
+\begin{align*}
+	Q(z) &= \frac{1}{2\pi}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\int_{\frac{z}{\sin\theta}}^{\infty} \exp\left(-\frac{r^2}{2}\right)r \,dr\,d\theta\\
+	&= \frac{1}{2\pi}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \exp\left(-\frac{z^2}{2\sin^2\theta}\right) \,d\theta\\
+	&= \frac{1}{\pi}\int_{0}^{\frac{\pi}{2}} \exp\left(-\frac{z^2}{2\sin^2\theta}\right) \,d\theta
+\end{align*}
 \end{enumerate}
 \section{Coherent BFSK}
 \begin{enumerate}
