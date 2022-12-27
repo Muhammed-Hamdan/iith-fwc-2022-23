@@ -1134,7 +1134,13 @@ y \dec{s_0}{s_1} 0
 \item
 Repeat the previous exercise using the MAP criterion.\\
 \solution When the symbols are equiprobable, the MAP rule stated in \eqref{eq:map_rule} simplifies to finding the symbol $s_i$ that %
-maximizes the conditional PDF $p_Y(y|s_i)$. In the case of BPSK, $y|s_0 \sim \gauss{\sqrt{E_b}}{\frac{N_0}{2}}$ and $y|s_1 \sim \gauss{-\sqrt{E_b}}{\frac{N_0}{2}}$. %
+maximizes the conditional PDF $p_Y(y|s_i)$ i.e.
+\begin{align}
+	\label{eq:mle_rule}
+	\text{Set } \hat{x} &= x_i \text{ if}&\\ \nonumber
+	p_Y(y|x_k) &\text{ is maximum for } k = i
+\end{align}
+In the case of BPSK, $y|s_0 \sim \gauss{\sqrt{E_b}}{\frac{N_0}{2}}$ and $y|s_1 \sim \gauss{-\sqrt{E_b}}{\frac{N_0}{2}}$. %
 The two PDFs meet at $Y=0$. So,
 \begin{align*}
 	p_Y(y|s_0) > p_Y(y|s_1) &\text{ when } y > 0&\\
@@ -1281,10 +1287,58 @@ Obtain a decision rule for BFSK from \figref{fig:bfsk_const}.
 y_1 \dec{s_0}{s_1} y_2
 \end{equation}
 \item
-Repeat the previous exercise using the MAP criterion.
+Repeat the previous exercise using the MAP criterion.\\
+\solution Let $\mbf{y} = \myvec{y_1&y_2&...&y_n}^T$ be the received signal. For an AWGN channel, given that symbol $\mbf{s_k}$ was sent, %
+every component $y_i$ is normally distributed i.e. 
+\begin{equation}
+y_i|\mbf{s_k} \sim \gauss{s_{ki}}{\frac{N_0}{2}}\text{   ,} i=1,2,...,n 
+\end{equation}
+where $s_{ki}$ is the i$^{th}$ component of symbol $\mbf{s_k}$. Since all components of $\mbf{y}$ are independent, the joint PDF of $\mbf{y}$ given %
+$\mbf{s_k}$ was sent is,
+\begin{align}
+	p_{\mbf{y}}(\mbf{y}|\mbf{s_k}) &= \prod\limits_{i=1}^{n} p_{y_i}(y_i|\mbf{s_k})&\\
+	&= \left(\frac{2}{N_0\sqrt{2\pi}}\right)^n \exp\left(-\frac{2}{N_0^2}\sum\limits_{i=1}^{n} (y_i-s_{ki})^2\right)\\
+	\label{eq:joint_pdf_fdistance}
+	&= \left(\frac{2}{N_0\sqrt{2\pi}}\right)^n \exp\left(-\frac{2}{N_0^2}\norm{\vec{y}-\vec{s_k}}^2\right)
+\end{align}
+Ignoring the constants in \eqref{eq:joint_pdf_fdistance},
+\begin{equation}
+	p_{\mbf{y}}(\mbf{y}|\mbf{s_k}) \propto \exp\left(-\norm{\vec{y}-\vec{s_k}}^2\right)
+\end{equation}
+According to the MAP rule in \eqref{eq:mle_rule}, the optimal criterion to estimate $\vec{s}$ is to choose $\vec{\hat{s}}=\vec{s_k}$ whose
+distance from $\vec{y}$ is minimum.
+\begin{align}
+	\label{eq:AWGN_est_rule}
+	\text{Set } \hat{s} &= s_k \text{ if}&\\ \nonumber
+	\norm{\vec{y}-\vec{s_i}}^2 & \text{ is minimum for } i = k
+\end{align}
+For the case of coherent BFSK, the locus for point equidistant from $\vec{s_0}$ and $\vec{s_1}$ is the line $y_1-y_2=0$. So, the optimum
+decision is found as 
+\begin{equation}
+y_1 \dec{s_0}{s_1} y_2
+\end{equation}
 
 \item
-Derive and plot the probability of error.  Verify through simulation.
+Derive and plot the probability of error.  Verify through simulation.\\
+\solution 
+\begin{align}
+	P_e &= \pr{y_1<y_2|s_0}\\
+	&= \pr{\sqrt{E_b}+n_1<n_2}\\
+	&= \pr{n_2-n_1 > \sqrt{E_b}}\\ \nonumber
+	&= \pr{z > \sqrt{E_b}}, \text{where $z \sim \gauss{0}{N_0}$}\\
+	&= \qfunc{\sqrt{\frac{E_b}{N_0}}}
+\end{align}
+The following code,
+\begin{lstlisting}
+codes/chapter6/bfsk_coherent_ber.py
+\end{lstlisting}
+yields \figref{fig:bfsk_coherent_ber}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter6/bfsk_coherent_ber.pdf}
+\caption{}
+\label{fig:bfsk_coherent_ber}
+\end{figure}
 \end{enumerate}
 
 %

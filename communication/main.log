@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.29)  27 DEC 2022 08:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.29)  27 DEC 2022 12:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -661,7 +661,7 @@ igs/chapter6/bpsk_const-eps-converted-to.pdf>]
 <./figs/chapter6/bpsk_ber.pdf, id=574, 462.52798pt x 346.89601pt>
 File: ./figs/chapter6/bpsk_ber.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bpsk_ber.pdf>
-Package pdftex.def Info: ./figs/chapter6/bpsk_ber.pdf  used on input line 1201.
+Package pdftex.def Info: ./figs/chapter6/bpsk_ber.pdf  used on input line 1207.
 
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
 Package epstopdf Info: Source file: <./figs/chapter6/bfsk_const.eps>
@@ -673,53 +673,63 @@ o.pdf>
 (epstopdf)                    size: 10537 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/chapter6/bfsk_const
 -eps-converted-to.pdf ./figs/chapter6/bfsk_const.eps>
-(epstopdf)             \includegraphics on input line 1237.
+(epstopdf)             \includegraphics on input line 1243.
 Package epstopdf Info: Output file is already uptodate.
 <./figs/chapter6/bfsk_const-eps-converted-to.pdf, id=575, 517.935pt x 303.1325p
 t>
 File: ./figs/chapter6/bfsk_const-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bfsk_const-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/chapter6/bfsk_const-eps-converted-to.pdf  used 
-on input line 1237.
+on input line 1243.
 (pdftex.def)             Requested size: 265.0125pt x 155.10895pt.
  [11 <./figs/chapter6/bpsk_ber.pdf>]
-Underfull \hbox (badness 2856) in paragraph at lines 1353--1363
+<./figs/chapter6/bfsk_coherent_ber.pdf, id=616, 462.52798pt x 346.89601pt>
+File: ./figs/chapter6/bfsk_coherent_ber.pdf Graphic file (type pdf)
+<use ./figs/chapter6/bfsk_coherent_ber.pdf>
+Package pdftex.def Info: ./figs/chapter6/bfsk_coherent_ber.pdf  used on input l
+ine 1338.
+(pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
+ [12 <./figs/chapter6/bfsk_const-eps-converted-to.pdf> <./figs/chapter6/bfsk_co
+herent_ber.pdf>]
+Underfull \hbox (badness 2856) in paragraph at lines 1407--1417
 []\OT1/ptm/m/n/10 Consider a sys-tem where $\OT1/cmr/bx/n/10 s[] \OT1/cmr/m/n/1
 0 = [] \OML/cmm/m/it/10 ; i \OT1/cmr/m/n/10 =
  []
 
-[12 <./figs/chapter6/bfsk_const-eps-converted-to.pdf>] [13] (./main.aux) ) 
+[13] [14
+
+] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 9320 strings out of 478287
- 151370 string characters out of 5849289
- 731940 words of memory out of 5000000
- 27400 multiletter control sequences out of 15000+600000
+ 9332 strings out of 478287
+ 151768 string characters out of 5849289
+ 732016 words of memory out of 5000000
+ 27411 multiletter control sequences out of 15000+600000
  503371 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,15n,63p,396b,1609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr
-/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
-b8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (13 pages, 464230 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
+es/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+
+Output written on main.pdf (14 pages, 479544 bytes).
 PDF statistics:
- 706 PDF objects out of 1000 (max. 8388607)
- 253 compressed objects within 3 object streams
+ 746 PDF objects out of 1000 (max. 8388607)
+ 264 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
 
