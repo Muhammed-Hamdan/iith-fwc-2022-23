@@ -1336,7 +1336,7 @@ yields \figref{fig:bfsk_coherent_ber}
 \begin{figure}[H]
 \centering
 \includegraphics[width=\columnwidth]{./figs/chapter6/bfsk_coherent_ber.pdf}
-\caption{}
+\caption{$P_e$ versus SNR for coherent BFSK}
 \label{fig:bfsk_coherent_ber}
 \end{figure}
 \end{enumerate}
@@ -1380,7 +1380,33 @@ E\sbrak{\mathbf{n}} &= \mathbf{0}, E\sbrak{\mathbf{n}\mathbf{n}^T} = \sigma^2 \m
 \item Show that the MAP decision for detecting $\mathbf{s}_0$ results in
 \begin{equation}
 \abs{r}_2 < r_1
-\end{equation}
+\end{equation}\\
+\solution For choosing $\vec{\hat{s}} = \vec{s_0}$, the below inequalities have to be satisfied (from \eqref{eq:AWGN_est_rule}).
+\begin{align}
+	\label{eq:qpsk_map_ineq1}
+	\norm{\vec{r}-\vec{s_0}}^2 &< \norm{\vec{r}-\vec{s_1}}^2	\\
+	\label{eq:qpsk_map_ineq2}
+	\norm{\vec{r}-\vec{s_0}}^2 &< \norm{\vec{r}-\vec{s_2}}^2	\\
+	\label{eq:qpsk_map_ineq3}
+	\norm{\vec{r}-\vec{s_0}}^2 &< \norm{\vec{r}-\vec{s_3}}^2	
+\end{align} 
+Simplifying \eqref{eq:qpsk_map_ineq1},
+\begin{align*}
+	(\vec{r}-\vec{s_0})^{\top}(\vec{r}-\vec{s_0}) &< (\vec{r}-\vec{s_1})^{\top}(\vec{r}-\vec{s_1})\\
+	\norm{r}^2 -2\vec{s_0}^{\top}\vec{r} + \norm{s_0}^2 &< \norm{r}^2 -2\vec{s_1}^{\top}\vec{r} + \norm{s_1}^2\\
+	(\vec{s_1}-\vec{s_0})^{\top}\vec{r} &< 0 \text{\small,   $[\norm{s_0} = \norm{s_1} = \sqrt{E_b}$]}\\
+	\myvec{-\sqrt{E_b}\\\sqrt{E_b}}^{\top}\vec{r} &< 0\\
+	\myvec{-1\\1}^{\top}\vec{r} &< 0\\
+	r_2 &< r_1
+\end{align*}
+Similarly, simplifying \eqref{eq:qpsk_map_ineq2} and \eqref{eq:qpsk_map_ineq3} we obtain
+\begin{align*}
+	r_2 &< r_1	\\
+	-r_2 &< r_1 \\
+	0 &< r_1	\\
+	\implies \abs{r}_2 &< r_1
+\end{align*} 
+
 \item Express $\pr{\hat{\mathbf{s}} = \mathbf{s}_0|\mathbf{s} = \mathbf{s}_0}$ in terms of $r_1, r_2$.
 Let $X=n_2-n_1, Y = -n_2-n_1$, where $\mathbf{n}=\brak{n_1,n_2}$.
 Their correlation coefficient is defined as
@@ -1389,14 +1415,76 @@ Their correlation coefficient is defined as
 \rho = \frac{E\sbrak{\brak{X-\mu_x}\brak{Y-\mu_y}}}{\sigma_x\sigma_y}
 \end{align}
 %
-$X$ and $Y$ are said to be uncorrelated if $\rho = 0$
+$X$ and $Y$ are said to be uncorrelated if $\rho = 0$\\
+\solution
+\begin{flalign}
+	\nonumber
+	\pr{\hat{\mathbf{s}} = \mathbf{s}_0|\mathbf{s} = \mathbf{s}_0} &= \pr{\abs{r}_2 < r_1 | \mathbf{s} = \mathbf{s}_0}&\\
+	\label{eq:qpsk_prob_error_r12}
+	&= \pr{r_2 < r_1, -r_2 < r_1| \mathbf{s} = \mathbf{s}_0}
+\end{flalign}
+\
 \item Show that if $X$ and $Y$ are uncorrelated 
-Verify this numerically.
+Verify this numerically.\\
+\solution
 \item Show that $X$ and $Y$ are independent, i.e. $p_{XY}(x,y) = p_{X}(x)p_{Y}(y)$.
-\item Show that $X,Y \sim \mathcal{N}\brak{0,2\sigma^2}$.
-\item Show that $\pr{\hat{\mathbf{s}} = \mathbf{s}_0|\mathbf{s} = \mathbf{s}_0} =\pr{ X < A,  Y < A}$.
-\item Find $\pr{ X < A,  Y < A}$.
-\item Verify the above through simulation.
+\item Show that $X,Y \sim \mathcal{N}\brak{0,2\sigma^2}$.\\
+\solution $X = n_2-n_1$ where $n_2, -n_1 \sim \gauss{0}{\sigma^2}$. The PDF of X is given by,
+\begin{align}
+	\nonumber
+	p_X(x) &= p_{n_2}(n_2) \ast p_{-n_1}(n_1)\\\nonumber
+	&= \frac{1}{2\pi\sigma^2}\int_{-\infty}^{\infty} e^{-\frac{t^2}{2\sigma^2}}e^{-\frac{(x-t)^2}{2\sigma^2}}  \,dt\\\nonumber
+	&= \frac{1}{2\pi\sigma^2}\int_{-\infty}^{\infty} e^{-\frac{(x-t)^2+t^2}{2\sigma^2}}  \,dt\\\nonumber
+	&= \frac{1}{2\pi\sigma^2}\int_{-\infty}^{\infty} e^{-\frac{(2t-x)^2+x^2}{2(\sqrt{2}\sigma)^2}}  \,dt\\\nonumber
+	&= \frac{1}{2\pi\sigma^2}e^{-\frac{x^2}{2(\sqrt{2}\sigma)^2}}\int_{-\infty}^{\infty} e^{-\frac{(2t-x)^2}{2(\sqrt{2}\sigma)^2}}  \,dt\\\nonumber
+	&= \frac{e^{-\frac{x^2}{2(\sqrt{2}\sigma)^2}}}{\sqrt{2\pi}\sqrt{2}\sigma} \frac{1}{\sqrt{2\pi}\sqrt{2}\sigma}\int_{-\infty}^{\infty} e^{-\frac{k^2}{2(\sqrt{2}\sigma)^2}}  \,dk\\
+	\label{eq:std_gauss_diff_pdf}
+	&= \frac{e^{-\frac{x^2}{2(\sqrt{2}\sigma)^2}}}{\sqrt{2\pi}\sqrt{2}\sigma}
+\end{align}
+From \eqref{eq:std_gauss_diff_pdf}, $X \sim \gauss{0}{2\sigma^2}$. Since $n_2$ and $-n_2$ are identically distributed (due to zero mean),
+\begin{align*}
+	p_Y(y) &= p_{-n_2}(n_2) \ast p_{-n_1}(n_1)\\
+	&= p_{n_2}(n_2) \ast p_{-n_1}(n_1)\\
+	&= p_X(x)
+\end{align*}
+So, $X,Y \sim \gauss{0}{2\sigma^2}$.
+\item Show that $\pr{\hat{\mathbf{s}} = \mathbf{s}_0|\mathbf{s} = \mathbf{s}_0} =\pr{ X < A,  Y < A}$.\\
+\solution From \eqref{eq:qpsk_prob_error_r12},
+\begin{flalign*}
+	\pr{\hat{\mathbf{s}} = \mathbf{s}_0| \mathbf{s} = \mathbf{s}_0} = \pr{r_2 < r_1, -r_2 < r_1 | \mathbf{s} = \mathbf{s}_0}&\\
+	= \pr{n_2<n_1+\sqrt{E_b}, -n_2<n_1+\sqrt{E_b}}&\\
+	= \pr{n_2-n_1<\sqrt{E_b}, -n_2-n_1<\sqrt{E_b}}&\\
+	= \pr{X<\sqrt{E_b}, Y<\sqrt{E_b}}&\\
+	= \pr{X<A, Y<A}
+\end{flalign*}
+\item Find $\pr{ X < A,  Y < A}$.\\
+\solution Since $X$ and $Y$ are independant, 
+\begin{flalign*}
+	\pr{ X < A,  Y < A} = \pr{X<A}\pr{Y<A}
+\end{flalign*}%
+\begin{flalign*}
+	&= F_X(A)F_Y(A)&\\
+	&= \left(1-\qfunc{\frac{A}{\sqrt{2}\sigma}}\right)\left(1-\qfunc{\frac{A}{\sqrt{2}\sigma}}\right)&\\
+	&= \left(1-\qfunc{\frac{A}{\sqrt{2}\sigma}}\right)^2&\\
+	&= \left(1-\qfunc{\sqrt{\frac{E_b}{N_0}}}\right)^2 &\\
+	& \text{since } A=\sqrt{E_b}, \sigma=\sqrt{\frac{N_0}{2}}&\\
+	&= 1-2\qfunc{\sqrt{\frac{E_b}{N_0}}}+\qfunc{\sqrt{\frac{E_b}{N_0}}}^2&\\
+	&\approx 1-2\qfunc{\sqrt{\frac{E_b}{N_0}}}&\\
+	&= 1-\operatorname{erfc}\left(\sqrt{\frac{E_b}{2N_0}}\right)
+\end{flalign*}
+\item Verify the above through simulation.\\
+\solution 
+The following code,
+\begin{lstlisting}
+codes/chapter6/qfsk_ber.py
+\end{lstlisting}
+yields \figref{fig:qpsk_ber}. $P_e = 1-\pr{X<A,Y<A}$ plotted for SNR values from 0 to 10.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter6/qpsk_ber.pdf}
+\caption{}
+\label{fig:qpsk_ber}
+\end{figure}
 \end{enumerate}
 \end{enumerate}
 
