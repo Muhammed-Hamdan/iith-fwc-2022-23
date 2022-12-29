@@ -1496,7 +1496,7 @@ Consider a system where
 $\mathbf{s}_i=
 \myvec{
 \cos\brak{\frac{2\pi i}{M}}\\
-\cos\brak{\frac{2\pi i}{M}}
+\sin\brak{\frac{2\pi i}{M}}
 }, i = 0, 1 , \dots M-1
 $
 .
@@ -1518,6 +1518,7 @@ where $n_1,n_2 \sim \mathcal{N}\brak{0,\frac{N_0}{2}}$.
 
 \begin{enumerate}[label=(\alph{enumii})]
 \item Substituting 
+\label{prob:mpsk_polar_joint_pdf}
 \begin{align}
 r_1=R\cos \theta \\
 r_2=R\sin \theta
@@ -1526,17 +1527,53 @@ show that the joint pdf of $R,\theta$ is
 %
 \begin{equation}
 p\brak{R,\theta}=\frac{R}{\pi N_0}\exp\brak{-\frac{R^2-2R\sqrt{E_s}\cos \theta + E_s}{N_0}}
-\end{equation}
+\label{eq:mpsk_joint_pdf_polar}
+\end{equation}\\
+\solution $r_1 \sim \gauss{\sqrt{E_s}}{\frac{N_0}{2}}$ and $r_2 \sim \gauss{0}{\frac{N_0}{2}}$. Since $r_1$ and $r_2$ are independent,
+\begin{align*}
+	p_{r_1,r_2}(r_1,r_2) &= p_{r_1}(r_1)p_{r_2}(r_2)
+\end{align*}
+\begin{align*}
+	&= \frac{1}{\sqrt{\pi N_0}}\exp\left(-\frac{(r_1-\sqrt{E_s})^2}{N_0}\right)\frac{1}{\sqrt{\pi N_0}}\exp\left(-\frac{r_2^2}{N_0}\right)\\
+	&= \frac{1}{\pi N_0}\exp\left(-\frac{(r_1-\sqrt{E_s})^2+r_2^2}{N_0}\right)
+\end{align*}
+Substituting for $r_1$ and $r_2$ in terms of $R$ and $\theta$
+\begin{align*}
+	p\brak{R,\theta} &= \frac{R}{\pi N_0}\exp\left(-\frac{(R\cos\theta - \sqrt{E_s})^2+R\sin^2\theta}{N_0}\right)\\
+	&= \frac{R}{\pi N_0}\exp\brak{-\frac{R^2-2R\sqrt{E_s}\cos \theta + E_s}{N_0}}
+\end{align*}
 %
 \item Show that 
 %
 \begin{align}
+\label{eq:v_minus_alpha_integ}
 \lim_{\alpha \rightarrow \infty}\int_{0}^{\infty}\brak{V-\alpha }e^{-\brak{V-\alpha}^2 }\,dV
 &= 0
 \\
+\label{eq:no_v_minus_alpha_integ}
 \lim_{\alpha \rightarrow \infty}\int_{0}^{\infty} e^{-\brak{V-\alpha}^2 }\,dV
 &=  \sqrt{\pi}
-\end{align}
+\end{align}\\
+\solution For \eqref{eq:v_minus_alpha_integ}, let $(V-\alpha)^2 = t$. Then
+\begin{equation*}
+	2(V-\alpha)dV = dt
+\end{equation*} 
+Changing the integral in terms of $t$,
+\begin{align*}
+	\lim_{\alpha \rightarrow \infty}\frac{1}{2}\int_{-\alpha^2}^{\infty}e^{-t}\,dt &= \lim_{\alpha \rightarrow \infty}\frac{1}{2}\sbrak{-e^{-t}}_{\alpha^2}^{\infty}\\
+	&= \lim_{\alpha \rightarrow \infty}\frac{1}{2}e^{-\alpha^2}\\
+	&= 0
+\end{align*}
+For \eqref{eq:no_v_minus_alpha_integ}, let $\brak{V-\alpha} = \frac{k}{\sqrt{2}}$. Then
+\begin{equation*}
+	dV = \frac{dk}{\sqrt{2}} 
+\end{equation*} 
+Changing the integral in terms of $k$,
+\begin{align*}
+	\lim_{\alpha \rightarrow \infty}\frac{1}{\sqrt{2}}\int_{-\sqrt{2}\alpha}^{\infty} e^{-\frac{k^2}{2}}\,dk &= \sqrt{\pi}\lim_{\alpha \rightarrow \infty}\frac{1}{\sqrt{2\pi}}\int_{-\sqrt{2}\alpha}^{\infty} e^{-\frac{k^2}{2}}\,dk\\
+	&= \sqrt{\pi}\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} e^{-\frac{k^2}{2}}\,dk\\
+	&= \sqrt{\pi}
+\end{align*}
 %
 \item 
 Using the above, evaluate
@@ -1545,14 +1582,80 @@ Using the above, evaluate
 \int_{0}^{\infty}V\exp\cbrak{-\brak{V^2 - 2V \sqrt{\gamma}\cos \theta +\gamma}}\,dV
 \end{align}
 %
-for large values of $\gamma$.
+for large values of $\gamma$.\\
+\solution By completing the square in the exponent, we get
+\begin{align*}
+	&\int_{0}^{\infty}Ve^{-\brak{(V - \sqrt{\gamma}\cos \theta)^2 +\gamma\sin^2 \theta}}\,dV\\
+	&=e^{-\gamma\sin^2 \theta}\int_{0}^{\infty}Ve^{-\brak{V - \sqrt{\gamma}\cos \theta}^2}\,dV\\
+	&=e^{-\gamma\sin^2 \theta}\left[\int_{0}^{\infty}\brak{V-\sqrt{\gamma}\cos \theta}e^{-\brak{V - \sqrt{\gamma}\cos \theta}^2}\right.\\
+	&\left.+\sqrt{\gamma}\cos \theta \int_{0}^{\infty}e^{-\brak{V - \sqrt{\gamma}\cos \theta}^2}\,dV\right]
+\end{align*}
+Applying the limit $\gamma \rightarrow \infty$ and using the results from \eqref{eq:v_minus_alpha_integ} and \eqref{eq:no_v_minus_alpha_integ},
+\begin{align}
+	\nonumber
+	&=\lim_{\gamma \rightarrow \infty}e^{-\gamma\sin^2 \theta}\int_{0}^{\infty}\brak{V-\sqrt{\gamma}\cos \theta}e^{-\brak{V - \sqrt{\gamma}\cos \theta}^2}\\
+	\nonumber
+	&+\lim_{\gamma \rightarrow \infty}e^{-\gamma\sin^2 \theta}\sqrt{\gamma}\cos \theta \int_{0}^{\infty}e^{-\brak{V - \sqrt{\gamma}\cos \theta}^2}\,dV\\
+	\label{eq:limit_gamma_indet}
+	&=0+\lim_{\gamma \rightarrow \infty}e^{-\gamma\sin^2 \theta}\sqrt{\gamma}\cos \theta \sqrt{\pi}
+\end{align}
+The value of \eqref{eq:limit_gamma_indet} is mainly determined by the product $e^{-\gamma\sin^2 \theta}\sqrt{\gamma}$ which has a $0\cdot\infty$ %
+indeterminate form in the limit. Keeping the product without applying the limits,
+\begin{equation}
+	\int_{0}^{\infty}Ve^{-\brak{V^2 - 2V \sqrt{\gamma}\cos \theta +\gamma}}\,dV = e^{-\gamma\sin^2 \theta}\sqrt{\gamma\pi}\cos \theta
+	\label{eq:v_integral_large_gamma}
+\end{equation}
+For large $\gamma$.
 \item
 Find a compact expression for 
 %
 \begin{align}
 I = 1 - \sqrt{\frac{\gamma}{\pi}}\int_{-\frac{\pi}{M}}^{\frac{\pi}{M}}e^{- \gamma\sin^2\theta }\cos \theta\, d\theta
+\end{align}\\
+\solution Substituting $\sqrt{\gamma}\sin \theta=\frac{k}{\sqrt{2}}$,
+\begin{align}
+	\nonumber
+	\sqrt{\gamma}\cos \theta d\theta &= \frac{dk}{\sqrt{2}}\\
+	\nonumber
+	\implies I &= 1 - \frac{1}{\sqrt{2\pi}}\int_{-\sqrt{2\gamma}\sin \frac{\pi}{M}}^{\sqrt{2\gamma}\sin \frac{\pi}{M}}e^{-\frac{k^2}{2}}\, dk\\
+	\nonumber
+	&= 1 - \left(1 - 2\qfunc{\sqrt{2\gamma}\sin \frac{\pi}{M}}\right)\\
+	\label{eq:I_sector_Q_func}
+	&= 2\qfunc{\sqrt{2\gamma}\sin \frac{\pi}{M}}\\
+	&= \operatorname{erfc}\left(\sqrt{\gamma}\sin \frac{\pi}{M}\right)
 \end{align}
-\item Find $P_{e|\mathbf{s}_0}$.
+\item Find $P_{e|\mathbf{s}_0}$.\\
+\solution The optimal decision to detect $\vec{s}_0$ is,
+\begin{align}
+	\frac{\abs{r}_2}{\alpha} &< r_1\\
+	\nonumber
+	\text{where } \alpha &= \tan \frac{\pi}{M} 
+\end{align}
+$P_{e|\mathbf{s}_0}$ can then be found as 
+\begin{align}
+	P_{e|\mathbf{s}_0} &= 1 - \pr{\frac{\abs{r}_2}{\alpha} < r_1}
+\end{align}
+Appying the transformation from problem \ref{prob:mpsk_polar_joint_pdf} and using the joint pdf from \eqref{eq:mpsk_joint_pdf_polar},
+\begin{align*}
+	P_{e|\mathbf{s}_0} &= 1 - \pr{R < \infty, -\frac{\pi}{M} < \theta < \frac{\pi}{M}}\\
+	&= 1 - \int_{-\frac{\pi}{M}}^{\frac{\pi}{M}} \int_{0}^{\infty} p\brak{R,\theta} \,dR  \,d\theta\\ 
+	&= 1 - \frac{1}{\pi N_0} \int_{-\frac{\pi}{M}}^{\frac{\pi}{M}} \int_{0}^{\infty} Re^{-\frac{R^2-2R\sqrt{E_s}\cos \theta + E_s}{N_0}} \,dR  \,d\theta
+\end{align*}
+Substituting $V = \frac{R}{\sqrt{N_0}}$ and taking $\gamma = \frac{E_b}{N_0}$,
+\begin{align*}
+	P_{e|\mathbf{s}_0} &= 1 - \frac{1}{\pi} \int_{-\frac{\pi}{M}}^{\frac{\pi}{M}} \int_{0}^{\infty} Ve^{-\brak{V^2-2V\sqrt{\gamma}\cos \theta + \gamma}} \,dV  \,d\theta
+\end{align*}
+Using the result from \eqref{eq:v_integral_large_gamma},
+\begin{align*}
+	P_{e|\mathbf{s}_0} &= 1 - \frac{1}{\pi} \int_{-\frac{\pi}{M}}^{\frac{\pi}{M}}  e^{-\gamma\sin^2 \theta}\sqrt{\gamma\pi}\cos \theta \,d\theta\\
+	&= 1 - \sqrt{\frac{\gamma}{\pi}} \int_{-\frac{\pi}{M}}^{\frac{\pi}{M}}  e^{-\gamma\sin^2 \theta}\cos \theta \,d\theta
+\end{align*}
+Using the result from \eqref{eq:I_sector_Q_func},
+\begin{align}	
+	P_{e|\mathbf{s}_0} &= 2\qfunc{\sqrt{2\gamma}\sin \frac{\pi}{M}}\\
+	&= 2\qfunc{\sqrt{\frac{2E_b}{N_0}}\sin \frac{\pi}{M}}
+\end{align}
+
 \end{enumerate}
 \end{enumerate}
 \section{Noncoherent BFSK}
