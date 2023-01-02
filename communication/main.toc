@@ -18,4 +18,4 @@
 \contentsline {section}{\numberline {6.3}QPSK}{12}{}%
 \contentsline {section}{\numberline {6.4}$M$-PSK}{14}{}%
 \contentsline {section}{\numberline {6.5}Noncoherent BFSK}{15}{}%
-\contentsline {section}{\numberline {6.6}Craig's Formula and MGF}{16}{}%
+\contentsline {section}{\numberline {6.6}Craig's Formula and MGF}{19}{}%

@@ -1210,6 +1210,7 @@ yields \figref{fig:bpsk_ber}
 \end{figure}
 
 \item
+\label{prob:craigs_formula_proof}
 Show that
 \begin{equation}
 Q(x) = \frac{1}{\pi}\int^{\frac{\pi}{2}}_{0}e^{-\frac{x^2}{2\sin^2 \theta}}\,d\theta
@@ -1225,11 +1226,11 @@ Using $p_{X,Y}(x,y)$, the Q-function can be expressed as,
 	\label{eq:qfunc_biv_integ}
 	&= \frac{1}{2\pi}\int_{z}^{\infty}\int_{-\infty}^{\infty} \exp\left(-\frac{x^2+y^2}{2}\right) \,dx\,dy
 \end{align}
-Transforming the integral in \eqref{eq:qfunc_biv_integ} to polar coordinates $(r,\theta)$,
+Transforming the integral in \eqref{eq:qfunc_biv_integ} to polar coordinates $(r,\theta)$ for $z > 0$,
 \begin{align*}
 	Q(z) &= \frac{1}{2\pi}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\int_{\frac{z}{\sin\theta}}^{\infty} \exp\left(-\frac{r^2}{2}\right)r \,dr\,d\theta\\
 	&= \frac{1}{2\pi}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \exp\left(-\frac{z^2}{2\sin^2\theta}\right) \,d\theta\\
-	&= \frac{1}{\pi}\int_{0}^{\frac{\pi}{2}} \exp\left(-\frac{z^2}{2\sin^2\theta}\right) \,d\theta
+	&= \frac{1}{\pi}\int_{0}^{\frac{\pi}{2}} \exp\left(-\frac{z^2}{2\sin^2\theta}\right) \,d\theta \text{ , for $z > 0$}
 \end{align*}
 \end{enumerate}
 \section{Coherent BFSK}
@@ -1664,16 +1665,70 @@ Using the result from \eqref{eq:I_sector_Q_func},
 Show that
 %
 \begin{align}
+\label{eq:bessel_twopi}
 I_{0}(x) &= \frac{1}{2\pi}\int_{0}^{2\pi}e^{x\cos\theta}\,d\theta \\
+\label{eq:bessel_phi}
 I_{0}(x) &= \frac{1}{2\pi}\int_{0}^{2\pi}e^{x\cos\brak{\theta-\phi}}\,d\theta \\
+\label{eq:bessel_addition}
 \frac{1}{2\pi}\int_{0}^{2\pi}e^{m_1\cos\theta + m_2\sin\theta}\,d\theta &= I_0\brak{\sqrt{m_1^2+m_2^2}} 
 \end{align}
 %
 where the modified Bessel function of order $n$ (integer) is defined as 
 %
 \begin{align}
+\label{eq:mod_bessel_n}
 I_{n}(x) = \frac{1}{\pi}\int_{0}^{\pi}e^{x\cos\theta}\cos n\theta\,d\theta
+\end{align}\\
+\solution From \eqref{eq:mod_bessel_n}
+\begin{equation}
+	I_{0}(x) = \frac{1}{\pi}\int_{0}^{\pi}e^{x\cos\theta} \,d\theta
+	\label{eq:mod_bessel_zero}
+\end{equation}
+Splitting the integral in \eqref{eq:bessel_twopi},
+\begin{align}
+	& \frac{1}{2\pi}\left[\int_{0}^{\pi}e^{x\cos\theta}\,d\theta+\int_{\pi}^{2\pi}e^{x\cos\theta}\,d\theta\right]\\
+	\label{eq:bessel_twopi_inter}
+	& \frac{1}{2\pi}\left[\pi I_{0}(x)+\int_{0}^{\pi}e^{-x\cos\theta}\,d\theta\right]
 \end{align}
+Since $-\cos \theta$ is monotonic and lies between $[-1,1]$ for $\theta \in [0,\pi]$, $e^{x\cos\theta}$ and $e^{-x\cos\theta}$ are symmetric %
+for $\theta \in [0,\pi]$ about $\theta = \frac{\pi}{2}$. So,
+\begin{align}
+	\label{eq:bessel_twopi_eq_integ}
+	\int_{0}^{\pi}e^{x\cos\theta}\,d\theta = \int_{0}^{\pi}e^{-x\cos\theta}\,d\theta
+\end{align}
+Substituting \eqref{eq:bessel_twopi_eq_integ} in \eqref{eq:bessel_twopi_inter},
+\begin{align*}
+	& \frac{1}{2\pi}\left[\pi I_{0}(x)+\int_{0}^{\pi}e^{x\cos\theta}\,d\theta\right]\\
+	&= \frac{1}{2\pi}\left[\pi I_{0}(x)+\pi I_{0}(x)\right]\\
+	&= I_{0}(x)
+\end{align*}
+Substituting $\theta-\phi = \omega$ in \eqref{eq:bessel_phi},
+\begin{align}
+	\label{eq:bessel_phi_inter}
+	I_{0}(x) &= \frac{1}{2\pi}\int_{-\phi}^{2\pi-\phi}e^{x\cos\brak{\omega}}\,d\omega
+\end{align}
+Since $\cos \omega$ is periodic with period $2\pi$,
+\begin{equation}
+	\int_{0}^{2\pi} \cos \omega \,d\omega = \int_{\alpha}^{2\pi+\alpha} \cos \omega \,d\omega
+	\label{eq:periodic_integral}
+\end{equation}
+Using \eqref{eq:periodic_integral} in \eqref{eq:bessel_phi_inter},
+\begin{align*}
+	& \frac{1}{2\pi}\int_{0}^{2\pi}e^{x\cos\brak{\omega}}\,d\omega\\
+	&= I_{0}(x) &\text{ from \eqref{eq:bessel_twopi}}
+\end{align*}
+Using the trigonomentric identity,
+\begin{align}
+	\label{eq:trig_identity_ab}
+	m_1\cos\theta + m_2\sin\theta &= \sqrt{m_1^2+m_2^2}\cos\brak{\theta-\phi}\\
+	\nonumber
+	\text{where } \tan \phi &= \frac{m_2}{m_1} 
+\end{align}
+the integral in \eqref{eq:bessel_addition} is given by,
+\begin{align*}
+	&\frac{1}{2\pi}\int_{0}^{2\pi}e^{\sqrt{m_1^2+m_2^2}\cos\brak{\theta-\phi}}\,d\theta \\
+	&= I_{0}\brak{\sqrt{m_1^2+m_2^2}} &\text{from \eqref{eq:bessel_phi}} 
+\end{align*}
 \item
 Let
 %
@@ -1700,52 +1755,163 @@ where $\mathbf{n}_0,\mathbf{n}_1\sim \mathcal{N}\brak{\mathbf{0}, \frac{N_0}{2}\
 %
 \begin{enumerate}[label=(\alph{enumii})]
 \item Taking $\mathbf{r} = \brak{r_1,r_2,r_3,r_4}^{T},$, find the pdf $p\brak{\mathbf{r}|0,\phi_0}$ in
-terms of $r_1,r_2,r_3,r_4,\phi,E_b$ and $N_0$. Assume that all noise variables are independent.
+terms of $r_1,r_2,r_3,r_4,\phi,E_b$ and $N_0$. Assume that all noise variables are independent.\\
+\solution Since $r_1, r_2, r_3, r_4$ are independant,
+\begin{equation}
+	p\brak{\mathbf{r}|0,\phi_0} = \prod_{i=1}^{4} p\brak{r_i|0,\phi_0}
+	\label{eq:product_pdf_noncoh_bfsk}
+\end{equation}
+Substituting the PDFs for 
+\begin{equation}
+\vec{r}|0,\phi_0 \sim \gauss{\sqrt{E_b}\myvec{\cos \phi_0\\\sin \phi_0\\0\\0}}{\frac{N_0}{2}\vec{I}}
+\end{equation}
+in \eqref{eq:product_pdf_noncoh_bfsk}, we get
+\begin{align}
+	\nonumber
+	p\brak{\mathbf{r}|0,\phi_0}&\\
+	=\frac{1}{N_0^2\pi^2}&e^{-\frac{\brak{r_1-\sqrt{E_b}\cos \phi_0}^2+\brak{r_2-\sqrt{E_b}\sin \phi_0}^2+r_3^2+r_4^2}{N_0}}
+\end{align}
 %
 \item 
-If $\phi_0$ is uniformly distributed between 0 and $2\pi$, find $p\brak{\mathbf{r}|0}$.  Note that this expression will no longer contain $\phi_0$.
+If $\phi_0$ is uniformly distributed between 0 and $2\pi$, find $p\brak{\mathbf{r}|0}$.  Note that this expression will no longer contain $\phi_0$.\\
+\solution
+\begin{flalign*}
+	p\brak{\mathbf{r}|0} &= \int_{0}^{2\pi} p\brak{\mathbf{r}|0,\phi_0} \,d\phi_0
+\end{flalign*}
+\begin{flalign*}
+	=\frac{1}{N_0^2\pi^2}\int_{0}^{2\pi}e^{-\frac{\brak{r_1-\sqrt{E_b}\cos \phi_0}^2+\brak{r_2-\sqrt{E_b}\sin \phi_0}^2+r_3^2+r_4^2}{N_0}} \,d\phi_0\\
+	=\frac{1}{N_0^2\pi^2}e^{-\frac{r_1^2+r_2^2+r_3^2+r_4^2+E_b}{N_0}}\int_{0}^{2\pi}e^{\frac{2\sqrt{E_b}}{N_0}\brak{r_1\cos \phi_0 + r_2\sin \phi_0}} \,d\phi_0
+\end{flalign*}
+\begin{flalign}
+	\label{eq:noncoh_bfsk_pdf}
+	=\frac{1}{N_0^2\pi^2}e^{-\frac{r_1^2+r_2^2+r_3^2+r_4^2+E_b}{N_0}}I_{0}\brak{\frac{2\sqrt{E_b}}{N_0}\sqrt{r_1^2+r_2^2}}&\\
+	\nonumber
+	\text{from \eqref{eq:bessel_addition}}&
+\end{flalign}
 %
 \item
 Show that the ML detection criterion for this scheme is
 %
 \begin{align}
+\label{eq:noncoh_bfsk_decision_comp}
 I_0\brak{k\sqrt{r_1^2+r_2^2}}\dec{0}{1}I_0\brak{k\sqrt{r_3^2+r_4^2}}
 \end{align}
 %
-where $k$ is a constant.
+where $k$ is a constant.\\
+\solution The PDF of $\vec{r}|1$ has a similar form to \eqref{eq:noncoh_bfsk_pdf},
+\begin{equation}
+	p\brak{\mathbf{r}|1} = \frac{1}{N_0^2\pi^2}e^{-\frac{r_1^2+r_2^2+r_3^2+r_4^2+E_b}{N_0}}I_{0}\brak{\frac{2\sqrt{E_b}}{N_0}\sqrt{r_3^2+r_4^2}}
+	\label{eq:noncoh_bfsk_pdf_one}
+\end{equation}
+From \eqref{eq:noncoh_bfsk_pdf} and \eqref{eq:noncoh_bfsk_pdf_one},
+\begin{align}
+	p\brak{\mathbf{r}|0} &=  f(\vec{r}) I_{0}\brak{k\sqrt{r_1^2+r_2^2}}\\
+	p\brak{\mathbf{r}|1} &=  f(\vec{r}) I_{0}\brak{k\sqrt{r_3^2+r_4^2}}
+\end{align}
+Using the MLE rule from \eqref{eq:mle_rule}, the optimum decision is given by
+\begin{align}
+I_0\brak{k\sqrt{r_1^2+r_2^2}}\dec{0}{1}I_0\brak{k\sqrt{r_3^2+r_4^2}}
+\end{align}
 %
 \item 
-The above criterion reduces to something simpler.  Can you guess what it is?  Justify your answer.
+The above criterion reduces to something simpler.  Can you guess what it is?  Justify your answer.\\
+\solution Since $I_{0}(x)$ is monotonic for $x \ge 0$, and since the arguements to the Bessel function in \eqref{eq:noncoh_bfsk_decision_comp} %
+are positive, the decision simplifies to
+\begin{align}
+	\nonumber
+	\sqrt{r_1^2+r_2^2}\dec{0}{1}\sqrt{r_3^2+r_4^2}\\
+	\label{eq:noncoh_bfsk_decision_simp}
+	\implies \brak{r_1^2+r_2^2}\dec{0}{1}\brak{r_3^2+r_4^2}
+\end{align}
 %
 \item 
 Show that 
 %
 \begin{align}
 P_{e|0}=\pr{r_1^2+r_2^2 < r_3^2+r_4^2 | 0}
+\end{align}\\
+\solution From \eqref{eq:noncoh_bfsk_decision_simp},
+\begin{align}
+P_{e|0} &= \pr{\hat{\vec{s}} = \vec{s}_1 | \vec{s} = \vec{s}_0}\\
+	&=\pr{r_1^2+r_2^2 < r_3^2+r_4^2 | 0}
 \end{align}
 %
 \item 
 Show that the pdf of $Y=r_3^2+r_4^2$ id
 %
 \begin{align}
+\label{eq:noncoh_bfsk_r34sq_pdf}
 p_{Y}(y) = \frac{1}{N_0}e^{-\frac{y}{N_0}}, y > 0
+\end{align}\\
+\solution Using \eqref{eq:square_pdf_gen}, the PDF of $Z=r_3^2$ is given by
+\begin{align}
+	\nonumber
+	p_Z(z) &= \frac{1}{2\sqrt{z}}p_{r_1}\brak{\sqrt{z}} + p_{r_1}\brak{-\sqrt{z}}\\
+	\nonumber
+	&= \frac{1}{2\sqrt{\pi N_0 z}}\brak{e^{-\frac{r_1}{N_0}}+e^{-\frac{r_1}{N_0}}}\\
+	\label{eq:bfsk_r34sq_pdf}
+	&= \frac{1}{\sqrt{\pi N_0 z}}e^{-\frac{r_1}{N_0}}
 \end{align}
+Since $r_3$ and $r_4$ are identically distributed, $r_4^2$ has the same PDF as $Z$. Since $Y$ is the sum of two independant random variables,
+\begin{flalign*}
+	p_Y(y) &= p_{r_3^2}(r_3) \ast p_{r_4^2}(r_4)&\\
+	&= \frac{1}{\pi N_0} \int_{0}^{y} \frac{e^{-\frac{x}{N_0}}}{\sqrt{x}}\frac{e^{-\frac{y-x}{N_0}}}{\sqrt{y-x}}  \,dx&\\
+	&= \frac{e^{-\frac{y}{N_0}}}{\pi N_0} \int_{0}^{y} \frac{1}{\sqrt{x(y-x)}}  \,dx&\\
+	&= \frac{e^{-\frac{y}{N_0}}}{\pi N_0} \sbrak{-\arcsin\left(\dfrac{y-2x}{v}\right)}_0^v&\\
+	&= \frac{e^{-\frac{y}{N_0}}}{\pi N_0} \pi&\\
+	&= \frac{e^{-\frac{y}{N_0}}}{N_0} \text{ for } y \ge 0
+\end{flalign*}
 %
 \item 
 Find 
 %
 \begin{align}
 g\brak{r_1,r_2} = \pr{r_1^2+r_2^2<Y|0,r_1,r_2}.
+\end{align}\\
+\solution Using the PDF of $Y$ from \eqref{eq:noncoh_bfsk_r34sq_pdf},
+\begin{align}
+	\pr{r_1^2+r_2^2<Y|0,r_1,r_2} &= \int_{r_1^2+r_2^2}^{\infty} \frac{e^{-\frac{y}{N_0}}}{N_0}  \,dy\\
+	&= \sbrak{-e^{-\frac{y}{N_0}}}_{r_1^2+r_2^2}^{\infty}\\
+	&= e^{-\frac{r_1^2+r_2^2}{N_0}}
 \end{align}
 \item 
 Show that $E\sbrak{e^{-\frac{X^2}{2\sigma^2}}}=\frac{1}{\sqrt{2}}e^{-\frac{\mu^2}{4\sigma^2}}$ for $X \sim 
-\mathcal{N}\brak{\mu,\sigma^2}$.
+\mathcal{N}\brak{\mu,\sigma^2}$.\\
+\solution 
+\begin{align}
+	\nonumber
+	E\sbrak{e^{-\frac{X^2}{2\sigma^2}}} &= \frac{1}{\sigma \sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-\frac{x^2}{2\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}  \,dx\\\nonumber
+	&= \frac{1}{\sigma \sqrt{2\pi}}\int_{-\infty}^{\infty} e^{-\frac{(x-\mu)^2+x^2}{2\sigma^2}}  \,dx\\\nonumber
+	&= \frac{1}{\sigma \sqrt{2\pi}}\int_{-\infty}^{\infty} e^{-\frac{(2x-\mu)^2+\mu^2}{2(\sqrt{2}\sigma)^2}}  \,dx\\\nonumber
+	&= e^{-\frac{\mu^2}{4\sigma^2}}\frac{1}{\sigma \sqrt{2\pi}}\int_{-\infty}^{\infty} e^{-\frac{(2x-\mu)^2}{2(\sqrt{2}\sigma)^2}}  \,dx\\\nonumber
+	&= \frac{e^{-\frac{\mu^2}{4\sigma^2}}}{\sqrt{2}}\frac{1}{\sqrt{2}\sigma \sqrt{2\pi}}\int_{-\infty}^{\infty} e^{-\frac{k^2}{2(\sqrt{2}\sigma)^2}}  \,dk\\
+	\label{eq:noncoh_bfsk_expg}
+	E\sbrak{e^{-\frac{X^2}{2\sigma^2}}} &= \frac{1}{\sqrt{2}}e^{-\frac{\mu^2}{4\sigma^2}}
+\end{align}
 %
 \item 
 Now show that
 %
 \begin{align}
 E\sbrak{g\brak{r_1,r_2}}=\frac{1}{2}e^{-\frac{E_b}{2N_0}}.
+\end{align}\\
+\solution Since $r_1$ and $r_2$ are independent,
+\begin{multline*}
+E\sbrak{g\brak{r_1,r_2}} =\\ 
+\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g\brak{r_1,r_2} p_{r_1}\brak{r_1} p_{r_2}\brak{r_2} \,dr_1  \,dr_2
+\end{multline*}
+\begin{flalign}
+\nonumber
+= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\frac{r_1^2+r_2^2}{N_0}} p_{r_1}\brak{r_1} p_{r_2}\brak{r_2} \,dr_1  \,dr_2 &\\
+\label{eq:noncoh_bfsk_exp_integ_prod}
+= \int_{-\infty}^{\infty} e^{-\frac{r_1^2}{N_0}} p_{r_1}\brak{r_1} \,dr_1 \int_{-\infty}^{\infty} e^{-\frac{r_2^2}{N_0}} p_{r_2}\brak{r_2} \,dr_2
+\end{flalign}
+Since $r_1,r_2 \sim \gauss{\sqrt{E_b}\myvec{\cos \phi_0 & \sin \phi_0}^{\top}}{\frac{N_0}{2}\vec{I}}$, \eqref{eq:noncoh_bfsk_expg} can be used %
+to evaluate the integrals in \eqref{eq:noncoh_bfsk_exp_integ_prod},
+\begin{align}
+	E\sbrak{g\brak{r_1,r_2}} &= \frac{1}{\sqrt{2}}e^{-\frac{E_b \cos^2 \phi_0}{2 N_0}} \frac{1}{\sqrt{2}}e^{-\frac{E_b \sin^2 \phi_0}{2 N_0}}\\
+	&= \frac{1}{2}e^{\frac{E_b \brak{\cos^2 \phi_0 + \sin^2 \phi_0}}{2 N_0}}\\
+	&=\frac{1}{2}e^{-\frac{E_b}{2N_0}}
 \end{align}
 %
 \end{enumerate}
@@ -1767,6 +1933,17 @@ J = \det\brak{
 \frac{\partial V}{\partial R} & \frac{\partial V}{\partial \Theta}
 \end{matrix}
 }
+\end{align}\\
+\solution 
+\begin{align}
+J = \det\brak{
+\begin{matrix}
+\frac{\cos \Theta}{2\sqrt{R}} & -\sqrt{R}\sin \Theta \\
+\frac{\sin \Theta}{2\sqrt{R}} & \sqrt{R}\cos \Theta
+\end{matrix}
+}\\
+= \frac{1}{2}\brak{\cos^2\Theta + \sin^2\Theta}&\\
+= \frac{1}{2}&
 \end{align}
 \item 
 The joint pdf for $R,\Theta$ is given by,
@@ -1774,7 +1951,6 @@ The joint pdf for $R,\Theta$ is given by,
 \begin{align}
 p_{R,\Theta}\brak{r,\theta} = p_{U,V}\brak{u,v}J\vert_{u = \sqrt{r}\cos\theta,v = \sqrt{r}\sin\theta}
 \end{align}
-%
 Show that
 %
 \begin{align}
@@ -1785,10 +1961,63 @@ p_{R}(r) =
 \end{cases}
 \end{align}
 %
-assuming that $\Theta$ is uniformly distributed between 0 to $2\pi$.
+assuming that $\Theta$ is uniformly distributed between 0 to $2\pi$.\\
+\solution Since $U,V\sim\mathcal{N}\brak{0,\frac{k}{2}}$ are i.i.d,
+\begin{align}
+	p_{U,V}\brak{u,v} &= \frac{1}{k\pi}e^{-\frac{u^2+v^2}{k}}
+\end{align}
+Transforming from $(U,V)$ to $(R,\Theta)$,
+\begin{align}
+	p_{R,\Theta}\brak{r,\theta} &= \frac{J}{k\pi}e^{-\frac{r\cos^2\Theta+r\sin^2\Theta}{k}}\\
+	&= \frac{1}{2k\pi}e^{-\frac{r}{k}} \text{ for $r > 0$}
+\end{align}
+Finding marginal PDF w.r.t $R$,
+\begin{align}
+	p_{R}\brak{r} &= \int_{0}^{2\pi} p_{R,\Theta}\brak{r,\theta} \,d\Theta\\
+	&= \frac{1}{k2\pi}e^{-\frac{r}{k}} \int_{0}^{2\pi} \,d\Theta\\
+	&= \frac{1}{k}e^{-\frac{r}{k}} \text{ for $r > 0$}
+\end{align}
+\begin{equation}
+	p_{R}\brak{r} = 
+	\begin{cases}
+		\frac{1}{k} e^{-\frac{r}{k}} & r > 0\\
+		0 & r < 0
+	\end{cases}
+	\label{eq:noncoh_bfsk_pdf_y}
+\end{equation}
+%
 \item
 Show that the pdf of $Y = R_1-R_2$, where $R_1$ and $R_2$ are i.i.d. and have the same distribution as $R$ is
 %
+\begin{align}
+p_{Y}(y) = \frac{1}{2k}e^{-\frac{\abs{y}}{k}}
+\end{align}\\
+\solution Given the PDF of $Y$ is given by
+\begin{align}
+	p_{Y}\brak{y} &= p_{R_1}\brak{r_1} \ast p_{R_2}\brak{-r_2}\\
+	&=
+	\begin{cases}
+		\int_{0}^{\infty} p_{R_1}\brak{t} p_{R_2}\brak{t-y}  \,dt & y < 0\\
+		\int_{y}^{\infty} p_{R_1}\brak{t} p_{R_2}\brak{t-y}  \,dt & y > 0
+	\end{cases}
+\end{align}
+Evaluating the integral for $y < 0$,
+\begin{align}
+	\int_{0}^{\infty} p_{R_1}\brak{t} p_{R_2}\brak{t-y}  \,dt &= \frac{1}{k^2} \int_{0}^{\infty} e^{-\frac{t}{k}}e^{-\frac{t-y}{k}} \,dt\\
+	&= \frac{e^{\frac{y}{k}}}{k^2} \int_{0}^{\infty} e^{-\frac{2t}{k}} \,dt\\
+	\label{eq:indefenite_convolution_y_bfsk}
+	&= \frac{e^{\frac{y}{k}}}{k^2} \sbrak{-\frac{k}{2}e^{-\frac{2t}{k}}}_{0}^{\infty}\\
+	\label{eq:noncoh_bfsk_conv_y_p1}
+	&= \frac{1}{2k}e^{\frac{y}{k}} \text{ , for $y < 0$}
+\end{align}
+Substituting limits of the integral for $y > 0$ in \eqref{eq:indefenite_convolution_y_bfsk},
+\begin{align}
+	&= \frac{e^{\frac{y}{k}}}{k^2} \sbrak{-\frac{k}{2}e^{-\frac{2t}{k}}}_{y}^{\infty}\\
+	&= \frac{e^{\frac{y}{k}}}{k^2} \frac{k}{2}e^{-\frac{2y}{k}}\\
+	\label{eq:noncoh_bfsk_conv_y_p2}
+	&= \frac{1}{2k}e^{\frac{-y}{k}} \text{ , for $y > 0$}
+\end{align}
+Combining \eqref{eq:noncoh_bfsk_conv_y_p1} and \eqref{eq:noncoh_bfsk_conv_y_p2},
 \begin{align}
 p_{Y}(y) = \frac{1}{2k}e^{-\frac{\abs{y}}{k}}
 \end{align}
@@ -1800,9 +2029,76 @@ p_{Y}(y) = \frac{1}{2k}e^{-\frac{\abs{y}}{k}}
 Z = p + \sqrt{p}\sbrak{U \cos \phi + V \sin \phi}
 \end{align}
 %
-where $\phi$ is a constant.
+where $\phi$ is a constant.\\
+\solution Let $A = \brak{\sqrt{p}\cos \phi} U$ and $B = \brak{\sqrt{p}\sin \phi} V$. Then,
+\begin{align}
+	A \sim \gauss{0}{\frac{kp \cos^2\phi}{2}}\\
+	B \sim \gauss{0}{\frac{kp \sin^2\phi}{2}}
+\end{align} 
+If $C=A+B$, then
+\begin{align}
+	C \sim \gauss{0}{\frac{kp}{2}}
+\end{align}
+Since $Z=p+C$, $Z \sim \gauss{p}{\frac{kp}{2}}$. The PDF of $Z$ is given by,
+\begin{align}
+	p_{Z}\brak{z} = \frac{1}{\sqrt{kp\pi}}e^{-\frac{\brak{z-p}^2}{kp}}
+\end{align}
 \item 
-Find $\pr{Y > Z}$.
+Find $\pr{Y > Z}$.\\
+Let $g\brak{z} = \pr{Y > z|Z = z}$. Evaluating $g\brak{z}$,
+\begin{align}
+	\pr{Y > z|Z = z} = \int_{z}^{\infty} p_Y\brak{y} \,dy\\
+	= \int_{z}^{\infty} \frac{1}{2k}e^{-\frac{\abs{y}}{k}} \,dy\\
+	=
+	\begin{cases}
+		\int_{z}^{\infty} \frac{1}{2k}e^{-\frac{y}{k}} \,dy & z > 0\\
+		\int_{z}^{0} \frac{1}{2k}e^{\frac{y}{k}} \,dy + \int_{0}^{\infty} \frac{1}{2k}e^{-\frac{y}{k}}\,dy & z < 0
+	\end{cases}\\
+	g\brak{z} =
+	\begin{cases}
+		\frac{1}{2}e^{-\frac{z}{k}} & z > 0\\
+		1-\frac{1}{2}e^{\frac{z}{k}}  & z < 0
+	\end{cases}
+\end{align}
+$\pr{Y > Z}$ is calculated as $E\sbrak{g\brak{z}}$,
+\begin{align}
+	&E\sbrak{g\brak{z}} = \int_{-\infty}^{\infty} g\brak{z}p_{Z}\brak{z} \,dz\\
+	\label{eq:noncoh_bfsk_exp_z_int}
+	&=  \int_{-\infty}^{0} \brak{1-\frac{1}{2}e^{\frac{z}{k}}} p_Z\brak{z} \,dz +  \int_{0}^{\infty} \frac{1}{2}e^{-\frac{z}{k}}p_Z\brak{z} \,dz\\
+	&= I_1 + I_2
+\end{align}
+Substituting $p_Z\brak{z}$ in $I_1$,
+\begin{align}
+	I_1 &= \int_{-\infty}^{0} \brak{1-\frac{1}{2}e^{\frac{z}{k}}} \frac{1}{\sqrt{kp\pi}}e^{-\frac{\brak{z-p}^2}{kp}} \,dz\\
+	&= \frac{1}{\sqrt{kp\pi}}\brak{\int_{-\infty}^{0} e^{-\frac{\brak{z-p}^2}{kp}} \,dz - \int_{-\infty}^{0} \frac{1}{2}e^{\frac{z}{k}} e^{-\frac{\brak{z-p}^2}{kp}}} \,dz
+\end{align}
+Substituting $t = \frac{z}{\sqrt{kp}}$ and $\gamma = \frac{p}{k}$,
+\begin{multline}
+	I_1 = \frac{1}{\sqrt{\pi}}\left(\int_{-\infty}^{0} e^{-\brak{t-\sqrt{\gamma}}^2} \,dt \right.\\
+	\left. - \frac{1}{2} \int_{-\infty}^{0} e^{t \sqrt{\gamma}} e^{-\brak{t-\sqrt{\gamma}}^2} \,dt \right)
+\end{multline}
+\begin{align}
+	&= \frac{1}{\sqrt{\pi}}\int_{-\infty}^{0} e^{-\brak{t-\sqrt{\gamma}}^2} \,dt - \frac{e^{\frac{5\gamma}{4}}}{2\sqrt{\pi}} \int_{-\infty}^{0} e^{-\brak{t-\frac{\sqrt{3\gamma}}{2}}^2} \,dt
+\end{align}
+Since area under a Gaussian curve is unity, from \eqref{eq:no_v_minus_alpha_integ} it can concluded that,
+\begin{align}
+	\label{eq:no_v_minus_alpha_integ_comp}
+	\lim_{\alpha \rightarrow \infty} \int_{-\infty}^{0} e^{-\brak{V-\alpha}^2} \,dV = 0
+\end{align}
+Let $\sqrt{\gamma} = \alpha$. Computing $I_1$ for large values of $\alpha$,
+\begin{multline}
+	\lim_{\alpha \rightarrow \infty} I_1 = \lim_{\alpha \rightarrow \infty} \frac{1}{\sqrt{\pi}} \int_{-\infty}^{0} e^{-\brak{t-\alpha}^2} \,dt\\
+	- \lim_{\alpha \rightarrow \infty} \frac{e^{\frac{5\alpha^2}{4}}}{2\sqrt{\pi}} \int_{-\infty}^{0} e^{-\brak{t-\frac{3\alpha}{2}}^2} \,dt
+\end{multline}
+Using \eqref{eq:no_v_minus_alpha_integ_comp},
+\begin{align}
+	\lim_{\alpha \rightarrow \infty} I_1 &= 0 - \lim_{\alpha \rightarrow \infty} \frac{e^{\frac{5\alpha^2}{4}}}{2\sqrt{\pi}} \int_{-\infty}^{0} e^{-\brak{t-\frac{3\alpha}{2}}^2} \,dt\\
+	&= -\frac{1}{2\sqrt{\pi}} \lim_{\alpha \rightarrow \infty} \frac{\int_{-\infty}^{0} e^{-\brak{t-\frac{3\alpha}{2}}^2 \,dt}}{e^{-\frac{5\alpha^2}{4}}}
+\end{align}
+Using L'Hopital's rule,
+\begin{align}
+	\lim_{\alpha \rightarrow \infty} I_1 &= \frac{1}{2\sqrt{\pi}} \lim_{\alpha \rightarrow \infty} \frac{6}{5} \frac{\int_{-\infty}^{0} \brak{t-\frac{3\alpha}{2}} e^{-\brak{t-\frac{3\alpha}{2}}^2} \,dt}{\alpha e^{-\frac{5\alpha^2}{4}}}
+\end{align}
 \item 
 If $U\sim\mathcal{N}\brak{m_1,\frac{k}{2}},V\sim\mathcal{N}\brak{m_2,\frac{k}{2}}$, where $m_1,m_2, k$ are constants, show that the pdf of 
 %
@@ -1813,13 +2109,52 @@ R = \sqrt{U^2+V^2}
 is
 %
 \begin{align}
+\label{eq:general_chi_sq}
 p_{R}\brak{r} = \frac{e^{-\frac{r +m}{k}}}{ k}I_{0}\brak{\frac{2\sqrt{mr}}{k}},\quad m = \sqrt{m_1^2+m_2^2}
+\end{align}\\
+\solution The CDF of $R$ is given by.
+\begin{align}
+	F_{R}\brak{r} &= \pr{R < r} \text{ , for $r > 0$}\\
+	&= \pr{\sqrt{U^2 + V^2} < r}\\
+	&= \pr{U^2 + V^2 < r^2}
+\end{align}
+The area of integration to obtain $F_{R}\brak{r}$ is the circle with radius $r$.
+\begin{align}
+	F_{R}\brak{r} &= \int_{-r}^{r} \int_{-\sqrt{r^2-v^2}}^{\sqrt{r^2-v^2}} p_{U,V}\brak{u,v}  \,du  \,dv\\
+	&= \int_{-r}^{r} \int_{-\sqrt{r^2-v^2}}^{\sqrt{r^2-v^2}} p_{U}\brak{u} p_{V}\brak{v} \,du  \,dv\\
+	\nonumber
+	&\text{   \small (since $U$ and $V$ are independent)}\\
+	&= \int_{-r}^{r} \int_{-\sqrt{r^2-v^2}}^{\sqrt{r^2-v^2}} \frac{1}{k\pi} e^{-\frac{\brak{u-m_1}^2+\brak{v-m_2}^2}{k}} \,du  \,dv
+\end{align}
+Transforming the integral to polar coordinates with $u=R \cos \theta$ and $v=R \sin \theta$,
+\begin{align}
+	F_{R}\brak{r} &= \frac{1}{k\pi} \int_{0}^{r} \int_{0}^{2\pi} Re^{-\frac{\brak{R\cos \theta-m_1}^+\brak{R\sin \theta-m_2}^2}{k}} \,dR  \,d\theta  
+\end{align}
+To find $p_{R}\brak{r}$, differentiate $F_{R}\brak{r}$ w.r.t $r$ using Leibniz's rule.
+\begin{align}
+	p_{R}\brak{r} &= \frac{1}{k\pi} \int_{0}^{2\pi} re^{-\frac{\brak{r\cos \theta-m_1}^2+\brak{r\sin \theta-m_2}^2}{k}} \,d\theta\\ 
+	&= \frac{1}{k\pi}re^{-\frac{r^2+m_1^2+m_2^2}{k}} \int_{0}^{2\pi} e^{\frac{2r m_1}{k}\cos \theta + \frac{2r m_2}{k}\sin \theta} \,d\theta
+\end{align}
+Using \eqref{eq:bessel_addition},
+\begin{align}
+	p_{R}\brak{r} &= \frac{2}{k}re^{-\frac{r^2+m_1^2+m_2^2}{k}}I_{0}\brak{\frac{2r}{k}\sqrt{m_1^2+m_2^2}}\\
+	&= \frac{2}{k}re^{-\frac{r^2+m^2}{k}}I_{0}\brak{\frac{2rm}{k}} \text{, $m=\sqrt{m_1^2+m_2^2}$}
 \end{align}
 %
 \item
 Show that
 \begin{align}
 I_0(x) = \sum_{n=0}^{\infty}\frac{x^{2n}}{4^n\brak{n!}^2}
+\end{align}\\
+\solution The modified bessel function of first kind is given by
+\begin{align}
+	\label{eq:mod_bessel_eq_series}
+	I_{n}\brak{x} = \brak{\frac{1}{2}x}^n \sum_{k=0}^{\infty} \frac{\brak{\frac{1}{4}x^2}^k}{k!\Gamma\brak{n+k+1}}
+\end{align}
+Substituting $n=0$,
+\begin{align}
+	I_{0}\brak{x} &= \sum_{k=0}^{\infty} \frac{\brak{\frac{1}{4}x^2}^k}{k!\Gamma\brak{k+1}}\\
+	&= \sum_{k=0}^{\infty} \frac{x^{2k}}{4^k\brak{k!}^2}
 \end{align}
 \item 
 If
@@ -1858,8 +2193,14 @@ Show that
 \begin{equation}
 Q(x) = \frac{1}{\pi}\int^{\frac{\pi}{2}}_{0}e^{-\frac{x^2}{2\sin^2 \theta}}\,d\theta
 \end{equation}
+\solution Refer solution to problem \ref{prob:craigs_formula_proof}.
 \item 
-Let $h\sim\mathcal{CN}\brak{0,\frac{\Omega}{2}},n\sim\mathcal{CN}\brak{0,\frac{N_0}{2}}$.  Find the distribution of $\abs{h}^2$.
+Let $h\sim\mathcal{CN}\brak{0,\frac{\Omega}{2}},n\sim\mathcal{CN}\brak{0,\frac{N_0}{2}}$.  Find the distribution of $\abs{h}^2$.\\
+\solution $\abs{h}^2 = \Re\cbrak{h}^2 + \Im\cbrak{h}^2$ where $\Re\cbrak{h}, \Im\cbrak{h} \sim \gauss{0}{\frac{\Omega}{4}}$. Let $R=\abs{h}^2$. %
+Using \eqref{eq:general_chi_sq}, $p_R\brak{r}$ is given by
+\begin{align}
+	p_{R}\brak{r} &= \frac{2}{\Omega}e^{-\frac{2r}{\Omega}}
+\end{align}
 \item Let
 %
 \begin{align}
