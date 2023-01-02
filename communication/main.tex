@@ -1427,8 +1427,72 @@ $X$ and $Y$ are said to be uncorrelated if $\rho = 0$\\
 \
 \item Show that if $X$ and $Y$ are uncorrelated 
 Verify this numerically.\\
-\solution
-\item Show that $X$ and $Y$ are independent, i.e. $p_{XY}(x,y) = p_{X}(x)p_{Y}(y)$.
+\solution Since $n_1$ and $n_2$ are independent,
+\begin{align}
+	p_{n_1,n_2}\brak{n_1,n_2} &= p_{n_1}\brak{n_1}p_{n_2}\brak{n_2}\\
+	&= \frac{1}{2\pi\sigma} e^{-\frac{n_1^2+n_2^2}{2\sigma^2}}
+\end{align}
+Finding $\mu_x = E\sbrak{X}$,
+\begin{align*}
+	E\sbrak{X} &= E\sbrak{n_2-n_1}\\
+	&= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \brak{n_2-n_1}p_{n_1,n_2}\brak{n_1,n_2}  \,dn_1  \,dn_2\\
+	&= \frac{1}{2\pi\sigma} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \brak{n_2-n_1}e^{-\frac{n_1^2+n_2^2}{2\sigma^2}} \,dn_1  \,dn_2
+\end{align*}
+	
+\begin{multline*}
+	= \frac{1}{\sqrt{2\pi \sigma}}\left[ \int_{-\infty}^{\infty} e^{-\frac{n_2^2}{2\sigma^2}} \,dn_2 \right.\\
+	\left. \frac{1}{\sqrt{2\pi \sigma}}\int_{-\infty}^{\infty} \brak{n_2-n_1} e^{-\frac{n_1^2}{2\sigma^2}} \,dn_1\right]
+\end{multline*}
+\begin{align*}
+	&= \frac{1}{\sqrt{2\pi \sigma}} \int_{-\infty}^{\infty} n_2 e^{-\frac{n_2^2}{2\sigma^2}} \,dn_2\\
+	&= 0
+\end{align*} 
+Similarly $\mu_y = 0$. Substituting $X, Y, \mu_x$ and $\mu_y$ in $\rho$,
+\begin{align*}
+	\rho &= \frac{E\sbrak{\brak{n_2-n_1}\brak{-n_2-n_1}}}{\sigma_X\sigma_Y}\\
+	&= \frac{1}{\sigma_X \sigma_Y} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \brak{n_1^2-n_2^2}p_{n_1,n_2}\brak{n_1,n_2}  \,dn_1  \,dn_2\\
+	&= \frac{1}{\sigma_X \sigma_Y} \frac{1}{2\pi\sigma} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \brak{n_1^2-n_2^2} e^{-\frac{n_1^2+n_2^2}{2\sigma^2}} \,dn_1  \,dn_2
+\end{align*}
+\begin{multline*}
+	= \frac{1}{\sigma_X \sigma_Y} \frac{1}{\sqrt{2\pi \sigma}}\left[ \int_{-\infty}^{\infty} e^{-\frac{n_2^2}{2\sigma^2}} \,dn_2\right. \\
+	\left. \frac{1}{\sqrt{2\pi \sigma}}\int_{-\infty}^{\infty} \brak{n_1^2-n_2^2} e^{-\frac{n_1^2}{2\sigma^2}} \,dn_1\right]
+\end{multline*}
+\begin{align*}
+	&= \frac{1}{\sigma_x \sigma_y} \frac{1}{\sqrt{2\pi \sigma}} \int_{-\infty}^{\infty} \brak{\sigma^2-n_2^2} e^{-\frac{n_2^2}{2\sigma^2}} \,dn_2\\
+	&= \frac{1}{\sigma_X \sigma_Y} \brak{\sigma^2-\sigma^2}\\
+	&= 0
+\end{align*}
+The code below can be used to verify numerically that $\rho = 0$,
+\begin{lstlisting}
+codes/chapter6/zero_corr_verify.py
+\end{lstlisting}
+The output of the code is,
+\begin{lstlisting}
+Correlation coefficient is: 0.0002998	
+\end{lstlisting}
+The scatter plot in \figref{fig:zero_corr_scatter} visually shows that there is no significant correlation between $X$ and $Y$.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{./figs/chapter6/zero_corr_verify.pdf}
+\caption{Scatter plot of $X$ and $Y$}
+\label{fig:zero_corr_scatter}
+\end{figure}
+
+\item Show that $X$ and $Y$ are independent, i.e. $p_{XY}(x,y) = p_{X}(x)p_{Y}(y)$.\\
+\solution Since $X$ and $Y$ are linear combinations of Gaussian variables, $X$ and $Y$ are normally distributed. The joint PDF of two Gaussian %
+variables is given by
+\begin{multline}
+	\label{eq:biv_gauss_gen}
+	p_{X,Y}\brak{x,y} = \frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\\
+	\exp\left\{-\frac{1}{2\brak{1-\rho^2}}\left[\brak{\frac{x-\mu_X}{\sigma_X}}^2+\brak{\frac{y-\mu_Y}{\sigma_Y}}^2\right.\right.\\
+	\left.\left.-2\rho\frac{\brak{x-\mu_X}\brak{Y-\mu_Y}}{\sigma_X\sigma_Y}\right]\right\}
+\end{multline}
+Substituting $\rho = 0$,  
+\begin{align}
+	p_{X,Y}\brak{x,y} &= \frac{1}{2\pi\sigma_X\sigma_Y}\exp\cbrak{-\frac{\brak{x-\mu_X}^2}{2\sigma_X^2}-\frac{\brak{y-\mu_Y}^2}{2\sigma_Y^2}}\\
+	&= \frac{1}{\sigma_X\sqrt{2\pi}}e^{-\frac{\brak{x-\mu_x}^2}{2\sigma_X^2}} \frac{1}{\sigma_Y\sqrt{2\pi}}e^{-\frac{\brak{y-\mu_y}^2}{2\sigma_Y^2}}\\
+	&= p_X\brak{x} p_Y\brak{y}
+\end{align}
 \item Show that $X,Y \sim \mathcal{N}\brak{0,2\sigma^2}$.\\
 \solution $X = n_2-n_1$ where $n_2, -n_1 \sim \gauss{0}{\sigma^2}$. The PDF of X is given by,
 \begin{align}
