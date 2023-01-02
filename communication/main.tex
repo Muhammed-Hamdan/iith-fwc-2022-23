@@ -1080,9 +1080,22 @@ Obtain an expression for $P_e$. Verify this by comparing the theory and simulati
 	\label{eq:prob_error_fsk_inter}
 	&= \pr{n_1-n_2 < -A}
 \end{align}
-\textbf{Theorem:} The sum of $N$ independant random variables $X_1,X_2,...,X_N$ with $X_i \sim \gauss{\mu_i}{\sigma_i}$ is itself normally distributed %
-with $\mu =\sum_{i=1}^n \mu_i$ and $\sigma^2 = \sum_{i=1}^n \sigma_i^2$.\\
-Let $Z=n_1-n_2$. From the above theorem, $Z \sim \gauss{0}{\sqrt{2}}$. \eqref{eq:prob_error_fsk_inter} can be further simplified as,
+%\textbf{Theorem:} The sum of $N$ independant random variables $X_1,X_2,...,X_N$ with $X_i \sim \gauss{\mu_i}{\sigma_i}$ is itself normally distributed %
+%with $\mu =\sum_{i=1}^n \mu_i$ and $\sigma^2 = \sum_{i=1}^n \sigma_i^2$.\\
+Let $Z = n_1-n_2$ where $n_1, n_2 \sim \gauss{0}{\sigma^2}$. The PDF of X is given by,
+\begin{align}
+	\nonumber
+	p_Z(z) &= p_{n_1}(n_1) \ast p_{-n_2}(n_2)\\\nonumber
+	&= \frac{1}{2\pi\sigma^2}\int_{-\infty}^{\infty} e^{-\frac{t^2}{2\sigma^2}}e^{-\frac{(t-z)^2}{2\sigma^2}}  \,dt\\\nonumber
+	&= \frac{1}{2\pi\sigma^2}\int_{-\infty}^{\infty} e^{-\frac{(z-t)^2+t^2}{2\sigma^2}}  \,dt\\\nonumber
+	&= \frac{1}{2\pi\sigma^2}\int_{-\infty}^{\infty} e^{-\frac{(2t-z)^2+z^2}{2(\sqrt{2}\sigma)^2}}  \,dt\\\nonumber
+	&= \frac{1}{2\pi\sigma^2}e^{-\frac{z^2}{2(\sqrt{2}\sigma)^2}}\int_{-\infty}^{\infty} e^{-\frac{(2t-z)^2}{2(\sqrt{2}\sigma)^2}}  \,dt\\\nonumber
+	&= \frac{e^{-\frac{z^2}{2(\sqrt{2}\sigma)^2}}}{\sqrt{2\pi}\sqrt{2}\sigma} \frac{1}{\sqrt{2\pi}\sqrt{2}\sigma}\int_{-\infty}^{\infty} e^{-\frac{k^2}{2(\sqrt{2}\sigma)^2}}  \,dk\\
+	\label{eq:std_gauss_diff_pdf_fsk}
+	&= \frac{e^{-\frac{z^2}{2(\sqrt{2}\sigma)^2}}}{\sqrt{2\pi}\sqrt{2}\sigma}
+\end{align}
+From \eqref{eq:std_gauss_diff_pdf_fsk}, $Z \sim \gauss{0}{2\sigma^2}$. Substituting $\sigma=1$, $Z \sim \gauss{0}{2}$. %
+\eqref{eq:prob_error_fsk_inter} can be further simplified as,
 \begin{align*}
 	P_e &= \pr{Z < -A}&\\
 	&= \pr{Z > A}&\\

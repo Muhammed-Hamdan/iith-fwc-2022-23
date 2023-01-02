@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.29)  2 JAN 2023 12:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.29)  2 JAN 2023 13:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -636,7 +636,7 @@ Package pdftex.def Info: ./figs/chapter5/biv_scatter.pdf  used on input line 10
 File: ./figs/chapter5/biv_pe_vs_snr.pdf Graphic file (type pdf)
 <use ./figs/chapter5/biv_pe_vs_snr.pdf>
 Package pdftex.def Info: ./figs/chapter5/biv_pe_vs_snr.pdf  used on input line 
-1096.
+1109.
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
 Package epstopdf Info: Source file: <./figs/chapter6/bpsk_const.eps>
 (epstopdf)                    date: 2022-12-12 09:51:22
@@ -647,23 +647,24 @@ o.pdf>
 (epstopdf)                    size: 9648 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/chapter6/bpsk_const
 -eps-converted-to.pdf ./figs/chapter6/bpsk_const.eps>
-(epstopdf)             \includegraphics on input line 1113.
+(epstopdf)             \includegraphics on input line 1126.
 Package epstopdf Info: Output file is already uptodate.
 <./figs/chapter6/bpsk_const-eps-converted-to.pdf, id=502, 562.1pt x 308.15125pt
 >
 File: ./figs/chapter6/bpsk_const-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bpsk_const-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/chapter6/bpsk_const-eps-converted-to.pdf  used 
-on input line 1113.
+on input line 1126.
 (pdftex.def)             Requested size: 265.0125pt x 145.28249pt.
- [10 <./figs/chapter5/biv_scatter.pdf> <./figs/chapter5/biv_pe_vs_snr.pdf> <./f
-igs/chapter6/bpsk_const-eps-converted-to.pdf>]
-<./figs/chapter6/bpsk_ber.pdf, id=574, 462.52798pt x 346.89601pt>
+ [10 <./figs/chapter5/biv_scatter.pdf> <./figs/chapter5/biv_pe_vs_snr.pdf>]
+<./figs/chapter6/bpsk_ber.pdf, id=572, 462.52798pt x 346.89601pt>
 File: ./figs/chapter6/bpsk_ber.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bpsk_ber.pdf>
-Package pdftex.def Info: ./figs/chapter6/bpsk_ber.pdf  used on input line 1207.
+Package pdftex.def Info: ./figs/chapter6/bpsk_ber.pdf  used on input line 1220.
 
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
+ [11 <./figs/chapter6/bpsk_const-eps-converted-to.pdf> <./figs/chapter6/bpsk_be
+r.pdf>]
 Package epstopdf Info: Source file: <./figs/chapter6/bfsk_const.eps>
 (epstopdf)                    date: 2022-12-12 09:51:22
 (epstopdf)                    size: 321690 bytes
@@ -673,80 +674,85 @@ o.pdf>
 (epstopdf)                    size: 10537 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/chapter6/bfsk_const
 -eps-converted-to.pdf ./figs/chapter6/bfsk_const.eps>
-(epstopdf)             \includegraphics on input line 1244.
+(epstopdf)             \includegraphics on input line 1257.
 Package epstopdf Info: Output file is already uptodate.
-<./figs/chapter6/bfsk_const-eps-converted-to.pdf, id=575, 517.935pt x 303.1325p
+<./figs/chapter6/bfsk_const-eps-converted-to.pdf, id=615, 517.935pt x 303.1325p
 t>
 File: ./figs/chapter6/bfsk_const-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bfsk_const-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/chapter6/bfsk_const-eps-converted-to.pdf  used 
-on input line 1244.
+on input line 1257.
 (pdftex.def)             Requested size: 265.0125pt x 155.10895pt.
- [11 <./figs/chapter6/bpsk_ber.pdf>]
 <./figs/chapter6/bfsk_coherent_ber.pdf, id=616, 462.52798pt x 346.89601pt>
 File: ./figs/chapter6/bfsk_coherent_ber.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bfsk_coherent_ber.pdf>
 Package pdftex.def Info: ./figs/chapter6/bfsk_coherent_ber.pdf  used on input l
-ine 1339.
+ine 1352.
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
- [12 <./figs/chapter6/bfsk_const-eps-converted-to.pdf> <./figs/chapter6/bfsk_co
-herent_ber.pdf>]
-<./figs/chapter6/zero_corr_verify.pdf, id=658, 462.52798pt x 346.89601pt>
+
+Underfull \vbox (badness 6493) has occurred while \output is active []
+
+ [12 <./figs/chapter6/bfsk_const-eps-converted-to.pdf>] [13 <./figs/chapter6/bf
+sk_coherent_ber.pdf>]
+<./figs/chapter6/zero_corr_verify.pdf, id=667, 462.52798pt x 346.89601pt>
 File: ./figs/chapter6/zero_corr_verify.pdf Graphic file (type pdf)
 <use ./figs/chapter6/zero_corr_verify.pdf>
 Package pdftex.def Info: ./figs/chapter6/zero_corr_verify.pdf  used on input li
-ne 1476.
+ne 1489.
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
 
-[13 <./figs/chapter6/zero_corr_verify.pdf>]
-Overfull \hbox (9.64679pt too wide) detected at line 1495
+Overfull \hbox (9.64679pt too wide) detected at line 1508
 []
  []
 
-<./figs/chapter6/qpsk_ber.pdf, id=681, 462.52798pt x 346.89601pt>
+
+Underfull \vbox (badness 3219) has occurred while \output is active []
+
+ [14 <./figs/chapter6/zero_corr_verify.pdf>]
+<./figs/chapter6/qpsk_ber.pdf, id=684, 462.52798pt x 346.89601pt>
 File: ./figs/chapter6/qpsk_ber.pdf Graphic file (type pdf)
 <use ./figs/chapter6/qpsk_ber.pdf>
-Package pdftex.def Info: ./figs/chapter6/qpsk_ber.pdf  used on input line 1549.
+Package pdftex.def Info: ./figs/chapter6/qpsk_ber.pdf  used on input line 1562.
 
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
 
-Underfull \hbox (badness 2856) in paragraph at lines 1560--1570
+Underfull \hbox (badness 2856) in paragraph at lines 1573--1583
 []\OT1/ptm/m/n/10 Consider a sys-tem where $\OT1/cmr/bx/n/10 s[] \OT1/cmr/m/n/1
 0 = [] \OML/cmm/m/it/10 ; i \OT1/cmr/m/n/10 =
  []
 
-[14 <./figs/chapter6/qpsk_ber.pdf>]
-Overfull \hbox (8.25772pt too wide) detected at line 1641
+
+Overfull \hbox (8.25772pt too wide) detected at line 1654
 []
  []
 
-[15] [16]
-Overfull \hbox (12.25197pt too wide) detected at line 1848
+[15 <./figs/chapter6/qpsk_ber.pdf>] [16]
+Overfull \hbox (12.25197pt too wide) detected at line 1861
 []
  []
 
 [17]
-Underfull \hbox (badness 5862) in paragraph at lines 1972--1975
+Underfull \hbox (badness 5862) in paragraph at lines 1985--1988
 \OT1/ptm/m/n/10 Since $\OML/cmm/m/it/10 r[]; r[] \OMS/cmsy/m/n/10 ^^X N []$\OT1
 /ptm/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 1972--1975
+Underfull \hbox (badness 1776) in paragraph at lines 1985--1988
 [] \OT1/ptm/m/n/10 can be used to eval-u-ate the in-te-grals in
  []
 
 [18]
-Overfull \hbox (3.20438pt too wide) detected at line 2138
+Overfull \hbox (3.20438pt too wide) detected at line 2151
 []
  []
 
 [19] [20] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 9417 strings out of 478287
- 153590 string characters out of 5849289
- 732846 words of memory out of 5000000
- 27484 multiletter control sequences out of 15000+600000
+ 9418 strings out of 478287
+ 153617 string characters out of 5849289
+ 732865 words of memory out of 5000000
+ 27485 multiletter control sequences out of 15000+600000
  508171 words of font info for 107 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,15n,63p,396b,1609s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -774,7 +780,7 @@ e1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courie
 r/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (20 pages, 626098 bytes).
+Output written on main.pdf (20 pages, 626771 bytes).
 PDF statistics:
  845 PDF objects out of 1000 (max. 8388607)
  309 compressed objects within 4 object streams
