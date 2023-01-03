@@ -593,7 +593,7 @@ The CDF of $T$ is found using \eqref{eq:pdf_to_cdf} by replacing $U$ with $T$. E
 \begin{lstlisting}[language=python]
 import numpy as np	
 num_samples = 500
-x_var = np.random.choice([-1, 1], num_samples)
+x_var = np.random.binomial(1, 0.5, num_samples)
 \end{lstlisting}
 \item Generate 
 \begin{equation}
@@ -604,7 +604,7 @@ Y = AX+N,
 \begin{lstlisting}[language=python]
 import numpy as np	
 num_samples = 500
-x_var = np.random.choice([-1, 1], num_samples)
+x_var = np.random.binomial(1, 0.5, num_samples)*2-1
 n_var = np.random.normal(0, 1, num_samples)
 A_db = 5
 A = 10**(0.1*A_db)
@@ -882,6 +882,18 @@ A = \sqrt{V}
 \begin{lstlisting}
 codes/chapter3/square_root.py
 \end{lstlisting}
+The CDF of $A$ is given by,
+\begin{align}
+	F_{A}\brak{a} &= \pr{A < a}\\
+	&= \pr{\sqrt{V} < a}\\
+	&= \pr{V < a^2}\\
+	&= F_{V}\brak{a^2}\\
+	&= 1-\exp\brak{-\frac{-a^2}{2}} 
+\end{align}
+Using \eqref{eq:cdf_to_pdf}, the PDF is found to be
+\begin{align}
+	p_{A}\brak{a} &= a\exp\brak{-\frac{a^2}{2}}
+\end{align}
 \begin{figure}[H]
 \centering
 \includegraphics[width=\columnwidth]{./figs/chapter4/rayleigh_cdf.pdf}
