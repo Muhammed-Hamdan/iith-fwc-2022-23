@@ -1068,6 +1068,33 @@ For the above problem, find a decision rule for detecting the symbols $\mbf{s}_0
 	y_1 \dec{0}{1} y_2
 	\label{eq:biv_fsk_decision}
 \end{equation}
+$\vec{y}|\vec{s}_i$ is a random vector with each of its components normally distributed. The PDF of $\vec{y}|\vec{s}_i$ is given by,
+\begin{equation}
+	p_{\vec{y}|\vec{s}_i}\brak{\vec{y}} = \frac{1}{2\pi\sqrt{\mydet{\vec{\Sigma}}}} \exp\brak{-\frac{1}{2}\brak{\vec{y}-\vec{s}_i}^\top \vec{\Sigma}^{-1} \brak{\vec{y}-\vec{s}_i}}
+\end{equation}
+Where $\vec{\Sigma}$ is the covariance matrix. Substituting $\vec{\Sigma} = \sigma \vec{I}$,
+\begin{align}
+	p_{\vec{y}|\vec{s}_i}\brak{\vec{y}} &= \frac{1}{2 \pi \sigma} \exp\brak{-\frac{1}{2 \sigma}\brak{\vec{y}-\vec{s}_i}^\top \vec{I} \brak{\vec{y}-\vec{s}_i}}\\
+	&= \frac{1}{2 \pi \sigma} \exp\brak{-\frac{1}{2 \sigma}\brak{\vec{y}-\vec{s}_i}^\top \brak{\vec{y}-\vec{s}_i}}
+\end{align}
+Assuming equiprobable symbols, use MAP rule in \eqref{eq:map_rule} to find optimum decision. Since there are only two possible symbols %
+$\vec{s}_0$ and $\vec{s}_1$, the optimal decision criterion is found by equating $p_{\vec{y}|\vec{s}_0}$ and $p_{\vec{y}|\vec{s}_1}$.
+\begin{align*}
+	p_{\vec{y}|\vec{s}_0} &= p_{\vec{y}|\vec{s}_1}
+\end{align*}
+	
+\begin{multline*}
+	\implies \exp\brak{-\frac{1}{2 \sigma}\brak{\vec{y}-\vec{s}_0}^\top \brak{\vec{y}-\vec{s}_0}} = \\
+	\exp\brak{-\frac{1}{2 \sigma}\brak{\vec{y}-\vec{s}_1}^\top \brak{\vec{y}-\vec{s}_1}}
+\end{multline*}
+	
+\begin{align*}
+	\implies \brak{\vec{y}-\vec{s}_0}^\top \brak{\vec{y}-\vec{s}_0} &= \brak{\vec{y}-\vec{s}_1}^\top \brak{\vec{y}-\vec{s}_1}\\
+	\implies \vec{y}^\top\vec{y} - 2\vec{s}_0^\top \vec{y} + \vec{s}_0^T\vec{s}_0 &= \vec{y}^\top\vec{y} - 2\vec{s}_1^\top \vec{y} + \vec{s}_1^T\vec{s}_1\\
+	\implies 2\brak{\vec{s}_1-\vec{s}_0}^\top \vec{y} &= \norm{\vec{s}_1}^2 - \norm{\vec{s}_0}^2\\
+	\implies \brak{\vec{s}_1-\vec{s}_0}^\top \vec{y} &= 0\\
+	\implies \myvec{-1\\1}^\top \vec{y} &= 0
+\end{align*}
 %
 \item
 Plot 

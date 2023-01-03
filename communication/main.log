@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.29)  3 JAN 2023 09:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.29)  3 JAN 2023 10:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -645,8 +645,11 @@ Underfull \vbox (badness 1521) has occurred while \output is active []
 File: ./figs/chapter5/biv_pe_vs_snr.pdf Graphic file (type pdf)
 <use ./figs/chapter5/biv_pe_vs_snr.pdf>
 Package pdftex.def Info: ./figs/chapter5/biv_pe_vs_snr.pdf  used on input line 
-1121.
+1148.
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 Package epstopdf Info: Source file: <./figs/chapter6/bpsk_const.eps>
 (epstopdf)                    date: 2022-12-12 09:51:22
 (epstopdf)                    size: 354313 bytes
@@ -656,21 +659,21 @@ o.pdf>
 (epstopdf)                    size: 9648 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/chapter6/bpsk_const
 -eps-converted-to.pdf ./figs/chapter6/bpsk_const.eps>
-(epstopdf)             \includegraphics on input line 1138.
+(epstopdf)             \includegraphics on input line 1165.
 Package epstopdf Info: Output file is already uptodate.
 <./figs/chapter6/bpsk_const-eps-converted-to.pdf, id=578, 562.1pt x 308.15125pt
 >
 File: ./figs/chapter6/bpsk_const-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bpsk_const-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/chapter6/bpsk_const-eps-converted-to.pdf  used 
-on input line 1138.
+on input line 1165.
 (pdftex.def)             Requested size: 265.0125pt x 145.28249pt.
  [11 <./figs/chapter5/biv_pe_vs_snr.pdf> <./figs/chapter6/bpsk_const-eps-conver
 ted-to.pdf>]
 <./figs/chapter6/bpsk_ber.pdf, id=627, 462.52798pt x 346.89601pt>
 File: ./figs/chapter6/bpsk_ber.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bpsk_ber.pdf>
-Package pdftex.def Info: ./figs/chapter6/bpsk_ber.pdf  used on input line 1232.
+Package pdftex.def Info: ./figs/chapter6/bpsk_ber.pdf  used on input line 1259.
 
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
 Package epstopdf Info: Source file: <./figs/chapter6/bfsk_const.eps>
@@ -682,78 +685,77 @@ o.pdf>
 (epstopdf)                    size: 10537 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/chapter6/bfsk_const
 -eps-converted-to.pdf ./figs/chapter6/bfsk_const.eps>
-(epstopdf)             \includegraphics on input line 1269.
+(epstopdf)             \includegraphics on input line 1296.
 Package epstopdf Info: Output file is already uptodate.
 <./figs/chapter6/bfsk_const-eps-converted-to.pdf, id=628, 517.935pt x 303.1325p
 t>
 File: ./figs/chapter6/bfsk_const-eps-converted-to.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bfsk_const-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/chapter6/bfsk_const-eps-converted-to.pdf  used 
-on input line 1269.
+on input line 1296.
 (pdftex.def)             Requested size: 265.0125pt x 155.10895pt.
 
-[12 <./figs/chapter6/bpsk_ber.pdf> <./figs/chapter6/bfsk_const-eps-converted-to
-.pdf>]
-<./figs/chapter6/bfsk_coherent_ber.pdf, id=671, 462.52798pt x 346.89601pt>
+Underfull \vbox (badness 2735) has occurred while \output is active []
+
+ [12 <./figs/chapter6/bpsk_ber.pdf>]
+<./figs/chapter6/bfsk_coherent_ber.pdf, id=669, 462.52798pt x 346.89601pt>
 File: ./figs/chapter6/bfsk_coherent_ber.pdf Graphic file (type pdf)
 <use ./figs/chapter6/bfsk_coherent_ber.pdf>
 Package pdftex.def Info: ./figs/chapter6/bfsk_coherent_ber.pdf  used on input l
-ine 1364.
+ine 1391.
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
- [13 <./figs/chapter6/bfsk_coherent_ber.pdf>]
-<./figs/chapter6/zero_corr_verify.pdf, id=718, 462.52798pt x 346.89601pt>
+ [13 <./figs/chapter6/bfsk_const-eps-converted-to.pdf> <./figs/chapter6/bfsk_co
+herent_ber.pdf>]
+<./figs/chapter6/zero_corr_verify.pdf, id=713, 462.52798pt x 346.89601pt>
 File: ./figs/chapter6/zero_corr_verify.pdf Graphic file (type pdf)
 <use ./figs/chapter6/zero_corr_verify.pdf>
 Package pdftex.def Info: ./figs/chapter6/zero_corr_verify.pdf  used on input li
-ne 1501.
+ne 1528.
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
-
-Overfull \hbox (9.64679pt too wide) detected at line 1520
+ [14 <./figs/chapter6/zero_corr_verify.pdf>]
+Overfull \hbox (9.64679pt too wide) detected at line 1547
 []
  []
 
-[14 <./figs/chapter6/zero_corr_verify.pdf>]
 <./figs/chapter6/qpsk_ber.pdf, id=734, 462.52798pt x 346.89601pt>
 File: ./figs/chapter6/qpsk_ber.pdf Graphic file (type pdf)
 <use ./figs/chapter6/qpsk_ber.pdf>
-Package pdftex.def Info: ./figs/chapter6/qpsk_ber.pdf  used on input line 1574.
+Package pdftex.def Info: ./figs/chapter6/qpsk_ber.pdf  used on input line 1601.
 
 (pdftex.def)             Requested size: 265.0125pt x 198.77023pt.
 
-Underfull \hbox (badness 2856) in paragraph at lines 1585--1595
+Underfull \hbox (badness 2856) in paragraph at lines 1612--1622
 []\OT1/ptm/m/n/10 Consider a sys-tem where $\OT1/cmr/bx/n/10 s[] \OT1/cmr/m/n/1
 0 = [] \OML/cmm/m/it/10 ; i \OT1/cmr/m/n/10 =
  []
 
-
-Overfull \hbox (8.25772pt too wide) detected at line 1666
+[15 <./figs/chapter6/qpsk_ber.pdf>]
+Overfull \hbox (8.25772pt too wide) detected at line 1693
 []
  []
 
-[15 <./figs/chapter6/qpsk_ber.pdf>] [16]
-Overfull \hbox (12.25197pt too wide) detected at line 1873
+[16] [17]
+Overfull \hbox (12.25197pt too wide) detected at line 1900
 []
  []
 
-[17]
-Underfull \hbox (badness 5862) in paragraph at lines 1997--2000
+[18]
+Underfull \hbox (badness 5862) in paragraph at lines 2024--2027
 \OT1/ptm/m/n/10 Since $\OML/cmm/m/it/10 r[]; r[] \OMS/cmsy/m/n/10 ^^X N []$\OT1
 /ptm/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 1997--2000
+Underfull \hbox (badness 1776) in paragraph at lines 2024--2027
 [] \OT1/ptm/m/n/10 can be used to eval-u-ate the in-te-grals in
  []
 
-[18]
-Overfull \hbox (3.20438pt too wide) detected at line 2163
+[19]
+Overfull \hbox (3.20438pt too wide) detected at line 2190
 []
  []
 
-[19] [20] [21
-
-] (./main.aux) ) 
+[20] [21] (./main.aux) ) 
 Here is how much of TeX's memory you used:
  9418 strings out of 478287
  153619 string characters out of 5849289
@@ -762,31 +764,31 @@ Here is how much of TeX's memory you used:
  508171 words of font info for 107 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,15n,63p,396b,1609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/c
-ourier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf
--dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (21 pages, 640398 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.
+enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courie
+r/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (21 pages, 642469 bytes).
 PDF statistics:
  898 PDF objects out of 1000 (max. 8388607)
  315 compressed objects within 4 object streams
