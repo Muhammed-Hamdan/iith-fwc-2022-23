@@ -15,7 +15,7 @@ The main subjects learnt during the program were
 - **Mathematics** : Matrix analysis and convex optimization
 - **Basics of Digital communication**
 
-All the subjects were self-learnt using **open source e-books designed by Dr. GVV Sharma**. A unique feature of these books is that they contain minimal theory. The topics are mainly introduced through solved examples after which the learner has to solve many problems. They were very helpful to gain a good understanding of the subjects. A list of the e-books are given [here](#e-book-list).
+All the subjects were self-learnt using **open source e-books designed by Dr. GVV Sharma**. A unique feature of these books is that they contain minimal theory. The topics are mainly introduced through solved examples after which the learner has to solve many problems. They were very helpful to gain a good understanding of the subjects. A list of the e-books are given [here](#book-list).
 
 # Table of contents
 
