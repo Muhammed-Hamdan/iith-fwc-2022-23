@@ -9,7 +9,7 @@ import cvxpy  as cp
 
 import sys, os                                          #for path to external scripts
 script_dir = os.path.dirname(__file__)
-lib_relative = '../../../CoordGeo'
+lib_relative = '../../../../CoordGeo'
 fig_relative = '../figs/fig1.pdf'
 sys.path.insert(0,os.path.join(script_dir, lib_relative))
 
